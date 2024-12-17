@@ -1,0 +1,13 @@
+{
+  "name": "rpc-errors",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "doc:start": "pnpm -F docs start",
+    "doc:build": "pnpm -F docs build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
