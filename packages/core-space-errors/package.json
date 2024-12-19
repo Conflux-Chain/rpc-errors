@@ -1,0 +1,13 @@
+{
+  "name": "core-space-errors",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./_cjs/index.js",
+  "scripts": {
+    "clean": "rm -rf *.tsbuildinfo src/*.tsbuildinfo src/_cjs",
+    "build": "pnpm clean && tsc --project tsconfig.build.json"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
