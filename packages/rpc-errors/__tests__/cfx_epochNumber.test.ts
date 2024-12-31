@@ -5,7 +5,7 @@ import { assertRpcError, getFreePorts } from "./help";
 import { createRequest } from "../src/utils/request";
 import { isRpcError } from "../src/utils/isRpcError";
 import { toCoreSpaceError } from "../src/coreSpace/toCoreSpaceError";
-import { InvalidParams } from "../src/coreSpace/invalidParams";
+import { InvalidParamsError } from "../src/coreSpace/invalidParams/invalidParams";
 
 let HTTP_PORT: number;
 beforeAll(async () => {
@@ -36,7 +36,7 @@ describe("cfx_epochNumber errors", async () => {
     expect(error.error.message).toBe(errorMessage);
 
     const error1 = toCoreSpaceError(error.error);
-    expect(error1).toBeInstanceOf(InvalidParams);
+    expect(error1).toBeInstanceOf(InvalidParamsError);
     expect(error1.code).toBe(errorCode);
     expect(error1.message).toBe(errorMessage);
   });
@@ -56,7 +56,7 @@ describe("cfx_epochNumber errors", async () => {
     expect(error.error.message).toBe(errorMessage);
 
     const error1 = toCoreSpaceError(error.error);
-    expect(error1).toBeInstanceOf(InvalidParams);
+    expect(error1).toBeInstanceOf(InvalidParamsError);
     expect(error1.code).toBe(errorCode);
     expect(error1.message).toBe(errorMessage);
   });
@@ -74,7 +74,7 @@ describe("cfx_epochNumber errors", async () => {
     expect(error.error.message).toBe(errorMessage);
 
     const error1 = toCoreSpaceError(error.error);
-    expect(error1).toBeInstanceOf(InvalidParams);
+    expect(error1).toBeInstanceOf(InvalidParamsError);
     expect(error1.code).toBe(errorCode);
     expect(error1.message).toBe(errorMessage);
   });
@@ -92,7 +92,7 @@ describe("cfx_epochNumber errors", async () => {
     expect(error.error.message).toBe(errorMessage);
 
     const error1 = toCoreSpaceError(error.error);
-    expect(error1).toBeInstanceOf(InvalidParams);
+    expect(error1).toBeInstanceOf(InvalidParamsError);
     expect(error1.code).toBe(errorCode);
     expect(error1.message).toBe(errorMessage);
   });
@@ -109,7 +109,7 @@ describe("cfx_epochNumber errors", async () => {
     expect(error.error.message).toBe(errorMessage);
 
     const error1 = toCoreSpaceError(error.error);
-    expect(error1).toBeInstanceOf(InvalidParams);
+    expect(error1).toBeInstanceOf(InvalidParamsError);
     expect(error1.code).toBe(errorCode);
     expect(error1.message).toBe(errorMessage);
   });
