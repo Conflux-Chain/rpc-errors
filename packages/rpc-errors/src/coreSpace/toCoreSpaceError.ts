@@ -1,4 +1,4 @@
-import { BaseError } from "../shared/baseError";
+import { BaseError } from "../baseError";
 import { RpcErrorResponse } from "../utils/request";
 import { InvalidParamsError } from "./invalidParams/invalidParams";
 

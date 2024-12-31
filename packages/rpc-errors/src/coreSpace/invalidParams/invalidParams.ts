@@ -1,10 +1,10 @@
-import { BaseError } from "../../shared/baseError";
+import { BaseError } from "../../baseError";
 
 export type InvalidParamsErrorType = InvalidParamsError & {
   name: "InvalidParams";
 };
 
-export class InvalidParamsError extends BaseError  {
+export class InvalidParamsError extends BaseError {
   static code = -32602;
   override readonly code = InvalidParamsError.code;
   override name = "InvalidParams";

@@ -1,3 +1,3 @@
-export { type BaseErrorType, BaseError } from "./shared/baseError.js";
+export { type BaseErrorType, BaseError } from "./baseError.js";
 
 
