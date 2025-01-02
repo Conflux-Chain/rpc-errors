@@ -4,10 +4,19 @@ import { assertRpcError, getFreePorts } from "./help";
 
 import { createRequest } from "../src/utils/request";
 import { isRpcError } from "../src/utils/isRpcError";
-import { toCoreSpaceError } from "../src/coreSpace/toCoreSpaceError";
 import { InvalidParamsError } from "../src/coreSpace/invalidParams/invalidParams";
+import { coreSpaceErrors, RPCError } from "../src";
+import {
+  EmptyEpochStringError,
+  EpochNumberPosOverflowError,
+  EpochNumberTooLargeError,
+  InvalidDigitEpochError,
+  MissingHexPrefixError,
+} from "../src/coreSpace/invalidParams/epoch";
 
 let HTTP_PORT: number;
+const rpcError = new RPCError();
+rpcError.registerError(coreSpaceErrors);
 beforeAll(async () => {
   const [jsonrpcHttpPort, udpAndTcpPort] = await getFreePorts(2);
   HTTP_PORT = jsonrpcHttpPort as number;
@@ -23,77 +32,83 @@ beforeAll(async () => {
 });
 
 describe("cfx_getBlockByEpochNumber errors", async () => {
-
-  test("invalid params(query epoch number greater than actual epoch number.)", async () => {
+  test("invalid params(query epoch number pos overflow.)", async () => {
     const request = createRequest(`http://localhost:${HTTP_PORT}`);
-    const error = await request<string>("cfx_getBlockByEpochNumber", [
+    const error = await request<string>("cfx_epochNumber", [
       `0x${Number.MAX_VALUE.toString(16)}`,
     ]);
 
-    const errorCode = -32602;
-    const errorMessage =
-      "Invalid params: Invalid epoch number: number too large to fit in target type.";
     expect(isRpcError(error)).toBe(true);
     assertRpcError(error);
-    expect(error.error.code).toBe(errorCode);
-    expect(error.error.message).toBe(errorMessage);
+    expect(error.error.code).toBe(InvalidParamsError.code);
 
-    const error1 = toCoreSpaceError(error.error);
-    expect(error1).toBeInstanceOf(InvalidParamsError);
-    expect(error1.code).toBe(errorCode);
-    expect(error1.message).toBe(errorMessage);
+    const parsedError = rpcError.parse(error.error);
+    expect(parsedError).toBeInstanceOf(EpochNumberPosOverflowError);
+    expect(parsedError.name).toBe("EpochNumberPosOverflow");
+    expect(parsedError.code).toBe(EpochNumberPosOverflowError.code);
+    expect(parsedError.message).toBe(error.error.message);
+  });
+
+  test("invalid params(query epoch number greater than actual epoch number.)", async () => {
+    const request = createRequest(`http://localhost:${HTTP_PORT}`);
+    const error = await request<string>("cfx_epochNumber", [
+      `0x${(999).toString(16)}`,
+    ]);
+
+    expect(isRpcError(error)).toBe(true);
+    assertRpcError(error);
+    expect(error.error.code).toBe(InvalidParamsError.code);
+
+    const parsedError = rpcError.parse(error.error);
+    expect(parsedError).toBeInstanceOf(EpochNumberTooLargeError);
+    expect(parsedError.name).toBe("EpochNumberTooLarge");
+    expect(parsedError.code).toBe(EpochNumberTooLargeError.code);
+    expect(parsedError.message).toBe(error.error.message);
   });
 
   test("invalid params(empty hex string)", async () => {
     const request = createRequest(`http://localhost:${HTTP_PORT}`);
     const error = await request<string>("cfx_getBlockByEpochNumber", ["0x"]);
-    const errorCode = -32602;
-    const errorMessage =
-      "Invalid params: Invalid epoch number: cannot parse integer from empty string.";
 
     expect(isRpcError(error)).toBe(true);
     assertRpcError(error);
-    expect(error.error.code).toBe(errorCode);
-    expect(error.error.message).toBe(errorMessage);
-
-    const error1 = toCoreSpaceError(error.error);
-    expect(error1).toBeInstanceOf(InvalidParamsError);
-    expect(error1.code).toBe(errorCode);
-    expect(error1.message).toBe(errorMessage);
+    expect(error.error.code).toBe(InvalidParamsError.code);
+    const parsedError = rpcError.parse(error.error);
+    expect(parsedError).toBeInstanceOf(EmptyEpochStringError);
+    expect(parsedError.name).toBe("EmptyEpochString");
+    expect(parsedError.code).toBe(EmptyEpochStringError.code);
+    expect(parsedError.message).toBe(error.error.message);
   });
 
   test("invalid params(invalid hex string)", async () => {
     const request = createRequest(`http://localhost:${HTTP_PORT}`);
-    const error = await request<string>("cfx_getBlockByEpochNumber", ["0xinvalid"]);
+    const error = await request<string>("cfx_getBlockByEpochNumber", [
+      "0xinvalid",
+    ]);
 
-    const errorCode = -32602;
-    const errorMessage =
-      "Invalid params: Invalid epoch number: invalid digit found in string.";
     expect(isRpcError(error)).toBe(true);
     assertRpcError(error);
-    expect(error.error.code).toBe(errorCode);
-    expect(error.error.message).toBe(errorMessage);
+    expect(error.error.code).toBe(InvalidParamsError.code);
+    const parsedError = rpcError.parse(error.error);
 
-    const error1 = toCoreSpaceError(error.error);
-    expect(error1).toBeInstanceOf(InvalidParamsError);
-    expect(error1.code).toBe(errorCode);
-    expect(error1.message).toBe(errorMessage);
+    expect(parsedError).toBeInstanceOf(InvalidDigitEpochError);
+    expect(parsedError.name).toBe("InvalidDigitEpoch");
+    expect(parsedError.code).toBe(InvalidDigitEpochError.code);
+    expect(parsedError.message).toBe(error.error.message);
   });
 
   test("invalid params(invalid hex string without 0x prefix)", async () => {
     const request = createRequest(`http://localhost:${HTTP_PORT}`);
     const error = await request<string>("cfx_getBlockByEpochNumber", ["1"]);
-    const errorCode = -32602;
-    const errorMessage =
-      "Invalid params: Invalid epoch number: missing 0x prefix.";
     expect(isRpcError(error)).toBe(true);
     assertRpcError(error);
-    expect(error.error.code).toBe(errorCode);
-    expect(error.error.message).toBe(errorMessage);
+    expect(error.error.code).toBe(InvalidParamsError.code);
 
-    const error1 = toCoreSpaceError(error.error);
-    expect(error1).toBeInstanceOf(InvalidParamsError);
-    expect(error1.code).toBe(errorCode);
-    expect(error1.message).toBe(errorMessage);
+    const parsedError = rpcError.parse(error.error);
+
+    expect(parsedError).toBeInstanceOf(MissingHexPrefixError);
+    expect(parsedError.name).toBe("MissingHexPrefix");
+    expect(parsedError.code).toBe(MissingHexPrefixError.code);
+    expect(parsedError.message).toBe(error.error.message);
   });
 });

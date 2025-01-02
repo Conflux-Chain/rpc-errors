@@ -1,5 +1,6 @@
 import {
   EmptyEpochStringError,
+  EpochNumberPosOverflowError,
   EpochNumberTooLargeError,
   InvalidDigitEpochError,
   InvalidEpochTypeError,
@@ -32,6 +33,10 @@ const InvalidParamsErrors = {
     {
       pattern: EpochNumberTooLargeError.pattern,
       error: EpochNumberTooLargeError,
+    },
+    {
+      pattern: EpochNumberPosOverflowError.pattern,
+      error: EpochNumberPosOverflowError,
     },
     {
       pattern: MissingHexPrefixError.pattern,

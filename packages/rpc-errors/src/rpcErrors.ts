@@ -13,7 +13,7 @@ export class RPCError {
   errorCodeMap = new Map<number, new (...args: any[]) => BaseError>([]);
   messagePatterns = new Map<RegExp, new (...args: any[]) => BaseError>([]);
 
-  parse(rpcError: RpcErrorResponse): BaseError {
+  parse(rpcError: RpcErrorResponse["error"]): BaseError {
     // get the base error by error code
     const ErrorClass = this.errorCodeMap.get(rpcError.code);
     if (!ErrorClass) {

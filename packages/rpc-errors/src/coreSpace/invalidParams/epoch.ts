@@ -23,6 +23,14 @@ export class EpochNumberTooLargeError extends InvalidParamsError {
   }
 }
 
+export class EpochNumberPosOverflowError extends InvalidParamsError {
+  override name = "EpochNumberPosOverflow";
+  static pattern = /number too large to fit in target type/;
+  constructor(message: string, public override readonly data?: any) {
+    super(message, data);
+  }
+}
+
 export type EmptyEpochStringErrorType = EmptyEpochStringError & {
   name: "EmptyEpochString";
 };

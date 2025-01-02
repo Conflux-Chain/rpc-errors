@@ -1,9 +1,3 @@
-export interface RpcErrorResponse {
-  code: number;
-  message: string;
-  data?: any;
-}
-
 export interface RpcSuccessResponse<T = any> {
   jsonrpc: "2.0";
   id: number | string | null;
@@ -15,7 +9,11 @@ export interface RpcErrorResponse {
   jsonrpc: "2.0";
   id: number | string | null;
   result?: never;
-  error: RpcErrorResponse;
+  error: {
+    code: number;
+    message: string;
+    data?: any;
+  };
 }
 export type JSONRPCRequest = {
   id: number;
