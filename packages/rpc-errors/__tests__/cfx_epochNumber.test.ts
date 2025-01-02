@@ -49,28 +49,10 @@ describe("cfx_epochNumber errors", async () => {
     expect(parsedError.code).toBe(InvalidEpochTypeError.code);
     expect(parsedError.message).toBe(error.error.message);
   });
-
-  test("invalid params(query epoch number pos overflow.)", async () => {
-    const request = createRequest(`http://localhost:${HTTP_PORT}`);
-    const error = await request<string>("cfx_epochNumber", [
-      `0x${Number.MAX_VALUE.toString(16)}`,
-    ]);
-
-    expect(isRpcError(error)).toBe(true);
-    assertRpcError(error);
-    expect(error.error.code).toBe(InvalidParamsError.code);
-
-    const parsedError = rpcError.parse(error.error);
-    expect(parsedError).toBeInstanceOf(EpochNumberPosOverflowError);
-    expect(parsedError.name).toBe("EpochNumberPosOverflow");
-    expect(parsedError.code).toBe(EpochNumberPosOverflowError.code);
-    expect(parsedError.message).toBe(error.error.message);
-  });
-
   test("invalid params(query epoch number greater than actual epoch number.)", async () => {
     const request = createRequest(`http://localhost:${HTTP_PORT}`);
     const error = await request<string>("cfx_epochNumber", [
-      `0x${(999).toString(16)}`,
+      `0x${Number.MAX_SAFE_INTEGER.toString(16)}`,
     ]);
 
     expect(isRpcError(error)).toBe(true);

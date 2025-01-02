@@ -35,10 +35,6 @@ const InvalidParamsErrors = {
       error: EpochNumberTooLargeError,
     },
     {
-      pattern: EpochNumberPosOverflowError.pattern,
-      error: EpochNumberPosOverflowError,
-    },
-    {
       pattern: MissingHexPrefixError.pattern,
       error: MissingHexPrefixError,
     },
