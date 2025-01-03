@@ -9,18 +9,19 @@ InvalidParamsError occurs when incorrect parameters are provided. To correct thi
 1. **Invalid parameter type**
 
 >  "Invalid params: invalid type: integer `1`, expected an epoch number or 'latest_mined', 'latest_state', 'latest_checkpoint', 'latest_finalized', 'latest_confirmed' or 'earliest'."
-2. **Epoch number too large**
+
+2. **EpochNumberTooLargeError**
 
 > You need to pass a `hex` string or epoch strings, not a `number`.
 
-3. **Empty value**
+3. **EmptyEpochStringError**
 
 > "Invalid params: Invalid epoch number: cannot parse integer from empty string."
 
-4. **Invalid hex string format**
+4. **InvalidDigitEpochError**
 
 > "Invalid params: Invalid epoch number: invalid digit found in string."
 
-5. **Missing hex prefix**
+5. **MissingHexPrefixError**
 
 > "Invalid params: Invalid epoch number: missing 0x prefix."
