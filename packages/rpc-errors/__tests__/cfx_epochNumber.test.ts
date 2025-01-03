@@ -8,7 +8,6 @@ import { InvalidParamsError } from "../src/coreSpace/invalidParams/invalidParams
 import { coreSpaceErrors, RPCError } from "../src";
 import {
   EmptyEpochStringError,
-  EpochNumberPosOverflowError,
   EpochNumberTooLargeError,
   InvalidDigitEpochError,
   InvalidEpochTypeError,
