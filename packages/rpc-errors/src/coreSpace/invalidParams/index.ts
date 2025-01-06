@@ -1,11 +1,11 @@
 import {
   EmptyEpochStringError,
-  EpochNumberPosOverflowError,
   EpochNumberTooLargeError,
   InvalidDigitEpochError,
   InvalidEpochTypeError,
   MissingHexPrefixError,
 } from "./epoch";
+import { InvalidHashTypeError } from "./hash";
 import { InvalidParamsError } from "./invalidParams";
 
 export type { InvalidParamsErrorType } from "./invalidParams";
@@ -37,6 +37,10 @@ const InvalidParamsErrors = {
     {
       pattern: MissingHexPrefixError.pattern,
       error: MissingHexPrefixError,
+    },
+    {
+      pattern: InvalidHashTypeError.pattern,
+      error: InvalidHashTypeError,
     },
   ],
 };

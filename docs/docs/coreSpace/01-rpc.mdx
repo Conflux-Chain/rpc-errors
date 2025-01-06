@@ -2,6 +2,11 @@
 title: RPC
 ---
 
+## cfx_getTransactionByHash
+### 1. [InvalidParamsError](./errors#invalidparamserror)
+1. **InvalidHashTypeError**
+
+
 ## cfx_getBestBlockHash
 
 This RPC doesn't throw an error.
@@ -16,6 +21,11 @@ This RPC doesn't throw an error. The value at least `1_000_000_000` is returned.
 Get epoch number by params.
 
 ### 1. [InvalidParamsError](./errors#invalidparamserror)
+1. **Invalid parameter type**
+2. **EpochNumberTooLargeError**
+3. **EmptyEpochStringError**
+4. **InvalidDigitEpochError**
+5. **MissingHexPrefixError**
 
 
 ## cfx_getBlockByEpochNumber
@@ -23,3 +33,8 @@ Get epoch number by params.
 Get block with given epoch number.
 
 ### 1. [InvalidParamsError](./errors#invalidparamserror)
+
+1. **EpochNumberTooLargeError**
+2. **EmptyEpochStringError**
+3. **InvalidDigitEpochError**
+4. **MissingHexPrefixError**
