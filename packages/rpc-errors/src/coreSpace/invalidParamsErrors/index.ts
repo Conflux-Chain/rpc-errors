@@ -1,3 +1,4 @@
+import type { RegisterErrorsType } from "../../types";
 import {
   EmptyEpochStringError,
   EpochNumberTooLargeError,
@@ -5,6 +6,7 @@ import {
   InvalidEpochTypeError,
   MissingHexPrefixError,
 } from "./epoch";
+import { NonExistentBlockHeaderError } from "./fee";
 import { InvalidHashTypeError } from "./hash";
 import { InvalidParamsError } from "./invalidParams";
 
@@ -18,7 +20,7 @@ export type {
   MissingHexPrefixErrorType,
 } from "./epoch";
 
-const InvalidParamsErrors = {
+const InvalidParamsErrors: RegisterErrorsType = {
   codeMap: [{ code: InvalidParamsError.code, error: InvalidParamsError }],
   messageMap: [
     { pattern: InvalidEpochTypeError.pattern, error: InvalidEpochTypeError },
@@ -41,6 +43,10 @@ const InvalidParamsErrors = {
     {
       pattern: InvalidHashTypeError.pattern,
       error: InvalidHashTypeError,
+    },
+    {
+      pattern: NonExistentBlockHeaderError.pattern,
+      error: NonExistentBlockHeaderError,
     },
   ],
 };

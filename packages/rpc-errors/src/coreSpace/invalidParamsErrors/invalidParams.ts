@@ -5,7 +5,7 @@ export type InvalidParamsErrorType = InvalidParamsError & {
 };
 
 export class InvalidParamsError extends BaseError {
-  static code = -32602;
+  static override code = -32602;
   override readonly code = InvalidParamsError.code;
   override name = "InvalidParams";
   constructor(message: string, public readonly data?: any) {

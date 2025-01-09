@@ -1,13 +1,6 @@
 import { BaseError } from "./baseError";
+import { RegisterErrorsType } from "./types";
 import { RpcErrorResponse } from "./utils/request";
-
-export type RegisterErrorsType = {
-  codeMap: { code: number; error: new (...args: any[]) => BaseError }[];
-  messageMap: {
-    pattern: RegExp;
-    error: new (...args: any[]) => BaseError;
-  }[];
-};
 
 export class RPCError {
   errorCodeMap = new Map<number, new (...args: any[]) => BaseError>([]);
@@ -20,9 +13,13 @@ export class RPCError {
       return new BaseError(rpcError.code, rpcError.message);
     }
     // let's try to get the error by error message(it is more detailed than error code)
-    for (const [pattern, ErrorClass] of this.messagePatterns) {
+    for (const [pattern, DetailErrorClass] of this.messagePatterns) {
       if (pattern.test(rpcError.message)) {
-        return new ErrorClass(rpcError.message, rpcError.data);
+        const Error = new DetailErrorClass(rpcError.message, rpcError.data);
+        // check the detail error code
+        if (rpcError.code === Error.code) {
+          return Error;
+        }
       }
     }
     return new ErrorClass(rpcError.message, rpcError.data);

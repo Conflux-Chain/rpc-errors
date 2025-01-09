@@ -33,3 +33,15 @@ export function assertRpcError(
     throw new Error("Expected RPC error response");
   }
 }
+
+export function createErrorResponse(error: {
+  code: number;
+  message: string;
+  data?: any;
+}): RpcErrorResponse {
+  return {
+    jsonrpc: "2.0",
+    id: Math.random() * 100,
+    error: error,
+  };
+}
