@@ -4,14 +4,14 @@ import { assertRpcError, getFreePorts } from "./help";
 
 import { createRequest } from "../src/utils/request";
 import { isRpcError } from "../src/utils/isRpcError";
-import { InvalidParamsError } from "../src/coreSpace/invalidParams/invalidParams";
+import { InvalidParamsError } from "../src/coreSpace/invalidParamsErrors/invalidParams";
 import { coreSpaceErrors, RPCError } from "../src";
 import {
   EmptyEpochStringError,
   EpochNumberTooLargeError,
   InvalidDigitEpochError,
   MissingHexPrefixError,
-} from "../src/coreSpace/invalidParams/epoch";
+} from "../src/coreSpace/invalidParamsErrors/epoch";
 
 let HTTP_PORT: number;
 const rpcError = new RPCError();

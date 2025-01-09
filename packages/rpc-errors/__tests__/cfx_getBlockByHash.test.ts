@@ -27,10 +27,10 @@ beforeAll(async () => {
   return async () => await server.stop();
 });
 
-describe("cfx_getTransactionByHash errors", async () => {
+describe("cfx_getBlockByHash invalid tx hash", async () => {
   test("invalid tx hash(length is not 66)", async () => {
     const request = createRequest(`http://localhost:${HTTP_PORT}`);
-    const error = await request<string>("cfx_getTransactionByHash", [
+    const error = await request<string>("cfx_getBlockByHash", [
       "0x88df016429689c079f3b2f6ad39fa052532c56795b733da78a91ebe6a713944",
     ]);
     expect(isRpcError(error)).toBe(true);
@@ -46,7 +46,7 @@ describe("cfx_getTransactionByHash errors", async () => {
 
   test("invalid tx hash (pass number)", async () => {
     const request = createRequest(`http://localhost:${HTTP_PORT}`);
-    const error = await request<string>("cfx_getTransactionByHash", [11]);
+    const error = await request<string>("cfx_getBlockByHash", [11]);
     expect(isRpcError(error)).toBe(true);
     assertRpcError(error);
     expect(error.error.code).toBe(InvalidParamsError.code);
@@ -60,7 +60,7 @@ describe("cfx_getTransactionByHash errors", async () => {
 
   test("invalid tx hash (pass empty hex string)", async () => {
     const request = createRequest(`http://localhost:${HTTP_PORT}`);
-    const error = await request<string>("cfx_getTransactionByHash", ["0x"]);
+    const error = await request<string>("cfx_getBlockByHash", ["0x"]);
     expect(isRpcError(error)).toBe(true);
     assertRpcError(error);
     expect(error.error.code).toBe(InvalidParamsError.code);

@@ -1,5 +1,5 @@
 import { BaseError } from "../../_cjs/src";
-import InvalidParamsErrors from "./invalidParams";
+import InvalidParamsErrors from "./invalidParamsErrors";
 
 export type {
   InvalidParamsErrorType,
@@ -8,7 +8,7 @@ export type {
   InvalidDigitEpochErrorType,
   InvalidEpochTypeErrorType,
   MissingHexPrefixErrorType,
-} from "./invalidParams";
+} from "./invalidParamsErrors";
 
 export type CoreSpaceErrorsType = {
   codeMap: { code: number; error: new (...args: any[]) => BaseError }[];
