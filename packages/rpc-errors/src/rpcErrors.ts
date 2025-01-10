@@ -14,7 +14,8 @@ export class RPCError {
     }
     // let's try to get the error by error message(it is more detailed than error code)
     for (const [pattern, DetailErrorClass] of this.messagePatterns) {
-      if (pattern.test(rpcError.message)) {
+      const matchMessage = rpcError.data || rpcError.message;
+      if (pattern.test(matchMessage)) {
         const Error = new DetailErrorClass(rpcError.message, rpcError.data);
         // check the detail error code
         if (rpcError.code === Error.code) {

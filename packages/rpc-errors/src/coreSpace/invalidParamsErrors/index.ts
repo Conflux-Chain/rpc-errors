@@ -1,10 +1,15 @@
 import type { RegisterErrorsType } from "../../types";
 import {
+  InvalidBase32AddressError,
+  InvalidSize160AddressError,
+} from "./address";
+import {
   EmptyEpochStringError,
   EpochNumberTooLargeError,
   InvalidDigitEpochError,
   InvalidEpochTypeError,
   MissingHexPrefixError,
+  SpecifiedEpochNotExecutedError,
 } from "./epoch";
 import { NonExistentBlockHeaderError } from "./fee";
 import { InvalidHashTypeError } from "./hash";
@@ -45,8 +50,20 @@ const InvalidParamsErrors: RegisterErrorsType = {
       error: InvalidHashTypeError,
     },
     {
+      pattern: SpecifiedEpochNotExecutedError.pattern,
+      error: SpecifiedEpochNotExecutedError,
+    },
+    {
       pattern: NonExistentBlockHeaderError.pattern,
       error: NonExistentBlockHeaderError,
+    },
+    {
+      pattern: InvalidBase32AddressError.pattern,
+      error: InvalidBase32AddressError,
+    },
+    {
+      pattern: InvalidSize160AddressError.pattern,
+      error: InvalidSize160AddressError,
     },
   ],
 };

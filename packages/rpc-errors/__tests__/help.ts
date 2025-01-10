@@ -2,6 +2,9 @@ import net from "node:net";
 import { RpcErrorResponse, RpcResponse } from "../src/utils/request";
 import { isRpcError } from "../src/utils/isRpcError";
 
+export const TEST_ADDRESS = "net1234:aate4wu8uxuwschzdkzr4zz22tkbsbd446ca7v1vub"
+
+
 export async function getPort(): Promise<number> {
   return new Promise((resolve, reject) => {
     const srv = net.createServer();

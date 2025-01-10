@@ -5,7 +5,6 @@ import { InvalidParamsError } from "../src/coreSpace/invalidParamsErrors/invalid
 import { coreSpaceErrors, RPCError } from "../src";
 import { NonExistentBlockHeaderError } from "../src/coreSpace/invalidParamsErrors/fee";
 import { NonExistentBlockHeaderError as InternalNonExistentBlockHeaderError } from "../src/coreSpace/InternalErrors/fee";
-import InternalErrors from "../src/coreSpace/InternalErrors";
 import { InternalError } from "../src/coreSpace/InternalErrors/Internal";
 
 const invalid_params_error = createErrorResponse({
@@ -19,7 +18,6 @@ const internal_error = createErrorResponse({
 });
 const rpcError = new RPCError();
 rpcError.registerError(coreSpaceErrors);
-rpcError.registerError(InternalErrors);
 
 // error happens only if the fetch header has inconsistent block height
 
