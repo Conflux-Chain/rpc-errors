@@ -6,9 +6,7 @@ import { coreSpaceErrors, RPCError } from "../src";
 import { createRequest } from "../src/utils/request";
 import { isRpcError } from "../src/utils/isRpcError";
 import { InvalidParamsError } from "../src/coreSpace/invalidParamsErrors/invalidParams";
-import {
-  InvalidBase32AddressError,
-} from "../src/coreSpace/invalidParamsErrors/address";
+import { InvalidBase32AddressError } from "../src/coreSpace/invalidParamsErrors/address";
 import {
   EmptyEpochStringError,
   InvalidDigitEpochError,
@@ -36,10 +34,10 @@ beforeAll(async () => {
   return async () => await server.stop();
 });
 
-describe("cfx_getBalance address errors", () => {
+describe("cfx_getStakingBalance address errors", () => {
   test("invalid base32 address", async () => {
     const request = createRequest(`http://localhost:${HTTP_PORT}`);
-    const error = await request<string>("cfx_getBalance", ["0x"]);
+    const error = await request<string>("cfx_getStakingBalance", ["0x"]);
     expect(isRpcError(error)).toBe(true);
     assertRpcError(error);
     expect(error.error.code).toBe(InvalidParamsError.code);
@@ -52,10 +50,10 @@ describe("cfx_getBalance address errors", () => {
   });
 });
 
-describe("cfx_getBalance epoch errors", () => {
+describe("cfx_getStakingBalance epoch errors", () => {
   test("invalid params(pass number)", async () => {
     const request = createRequest(`http://localhost:${HTTP_PORT}`);
-    const error = await request<string>("cfx_getBalance", [TEST_ADDRESS, 1]);
+    const error = await request<string>("cfx_getStakingBalance", [TEST_ADDRESS, 1]);
 
     expect(isRpcError(error)).toBe(true);
     assertRpcError(error);
@@ -69,7 +67,7 @@ describe("cfx_getBalance epoch errors", () => {
   });
   test("invalid params(query epoch number greater than actual epoch number.)", async () => {
     const request = createRequest(`http://localhost:${HTTP_PORT}`);
-    const error = await request<string>("cfx_getBalance", [
+    const error = await request<string>("cfx_getStakingBalance", [
       TEST_ADDRESS,
       `0x${Number.MAX_SAFE_INTEGER.toString(16)}`,
     ]);
@@ -86,7 +84,7 @@ describe("cfx_getBalance epoch errors", () => {
 
   test("invalid params(empty hex string)", async () => {
     const request = createRequest(`http://localhost:${HTTP_PORT}`);
-    const error = await request<string>("cfx_getBalance", [TEST_ADDRESS, "0x"]);
+    const error = await request<string>("cfx_getStakingBalance", [TEST_ADDRESS, "0x"]);
 
     expect(isRpcError(error)).toBe(true);
     assertRpcError(error);
@@ -100,7 +98,7 @@ describe("cfx_getBalance epoch errors", () => {
 
   test("invalid params(invalid hex string)", async () => {
     const request = createRequest(`http://localhost:${HTTP_PORT}`);
-    const error = await request<string>("cfx_getBalance", [
+    const error = await request<string>("cfx_getStakingBalance", [
       TEST_ADDRESS,
       "0xinvalid",
     ]);
@@ -118,7 +116,7 @@ describe("cfx_getBalance epoch errors", () => {
 
   test("invalid params(invalid hex string without 0x prefix)", async () => {
     const request = createRequest(`http://localhost:${HTTP_PORT}`);
-    const error = await request<string>("cfx_getBalance", [TEST_ADDRESS, "1"]);
+    const error = await request<string>("cfx_getStakingBalance", [TEST_ADDRESS, "1"]);
 
     expect(isRpcError(error)).toBe(true);
     assertRpcError(error);
