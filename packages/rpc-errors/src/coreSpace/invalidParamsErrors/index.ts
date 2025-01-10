@@ -8,6 +8,7 @@ import {
   EpochNumberTooLargeError,
   InvalidDigitEpochError,
   InvalidEpochTypeError,
+  LatestMinedNotExecutedError,
   MissingHexPrefixError,
   SpecifiedEpochNotExecutedError,
 } from "./epoch";
@@ -52,6 +53,10 @@ const InvalidParamsErrors: RegisterErrorsType = {
     {
       pattern: SpecifiedEpochNotExecutedError.pattern,
       error: SpecifiedEpochNotExecutedError,
+    },
+    {
+      pattern: LatestMinedNotExecutedError.pattern,
+      error: LatestMinedNotExecutedError,
     },
     {
       pattern: NonExistentBlockHeaderError.pattern,

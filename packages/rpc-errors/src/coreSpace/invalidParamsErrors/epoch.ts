@@ -64,7 +64,19 @@ export type SpecifiedEpochNotExecutedErrorType =
   };
 export class SpecifiedEpochNotExecutedError extends InvalidParamsError {
   override name = "SpecifiedEpochNotExecuted";
-  static pattern = /Specified epoch (.*) is not executed, the latest state epoch is/;
+  static pattern =
+    /Specified epoch (.*) is not executed, the latest state epoch is/;
+  constructor(message: string, data?: any) {
+    super(message, data);
+  }
+}
+
+export type LatestMinedNotExecutedErrorType = LatestMinedNotExecutedError & {
+  name: "LatestMinedNotExecuted";
+};
+export class LatestMinedNotExecutedError extends InvalidParamsError {
+  override name = "LatestMinedNotExecuted";
+  static pattern = /Latest mined epoch is not executed/;
   constructor(message: string, data?: any) {
     super(message, data);
   }

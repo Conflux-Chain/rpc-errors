@@ -35,10 +35,10 @@ beforeAll(async () => {
   return async () => await server.stop();
 });
 
-describe("cfx_getStakingBalance address errors", () => {
+describe("cfx_getNextNonce address errors", () => {
   test("invalid base32 address", async () => {
     const request = createRequest(`http://localhost:${HTTP_PORT}`);
-    const error = await request<string>("cfx_getStakingBalance", ["0x"]);
+    const error = await request<string>("cfx_getNextNonce", ["0x"]);
     expect(isRpcError(error)).toBe(true);
     assertRpcError(error);
     expect(error.error.code).toBe(InvalidParamsError.code);
@@ -51,10 +51,10 @@ describe("cfx_getStakingBalance address errors", () => {
   });
 });
 
-describe("cfx_getStakingBalance epoch errors", () => {
+describe("cfx_getNextNonce epoch errors", () => {
   test("invalid params(pass number)", async () => {
     const request = createRequest(`http://localhost:${HTTP_PORT}`);
-    const error = await request<string>("cfx_getStakingBalance", [TEST_ADDRESS, 1]);
+    const error = await request<string>("cfx_getNextNonce", [TEST_ADDRESS, 1]);
 
     expect(isRpcError(error)).toBe(true);
     assertRpcError(error);
@@ -68,7 +68,7 @@ describe("cfx_getStakingBalance epoch errors", () => {
   });
   test("invalid params(query epoch number greater than actual epoch number.)", async () => {
     const request = createRequest(`http://localhost:${HTTP_PORT}`);
-    const error = await request<string>("cfx_getStakingBalance", [
+    const error = await request<string>("cfx_getNextNonce", [
       TEST_ADDRESS,
       `0x${Number.MAX_SAFE_INTEGER.toString(16)}`,
     ]);
@@ -85,7 +85,10 @@ describe("cfx_getStakingBalance epoch errors", () => {
 
   test("invalid params(empty hex string)", async () => {
     const request = createRequest(`http://localhost:${HTTP_PORT}`);
-    const error = await request<string>("cfx_getStakingBalance", [TEST_ADDRESS, "0x"]);
+    const error = await request<string>("cfx_getNextNonce", [
+      TEST_ADDRESS,
+      "0x",
+    ]);
 
     expect(isRpcError(error)).toBe(true);
     assertRpcError(error);
@@ -99,7 +102,7 @@ describe("cfx_getStakingBalance epoch errors", () => {
 
   test("invalid params(invalid hex string)", async () => {
     const request = createRequest(`http://localhost:${HTTP_PORT}`);
-    const error = await request<string>("cfx_getStakingBalance", [
+    const error = await request<string>("cfx_getNextNonce", [
       TEST_ADDRESS,
       "0xinvalid",
     ]);
@@ -117,7 +120,10 @@ describe("cfx_getStakingBalance epoch errors", () => {
 
   test("invalid params(invalid hex string without 0x prefix)", async () => {
     const request = createRequest(`http://localhost:${HTTP_PORT}`);
-    const error = await request<string>("cfx_getStakingBalance", [TEST_ADDRESS, "1"]);
+    const error = await request<string>("cfx_getNextNonce", [
+      TEST_ADDRESS,
+      "1",
+    ]);
 
     expect(isRpcError(error)).toBe(true);
     assertRpcError(error);
@@ -131,21 +137,21 @@ describe("cfx_getStakingBalance epoch errors", () => {
     expect(parsedError.message).toBe(error.error.message);
   });
 
-    test("invalid params(Latest mined epoch is not executed)", async () => {
-      const request = createRequest(`http://localhost:${HTTP_PORT}`);
-      const error = await request<string>("cfx_getNextNonce", [
-        TEST_ADDRESS,
-        "latest_mined",
-      ]);
-  
-      expect(isRpcError(error)).toBe(true);
-      assertRpcError(error);
-      expect(error.error.code).toBe(InvalidParamsError.code);
-  
-      const parsedError = rpcError.parse(error.error);
-      expect(parsedError).toBeInstanceOf(LatestMinedNotExecutedError);
-      expect(parsedError.name).toBe("LatestMinedNotExecuted");
-      expect(parsedError.code).toBe(LatestMinedNotExecutedError.code);
-      expect(parsedError.message).toBe(error.error.message);
-    });
+  test("invalid params(Latest mined epoch is not executed)", async () => {
+    const request = createRequest(`http://localhost:${HTTP_PORT}`);
+    const error = await request<string>("cfx_getNextNonce", [
+      TEST_ADDRESS,
+      "latest_mined",
+    ]);
+
+    expect(isRpcError(error)).toBe(true);
+    assertRpcError(error);
+    expect(error.error.code).toBe(InvalidParamsError.code);
+
+    const parsedError = rpcError.parse(error.error);
+    expect(parsedError).toBeInstanceOf(LatestMinedNotExecutedError);
+    expect(parsedError.name).toBe("LatestMinedNotExecuted");
+    expect(parsedError.code).toBe(LatestMinedNotExecutedError.code);
+    expect(parsedError.message).toBe(error.error.message);
+  });
 });

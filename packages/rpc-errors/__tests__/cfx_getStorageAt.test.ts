@@ -11,6 +11,7 @@ import {
   EmptyEpochStringError,
   InvalidDigitEpochError,
   InvalidEpochTypeError,
+  LatestMinedNotExecutedError,
   MissingHexPrefixError,
   SpecifiedEpochNotExecutedError,
 } from "../src/coreSpace/invalidParamsErrors/epoch";
@@ -142,6 +143,24 @@ describe("cfx_getStorageAt epoch errors", () => {
     expect(parsedError).toBeInstanceOf(MissingHexPrefixError);
     expect(parsedError.name).toBe("MissingHexPrefix");
     expect(parsedError.code).toBe(MissingHexPrefixError.code);
+    expect(parsedError.message).toBe(error.error.message);
+  });
+
+  test("invalid params(Latest mined epoch is not executed)", async () => {
+    const request = createRequest(`http://localhost:${HTTP_PORT}`);
+    const error = await request<string>("cfx_getNextNonce", [
+      TEST_ADDRESS,
+      "latest_mined",
+    ]);
+
+    expect(isRpcError(error)).toBe(true);
+    assertRpcError(error);
+    expect(error.error.code).toBe(InvalidParamsError.code);
+
+    const parsedError = rpcError.parse(error.error);
+    expect(parsedError).toBeInstanceOf(LatestMinedNotExecutedError);
+    expect(parsedError.name).toBe("LatestMinedNotExecuted");
+    expect(parsedError.code).toBe(LatestMinedNotExecutedError.code);
     expect(parsedError.message).toBe(error.error.message);
   });
 });
