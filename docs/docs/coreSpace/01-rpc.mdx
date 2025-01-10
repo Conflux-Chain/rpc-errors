@@ -18,6 +18,20 @@ This RPC doesn't throw an error.
 
 This RPC doesn't throw an error. The value at least `1_000_000_000` is returned.
 
+## cfx_feeHistory
+Returns transaction base fee per gas and effective priority fee per gas for the requested/supported epoch range.
+### 1. [InvalidParamsError](./errors#invalidparamserror)
+### 2. [InternalError](./errors#internalerror)
+
+1. NonExistentBlockHeaderError
+
+## cfx_getBlocksByEpoch
+Returns the block hashes in the specified epoch.
+1. **EpochNumberTooLargeError**
+2. **EmptyEpochStringError**
+3. **InvalidDigitEpochError**
+4. **MissingHexPrefixError**
+
 
 ## cfx_epochNumber
 
