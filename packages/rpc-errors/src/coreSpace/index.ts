@@ -1,4 +1,5 @@
 import { BaseError } from "../../_cjs/src";
+import CustomErrors from "./CustomErrors";
 import InternalErrors from "./InternalErrors";
 import InvalidParamsErrors from "./invalidParamsErrors";
 
@@ -20,10 +21,15 @@ export type CoreSpaceErrorsType = {
 };
 
 const coreSpaceErrors: CoreSpaceErrorsType = {
-  codeMap: [InvalidParamsErrors.codeMap, InternalErrors.codeMap].flat(),
+  codeMap: [
+    InvalidParamsErrors.codeMap,
+    InternalErrors.codeMap,
+    CustomErrors.codeMap,
+  ].flat(),
   messageMap: [
     InvalidParamsErrors.messageMap,
     InternalErrors.messageMap,
+    CustomErrors.messageMap,
   ].flat(),
 };
 
