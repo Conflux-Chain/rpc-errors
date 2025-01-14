@@ -15,6 +15,19 @@ import {
 import { NonExistentBlockHeaderError } from "./fee";
 import { InvalidHashTypeError } from "./hash";
 import { InvalidParamsError } from "./invalidParams";
+import {
+  GasLimitExceededError,
+  RlpInvalidLengthError,
+  RlpIsTooShortError,
+  TransactionAlreadyExistError,
+  TransactionChainIdMismatchError,
+  TransactionInvalidReceiverError,
+  TransactionNonceTooDistantError,
+  TransactionNotEnoughBaseGasError,
+  TransactionTooBigError,
+  TransactionZeroGasPriceError,
+  UnrecoverablePubkeyError,
+} from "./transaction";
 
 export type { InvalidParamsErrorType } from "./invalidParams";
 
@@ -69,6 +82,51 @@ const InvalidParamsErrors: RegisterErrorsType = {
     {
       pattern: InvalidSize160AddressError.pattern,
       error: InvalidSize160AddressError,
+    },
+    {
+      pattern: RlpIsTooShortError.pattern,
+      error: RlpIsTooShortError,
+    },
+    {
+      pattern: RlpInvalidLengthError.pattern,
+      error: RlpInvalidLengthError,
+    },
+    {
+      pattern: UnrecoverablePubkeyError.pattern,
+      error: UnrecoverablePubkeyError,
+    },
+    {
+      pattern: TransactionAlreadyExistError.pattern,
+      error: TransactionAlreadyExistError,
+    },
+    {
+      pattern: TransactionTooBigError.pattern,
+      error: TransactionTooBigError,
+    },
+    {
+      pattern: TransactionChainIdMismatchError.pattern,
+      error: TransactionChainIdMismatchError,
+    },
+    {
+      pattern: TransactionZeroGasPriceError.pattern,
+      error: TransactionZeroGasPriceError,
+    },
+    {
+      pattern: TransactionInvalidReceiverError.pattern,
+      error: TransactionInvalidReceiverError,
+    },
+    {
+      pattern: TransactionNotEnoughBaseGasError.pattern,
+      error: TransactionNotEnoughBaseGasError,
+    },
+    {
+      pattern: TransactionNonceTooDistantError.pattern,
+      error: TransactionNonceTooDistantError,
+    },
+
+    {
+      pattern: GasLimitExceededError.pattern,
+      error: GasLimitExceededError,
     },
   ],
 };

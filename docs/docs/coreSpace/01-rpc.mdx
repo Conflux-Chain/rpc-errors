@@ -194,3 +194,18 @@ Returns the next nonce that should be used by the given account when sending a t
 6. **InvalidDigitEpochError**
 7. **MissingHexPrefixError**
 8. **LatestMinedNotExecutedError**
+
+## cfx_sendRawTransaction
+
+Sends a signed transaction into the network for processing.
+### 1. [InvalidParamsError](./errors#invalidparamserror)
+
+1. **RlpIsTooShort**
+2. **RlpInvalidLength**
+3. **UnrecoverablePubkey**
+4. **TransactionAlreadyExist**
+5. **TransactionTooBigError**
+6. **TransactionChainIdMismatchError**
+7. **TransactionInvalidReceiverError**
+8. **GasLimitExceededError**
+9. **TransactionNonceTooDistantError**

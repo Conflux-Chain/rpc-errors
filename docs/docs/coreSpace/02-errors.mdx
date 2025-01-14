@@ -36,7 +36,7 @@ InvalidParamsError occurs when incorrect parameters are provided. To correct thi
 
 8. **InvalidBase32AddressError**
 
-> "nvalid params: Invalid base32 address: input 0x error zero or multiple prefixes."
+> "invalid params: Invalid base32 address: input 0x error zero or multiple prefixes."
 
 9. **InvalidSize160AddressError**
 
@@ -49,6 +49,40 @@ InvalidParamsError occurs when incorrect parameters are provided. To correct thi
 11. **LatestMinedNotExecutedError**
 
 > "Latest mined epoch is not executed"
+
+12. **RlpIsTooShort**
+
+>  message: 'Invalid parameters: raw', data: '"RlpIsTooShort"'
+13. **RlpInvalidLength**
+>  message: 'Invalid parameters: raw', data: '"RlpInvalidLength"'
+
+14. **UnrecoverablePubkey**
+
+> message: 'Invalid parameters: tx "Can not recover pubkey for Ethereum like tx"', data: '"Can not recover pubkey for Ethereum like tx"'
+
+15. **TransactionAlreadyExist**
+
+> message: 'Invalid parameters: tx "tx already exist"', data: '"tx already exist"'
+
+16. **TransactionTooBigError**
+
+> message: 'Invalid parameters: tx "TooBig"', data: '"TooBig"'
+
+17. **TransactionChainIdMismatchError**
+
+> message: "Invalid parameters: tx \"ChainIdMismatch \{ expected: 1234, got: 1, space: Native }\"", data: "\"ChainIdMismatch \{ expected: 1234, got: 1, space: Native }\"",
+
+18. **TransactionInvalidReceiverError**
+
+>  message: "Invalid parameters: tx \"InvalidReceiver\"", data: "\"InvalidReceiver\"",
+
+19. **GasLimitExceededError**
+
+> message: "Invalid parameters: tx \"transaction gas 30000000 exceeds the maximum value 13500000\"", data: "\"transaction gas 30000000 exceeds the maximum value 13500000\"",
+
+20. **TransactionNonceTooDistantError**
+
+> message: "Invalid parameters: tx \"Transaction 0x9ff004ac0da8d9241583d94fbb8cc59465a20683169749f915a4efc26be744ea is discarded due to in too distant future\"",  data: "\"Transaction 0x9ff004ac0da8d9241583d94fbb8cc59465a20683169749f915a4efc26be744ea is discarded due to in too distant future\"",
 
 ## InternalError
 
