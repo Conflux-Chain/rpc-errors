@@ -84,6 +84,18 @@ InvalidParamsError occurs when incorrect parameters are provided. To correct thi
 
 > message: "Invalid parameters: tx \"Transaction 0x9ff004ac0da8d9241583d94fbb8cc59465a20683169749f915a4efc26be744ea is discarded due to in too distant future\"",  data: "\"Transaction 0x9ff004ac0da8d9241583d94fbb8cc59465a20683169749f915a4efc26be744ea is discarded due to in too distant future\"",
 
+
+21. **NonceTooStaleError**
+
+> message: 'Invalid parameters: tx "Transaction 0xf5d8204933be20bf188ceaa1c55be6d9a2cffa243e61e61a9c913f9d5e76f499 is discarded due to a too stale nonce"', data: '"Transaction 0xf5d8204933be20bf188ceaa1c55be6d9a2cffa243e61e61a9c913f9d5e76f499 is discarded due to a too stale nonce"'
+
+22. **OutOfBalanceError**
+
+> message: "Invalid parameters: tx \"Transaction 0xe7cb20784bbaf32b54ae1a9415c9b0fd7728ba9f4f77221c2a1b69854c04e2bc is discarded due to out of balance, needs 10000000000000000000021000 but account balance is 10000000000000000000000\"", data: "\"Transaction 0xe7cb20784bbaf32b54ae1a9415c9b0fd7728ba9f4f77221c2a1b69854c04e2bc is discarded due to out of balance, needs 10000000000000000000021000 but account balance is 10000000000000000000000\"",
+
+23. **HigherGasPriceNeeded**
+>  message: "Invalid parameters: tx \"Tx with same nonce already inserted. To replace it, you need to specify a gas price > 1020000000\"", data: "\"Tx with same nonce already inserted. To replace it, you need to specify a gas price > 1020000000\"",
+
 ## InternalError
 
 InternalError occurs when an internal error occurs.

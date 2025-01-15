@@ -8,6 +8,9 @@ import { isRpcError } from "../src/utils/isRpcError";
 import { coreSpaceErrors, RPCError } from "../src";
 import {
   GasLimitExceededError,
+  HigherGasPriceNeededError,
+  NonceTooStaleError,
+  OutOfBalanceError,
   RlpInvalidLengthError,
   RlpIsTooShortError,
   TransactionAlreadyExistError,
@@ -222,6 +225,62 @@ describe("cfx_sendRawTransaction errors", () => {
     expect(parsedError).toBeInstanceOf(TransactionNonceTooDistantError);
     expect(parsedError.name).toBe("TransactionNonceTooDistant");
     expect(parsedError.code).toBe(TransactionNonceTooDistantError.code);
+    expect(parsedError.message).toBe(error.error.message);
+  });
+
+  test("invalid tx NonceTooStale", async () => {
+    const request = createRequest(`http://localhost:${HTTP_PORT}`);
+    const error = await request<string>("cfx_sendRawTransaction", [
+      "0xf870ec80018252089413aecb0ed8c8c8befa9c3e0e0b6ca90f09d8cdb88b084595161401484a00000080808204d28001a0c4c57e5af54510bba3397b275d9a9b9c70f12a3c36ba4dbfc0b64fe986e105f7a02f7693cc4f76319783b489a91767621f987f89f3849cb55b7cc0fcdfadbc04f6",
+    ]);
+
+    expect(isRpcError(error)).toBe(true);
+    assertRpcError(error);
+    console.log(error);
+    expect(error.error.code).toBe(InvalidParamsError.code);
+    const parsedError = rpcError.parse(error.error);
+    expect(parsedError).toBeInstanceOf(NonceTooStaleError);
+    expect(parsedError.name).toBe("NonceTooStale");
+    expect(parsedError.code).toBe(NonceTooStaleError.code);
+    expect(parsedError.message).toBe(error.error.message);
+  });
+
+  test("invalid tx OutOfBalance", async () => {
+    const request = createRequest(`http://localhost:${HTTP_PORT}`);
+    const error = await request<string>("cfx_sendRawTransaction", [
+      "0xf870ec01018252089413aecb0ed8c8c8befa9c3e0e0b6ca90f09d8cdb88b084595161401484a00000080808204d28080a001e08b11c8eb1660df4de3f19ad472f83e49176cfcc2b95706c025ecbd55398ea077b9737341ff68664700739db57a4a7f865a23e0b25c861b0f81685d3fdbcc5c",
+    ]);
+
+    expect(isRpcError(error)).toBe(true);
+    assertRpcError(error);
+    console.log(error);
+    expect(error.error.code).toBe(InvalidParamsError.code);
+    const parsedError = rpcError.parse(error.error);
+    expect(parsedError).toBeInstanceOf(OutOfBalanceError);
+    expect(parsedError.name).toBe("OutOfBalance");
+    expect(parsedError.code).toBe(OutOfBalanceError.code);
+    expect(parsedError.message).toBe(error.error.message);
+  });
+
+  test("invalid tx HigherGasPriceNeeded", async () => {
+    const request = createRequest(`http://localhost:${HTTP_PORT}`);
+    // this tx is ok
+    await request<string>("cfx_sendRawTransaction", [
+      "0xf86be78203e7843b9aca008252089413aecb0ed8c8c8befa9c3e0e0b6ca90f09d8cdb88080808204d28080a04121fe087053839c584dbfabf9519f0427da5093594c908f838cde30af918017a06a9fa85cd421243c4c7a49716ac6e9c97eae06fdb715db65e768df541f6b562e",
+    ]);
+    // this tx fails
+    const error = await request<string>("cfx_sendRawTransaction", [
+      "0xf86be78203e78405f5e1008252089413aecb0ed8c8c8befa9c3e0e0b6ca90f09d8cdb88080808204d28001a074e27aeda0189161046faa559fe05fc8ab0de70a93114a1ca8e380e60f52fa0da04e186e7a7b2e61262231326025282227d37589ed6aa1db07cb4b4a26c44e43ee",
+    ]);
+
+    expect(isRpcError(error)).toBe(true);
+    assertRpcError(error);
+    console.log(error);
+    expect(error.error.code).toBe(InvalidParamsError.code);
+    const parsedError = rpcError.parse(error.error);
+    expect(parsedError).toBeInstanceOf(HigherGasPriceNeededError);
+    expect(parsedError.name).toBe("HigherGasPriceNeeded");
+    expect(parsedError.code).toBe(HigherGasPriceNeededError.code);
     expect(parsedError.message).toBe(error.error.message);
   });
 });

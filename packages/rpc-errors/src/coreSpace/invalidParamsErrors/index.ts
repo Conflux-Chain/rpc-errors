@@ -17,6 +17,9 @@ import { InvalidHashTypeError } from "./hash";
 import { InvalidParamsError } from "./invalidParams";
 import {
   GasLimitExceededError,
+  HigherGasPriceNeededError,
+  NonceTooStaleError,
+  OutOfBalanceError,
   RlpInvalidLengthError,
   RlpIsTooShortError,
   TransactionAlreadyExistError,
@@ -127,6 +130,18 @@ const InvalidParamsErrors: RegisterErrorsType = {
     {
       pattern: GasLimitExceededError.pattern,
       error: GasLimitExceededError,
+    },
+    {
+      pattern: NonceTooStaleError.pattern,
+      error: NonceTooStaleError,
+    },
+    {
+      pattern: OutOfBalanceError.pattern,
+      error: OutOfBalanceError,
+    },
+    {
+      pattern: HigherGasPriceNeededError.pattern,
+      error: HigherGasPriceNeededError,
     },
   ],
 };
