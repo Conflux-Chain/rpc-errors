@@ -1,6 +1,6 @@
 export { type BaseErrorType, BaseError } from "./baseError.js";
 
-export { type RegisterErrorsType, RPCError } from "./rpcErrors";
+export { RPCError } from "./rpcErrors";
 
 import coreSpaceErrors, {
   type CoreSpaceErrorsType,

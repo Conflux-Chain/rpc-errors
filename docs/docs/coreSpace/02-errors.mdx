@@ -103,3 +103,18 @@ InternalError occurs when an internal error occurs.
 1. **NonExistentBlockHeaderError**
 
 > "Specified block header does not exist"
+
+
+## ExecutionOutcome
+
+1. **NotExecutedDropOldNonceError**
+
+>  message: 'Transaction can not be executed', data: 'nonce is too old expected 1 got 0'
+
+2. **NotExecutedDropInvalidRecipientAddress**
+
+> message: 'Transaction can not be executed', data: 'invalid recipient address cfx:type.user:aarc9abycue0hhzgyrr53m6cxedgccrmmyybjgh4xg'
+
+3. **NotExecutedDropNotEnoughGasLimitError**
+
+> message: 'Transaction can not be executed', data: 'not enough gas limit with respected to tx size: expected 1 got 0'
