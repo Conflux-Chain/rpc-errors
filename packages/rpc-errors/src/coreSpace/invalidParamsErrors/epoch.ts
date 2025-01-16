@@ -10,6 +10,10 @@ export class InvalidEpochTypeError extends InvalidParamsError {
   constructor(message: string, data?: any) {
     super(message, data);
   }
+
+  static override parseError(message: string, data?: any): boolean {
+    return InvalidEpochTypeError.pattern.test(message);
+  }
 }
 
 export type EpochNumberTooLargeErrorType = EpochNumberTooLargeError & {
@@ -20,6 +24,10 @@ export class EpochNumberTooLargeError extends InvalidParamsError {
   static pattern = /expected a numbers with less than largest epoch number/;
   constructor(message: string, data?: any) {
     super(message, data);
+  }
+
+  static override parseError(message: string, data?: any): boolean {
+    return EpochNumberTooLargeError.pattern.test(message);
   }
 }
 
@@ -33,6 +41,10 @@ export class EmptyEpochStringError extends InvalidParamsError {
   constructor(message: string, data?: any) {
     super(message, data);
   }
+
+  static override parseError(message: string, data?: any): boolean {
+    return EmptyEpochStringError.pattern.test(message);
+  }
 }
 
 export type InvalidDigitEpochErrorType = InvalidDigitEpochError & {
@@ -43,6 +55,10 @@ export class InvalidDigitEpochError extends InvalidParamsError {
   static pattern = /invalid digit found in string/;
   constructor(message: string, data?: any) {
     super(message, data);
+  }
+
+  static override parseError(message: string, data?: any): boolean {
+    return InvalidDigitEpochError.pattern.test(message);
   }
 }
 
@@ -55,6 +71,10 @@ export class MissingHexPrefixError extends InvalidParamsError {
   static pattern = /missing 0x prefix/;
   constructor(message: string, data?: any) {
     super(message, data);
+  }
+
+  static override parseError(message: string, data?: any): boolean {
+    return MissingHexPrefixError.pattern.test(message);
   }
 }
 
@@ -69,6 +89,10 @@ export class SpecifiedEpochNotExecutedError extends InvalidParamsError {
   constructor(message: string, data?: any) {
     super(message, data);
   }
+
+  static override parseError(message: string, data?: any): boolean {
+    return SpecifiedEpochNotExecutedError.pattern.test(data);
+  }
 }
 
 export type LatestMinedNotExecutedErrorType = LatestMinedNotExecutedError & {
@@ -79,5 +103,9 @@ export class LatestMinedNotExecutedError extends InvalidParamsError {
   static pattern = /Latest mined epoch is not executed/;
   constructor(message: string, data?: any) {
     super(message, data);
+  }
+
+  static override parseError(message: string, data?: any): boolean {
+    return LatestMinedNotExecutedError.pattern.test(data);
   }
 }

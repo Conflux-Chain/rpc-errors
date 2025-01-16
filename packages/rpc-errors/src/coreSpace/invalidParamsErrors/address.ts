@@ -6,6 +6,10 @@ export class InvalidBase32AddressError extends InvalidParamsError {
   constructor(message: string, data?: any) {
     super(message, data);
   }
+
+  static override parseError(message: string, data?: any): boolean {
+    return InvalidBase32AddressError.pattern.test(message);
+  }
 }
 
 export class InvalidSize160AddressError extends InvalidParamsError {
@@ -13,5 +17,9 @@ export class InvalidSize160AddressError extends InvalidParamsError {
   static pattern = /Invalid base32 address: input (.+) not a SIZE_160 address/;
   constructor(message: string, data?: any) {
     super(message, data);
+  }
+
+  static override parseError(message: string, data?: any): boolean {
+    return InvalidSize160AddressError.pattern.test(message);
   }
 }

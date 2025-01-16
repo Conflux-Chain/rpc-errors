@@ -43,107 +43,37 @@ export type {
 } from "./epoch";
 
 const InvalidParamsErrors: RegisterErrorsType = {
-  codeMap: [{ code: InvalidParamsError.code, error: InvalidParamsError }],
-  messageMap: [
-    { pattern: InvalidEpochTypeError.pattern, error: InvalidEpochTypeError },
-    {
-      pattern: EmptyEpochStringError.pattern,
-      error: EmptyEpochStringError,
-    },
-    {
-      pattern: InvalidDigitEpochError.pattern,
-      error: InvalidDigitEpochError,
-    },
-    {
-      pattern: EpochNumberTooLargeError.pattern,
-      error: EpochNumberTooLargeError,
-    },
-    {
-      pattern: MissingHexPrefixError.pattern,
-      error: MissingHexPrefixError,
-    },
-    {
-      pattern: InvalidHashTypeError.pattern,
-      error: InvalidHashTypeError,
-    },
-    {
-      pattern: SpecifiedEpochNotExecutedError.pattern,
-      error: SpecifiedEpochNotExecutedError,
-    },
-    {
-      pattern: LatestMinedNotExecutedError.pattern,
-      error: LatestMinedNotExecutedError,
-    },
-    {
-      pattern: NonExistentBlockHeaderError.pattern,
-      error: NonExistentBlockHeaderError,
-    },
-    {
-      pattern: InvalidBase32AddressError.pattern,
-      error: InvalidBase32AddressError,
-    },
-    {
-      pattern: InvalidSize160AddressError.pattern,
-      error: InvalidSize160AddressError,
-    },
-    {
-      pattern: RlpIsTooShortError.pattern,
-      error: RlpIsTooShortError,
-    },
-    {
-      pattern: RlpInvalidLengthError.pattern,
-      error: RlpInvalidLengthError,
-    },
-    {
-      pattern: UnrecoverablePubkeyError.pattern,
-      error: UnrecoverablePubkeyError,
-    },
-    {
-      pattern: TransactionAlreadyExistError.pattern,
-      error: TransactionAlreadyExistError,
-    },
-    {
-      pattern: TransactionTooBigError.pattern,
-      error: TransactionTooBigError,
-    },
-    {
-      pattern: TransactionChainIdMismatchError.pattern,
-      error: TransactionChainIdMismatchError,
-    },
-    {
-      pattern: TransactionZeroGasPriceError.pattern,
-      error: TransactionZeroGasPriceError,
-    },
-    {
-      pattern: TransactionInvalidReceiverError.pattern,
-      error: TransactionInvalidReceiverError,
-    },
-    {
-      pattern: TransactionNotEnoughBaseGasError.pattern,
-      error: TransactionNotEnoughBaseGasError,
-    },
-    {
-      pattern: TransactionNonceTooDistantError.pattern,
-      error: TransactionNonceTooDistantError,
-    },
-
-    {
-      pattern: GasLimitExceededError.pattern,
-      error: GasLimitExceededError,
-    },
-    {
-      pattern: NonceTooStaleError.pattern,
-      error: NonceTooStaleError,
-    },
-    {
-      pattern: OutOfBalanceError.pattern,
-      error: OutOfBalanceError,
-    },
-    {
-      pattern: HigherGasPriceNeededError.pattern,
-      error: HigherGasPriceNeededError,
-    },
-  ],
+  [InvalidParamsError.code]: {
+    code: InvalidParamsError.code,
+    baseError: InvalidParamsError,
+    detailErrors: [
+      InvalidEpochTypeError,
+      EmptyEpochStringError,
+      InvalidDigitEpochError,
+      EpochNumberTooLargeError,
+      MissingHexPrefixError,
+      InvalidHashTypeError,
+      SpecifiedEpochNotExecutedError,
+      LatestMinedNotExecutedError,
+      NonExistentBlockHeaderError,
+      InvalidBase32AddressError,
+      InvalidSize160AddressError,
+      RlpIsTooShortError,
+      RlpInvalidLengthError,
+      UnrecoverablePubkeyError,
+      TransactionAlreadyExistError,
+      TransactionTooBigError,
+      TransactionChainIdMismatchError,
+      TransactionZeroGasPriceError,
+      TransactionInvalidReceiverError,
+      TransactionNotEnoughBaseGasError,
+      TransactionNonceTooDistantError,
+      GasLimitExceededError,
+      NonceTooStaleError,
+      OutOfBalanceError,
+      HigherGasPriceNeededError,
+    ],
+  },
 };
 
 export default InvalidParamsErrors;

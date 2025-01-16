@@ -173,7 +173,6 @@ describe("cfx_getStorageAt position errors", async () => {
     expect(isRpcError(error)).toBe(true);
     assertRpcError(error);
     expect(error.error.code).toBe(InvalidParamsError.code);
-    console.log(error);
 
     const parsedError = rpcError.parse(error.error);
 

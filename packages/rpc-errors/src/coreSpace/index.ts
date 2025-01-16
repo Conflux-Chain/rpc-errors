@@ -1,4 +1,5 @@
 import { BaseError } from "../../_cjs/src";
+import { ErrorClassType, RegisterErrorsType } from "../types";
 import CallExecutionErrors from "./CallExecutionErrors";
 import CustomErrors from "./CustomErrors";
 import InternalErrors from "./InternalErrors";
@@ -13,27 +14,13 @@ export type {
   MissingHexPrefixErrorType,
 } from "./invalidParamsErrors";
 
-export type CoreSpaceErrorsType = {
-  codeMap: { code: number; error: new (...args: any[]) => BaseError }[];
-  messageMap: {
-    pattern: RegExp;
-    error: new (...args: any[]) => BaseError;
-  }[];
-};
+export type CoreSpaceErrorsType = RegisterErrorsType[];
 
-const coreSpaceErrors: CoreSpaceErrorsType = {
-  codeMap: [
-    InvalidParamsErrors.codeMap,
-    InternalErrors.codeMap,
-    CustomErrors.codeMap,
-    CallExecutionErrors.codeMap,
-  ].flat(),
-  messageMap: [
-    InvalidParamsErrors.messageMap,
-    InternalErrors.messageMap,
-    CustomErrors.messageMap,
-    CallExecutionErrors.messageMap,
-  ].flat(),
-};
+const coreSpaceErrors: CoreSpaceErrorsType = [
+  InvalidParamsErrors,
+  InternalErrors,
+  CustomErrors,
+  CallExecutionErrors,
+];
 
 export default coreSpaceErrors;

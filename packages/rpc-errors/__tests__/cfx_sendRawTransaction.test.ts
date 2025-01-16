@@ -236,7 +236,7 @@ describe("cfx_sendRawTransaction errors", () => {
 
     expect(isRpcError(error)).toBe(true);
     assertRpcError(error);
-    console.log(error);
+
     expect(error.error.code).toBe(InvalidParamsError.code);
     const parsedError = rpcError.parse(error.error);
     expect(parsedError).toBeInstanceOf(NonceTooStaleError);
@@ -253,7 +253,7 @@ describe("cfx_sendRawTransaction errors", () => {
 
     expect(isRpcError(error)).toBe(true);
     assertRpcError(error);
-    console.log(error);
+
     expect(error.error.code).toBe(InvalidParamsError.code);
     const parsedError = rpcError.parse(error.error);
     expect(parsedError).toBeInstanceOf(OutOfBalanceError);
@@ -275,7 +275,7 @@ describe("cfx_sendRawTransaction errors", () => {
 
     expect(isRpcError(error)).toBe(true);
     assertRpcError(error);
-    console.log(error);
+
     expect(error.error.code).toBe(InvalidParamsError.code);
     const parsedError = rpcError.parse(error.error);
     expect(parsedError).toBeInstanceOf(HigherGasPriceNeededError);

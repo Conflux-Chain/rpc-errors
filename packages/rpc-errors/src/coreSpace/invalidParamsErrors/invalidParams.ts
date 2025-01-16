@@ -11,4 +11,7 @@ export class InvalidParamsError extends BaseError {
   constructor(message: string, public readonly data?: any) {
     super(InvalidParamsError.code, message);
   }
+  static parseError(message: string, data?: any): boolean {
+    return  true
+  }
 }

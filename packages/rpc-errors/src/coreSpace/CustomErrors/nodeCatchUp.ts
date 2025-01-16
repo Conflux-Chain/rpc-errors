@@ -14,4 +14,8 @@ export class NodeCatchUpError extends BaseError {
   constructor(message: string, public readonly data?: any) {
     super(-32077, message);
   }
+
+  static parseError(message: string, data?: any): boolean {
+    return true;
+  }
 }

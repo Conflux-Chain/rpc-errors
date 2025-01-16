@@ -3,13 +3,11 @@ import { NonExistentBlockHeaderError } from "./fee";
 import { InternalError } from "./Internal";
 
 const InternalErrors: RegisterErrorsType = {
-  codeMap: [{ code: InternalError.code, error: InternalError }],
-  messageMap: [
-    {
-      pattern: NonExistentBlockHeaderError.pattern,
-      error: NonExistentBlockHeaderError,
-    },
-  ],
+  [InternalError.code]: {
+    code: InternalError.code,
+    baseError: InternalError,
+    detailErrors: [NonExistentBlockHeaderError],
+  },
 };
 
 export default InternalErrors;

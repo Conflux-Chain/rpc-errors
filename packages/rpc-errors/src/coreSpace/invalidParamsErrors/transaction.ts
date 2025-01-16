@@ -11,6 +11,10 @@ export class RlpIsTooShortError extends InvalidParamsError {
   constructor(message: string, data?: any) {
     super(message, data);
   }
+
+  static override parseError(message: string, data?: any): boolean {
+    return RlpIsTooShortError.pattern.test(data);
+  }
 }
 
 export type RlpInvalidLengthErrorType = {
@@ -23,6 +27,10 @@ export class RlpInvalidLengthError extends InvalidParamsError {
 
   constructor(message: string, data?: any) {
     super(message, data);
+  }
+
+  static override parseError(message: string, data?: any): boolean {
+    return RlpInvalidLengthError.pattern.test(data);
   }
 }
 
@@ -37,6 +45,9 @@ export class UnrecoverablePubkeyError extends InvalidParamsError {
   constructor(message: string, data?: any) {
     super(message, data);
   }
+  static override parseError(message: string, data?: any): boolean {
+    return UnrecoverablePubkeyError.pattern.test(data);
+  }
 }
 
 export type TransactionAlreadyExistErrorType = {
@@ -50,6 +61,10 @@ export class TransactionAlreadyExistError extends InvalidParamsError {
   constructor(message: string, data?: any) {
     super(message, data);
   }
+
+  static override parseError(message: string, data?: any): boolean {
+    return TransactionAlreadyExistError.pattern.test(data);
+  }
 }
 
 export type TransactionTooBigErrorType = {
@@ -62,6 +77,10 @@ export class TransactionTooBigError extends InvalidParamsError {
 
   constructor(message: string, data?: any) {
     super(message, data);
+  }
+
+  static override parseError(message: string, data?: any): boolean {
+    return TransactionTooBigError.pattern.test(data);
   }
 }
 
@@ -77,6 +96,10 @@ export class TransactionChainIdMismatchError extends InvalidParamsError {
   constructor(message: string, data?: any) {
     super(message, data);
   }
+
+  static override parseError(message: string, data?: any): boolean {
+    return TransactionChainIdMismatchError.pattern.test(data);
+  }
 }
 
 export type TransactionZeroGasPriceErrorType = {
@@ -89,6 +112,10 @@ export class TransactionZeroGasPriceError extends InvalidParamsError {
 
   constructor(message: string, data?: any) {
     super(message, data);
+  }
+
+  static override parseError(message: string, data?: any): boolean {
+    return TransactionZeroGasPriceError.pattern.test(data);
   }
 }
 
@@ -103,6 +130,10 @@ export class TransactionInvalidReceiverError extends InvalidParamsError {
   constructor(message: string, data?: any) {
     super(message, data);
   }
+
+  static override parseError(message: string, data?: any): boolean {
+    return TransactionInvalidReceiverError.pattern.test(data);
+  }
 }
 
 export type TransactionNotEnoughBaseGasErrorType = {
@@ -114,6 +145,10 @@ export class TransactionNotEnoughBaseGasError extends InvalidParamsError {
   static pattern = /NotEnoughBaseGas \{ required: \d+, got: \d+ \}/;
   constructor(message: string, data?: any) {
     super(message, data);
+  }
+
+  static override parseError(message: string, data?: any): boolean {
+    return TransactionNotEnoughBaseGasError.pattern.test(data);
   }
 }
 
@@ -128,6 +163,10 @@ export class TransactionNonceTooDistantError extends InvalidParamsError {
 
   constructor(message: string, data?: any) {
     super(message, data);
+  }
+
+  static override parseError(message: string, data?: any): boolean {
+    return TransactionNonceTooDistantError.pattern.test(data);
   }
 }
 
@@ -146,6 +185,10 @@ export class GasLimitExceededError extends InvalidParamsError {
   constructor(message: string, data?: any) {
     super(message, data);
   }
+
+  static override parseError(message: string, data?: any): boolean {
+    return GasLimitExceededError.pattern.test(data);
+  }
 }
 
 export type NonceTooDistantErrorType = {
@@ -160,6 +203,9 @@ export class NonceTooDistantError extends InvalidParamsError {
 
   constructor(message: string, data?: any) {
     super(message, data);
+  }
+  static override parseError(message: string, data?: any): boolean {
+    return NonceTooDistantError.pattern.test(data);
   }
 }
 
@@ -176,6 +222,9 @@ export class NonceTooStaleError extends InvalidParamsError {
   constructor(message: string, data?: any) {
     super(message, data);
   }
+  static override parseError(message: string, data?: any): boolean {
+    return NonceTooStaleError.pattern.test(data);
+  }
 }
 
 export type OutOfBalanceErrorType = {
@@ -189,6 +238,9 @@ export class OutOfBalanceError extends InvalidParamsError {
   constructor(message: string, data?: any) {
     super(message, data);
   }
+  static override parseError(message: string, data?: any): boolean {
+    return OutOfBalanceError.pattern.test(data);
+  }
 }
 
 export type TxPoolFullErrorType = {
@@ -200,6 +252,10 @@ export class TxPoolFullError extends InvalidParamsError {
   static pattern = /txpool is full/;
   constructor(message: string, data?: any) {
     super(message, data);
+  }
+
+  static override parseError(message: string, data?: any): boolean {
+    return TxPoolFullError.pattern.test(data);
   }
 }
 
@@ -214,6 +270,10 @@ export class HigherGasPriceNeededError extends InvalidParamsError {
   constructor(message: string, data?: any) {
     super(message, data);
   }
+
+  static override parseError(message: string, data?: any): boolean {
+    return HigherGasPriceNeededError.pattern.test(data);
+  }
 }
 
 export type StateDbErrorType = {
@@ -225,5 +285,9 @@ export class StateDbError extends InvalidParamsError {
   static pattern = /StateDbError/;
   constructor(message: string, data?: any) {
     super(message, data);
+  }
+
+  static override parseError(message: string, data?: any): boolean {
+    return StateDbError.pattern.test(data);
   }
 }

@@ -45,7 +45,7 @@ describe("cfx_maxPriorityFeePerGas", () => {
     expect(internal_error.error.code).toBe(InternalError.code);
 
     const parsedError = rpcError.parse(internal_error.error);
-    console.log(parsedError.code)
+
     expect(parsedError).toBeInstanceOf(InternalNonExistentBlockHeaderError);
     expect(parsedError.name).toBe("NonExistentBlockHeader");
     expect(parsedError.code).toBe(InternalNonExistentBlockHeaderError.code);

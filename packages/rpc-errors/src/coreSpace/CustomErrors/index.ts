@@ -2,8 +2,11 @@ import { RegisterErrorsType } from "../../types";
 import { NodeCatchUpError } from "./nodeCatchUp";
 
 const CustomErrors: RegisterErrorsType = {
-  codeMap: [{ code: NodeCatchUpError.code, error: NodeCatchUpError }],
-  messageMap: [],
+  [NodeCatchUpError.code]: {
+    code: NodeCatchUpError.code,
+    baseError: NodeCatchUpError,
+    detailErrors: [],
+  },
 };
 
 export default CustomErrors;

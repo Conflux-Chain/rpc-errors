@@ -1,6 +1,7 @@
-export type BaseErrorType = BaseError & {
-  name: "BaseError";
-};
+export interface BaseErrorType {
+  name: string;
+  code: number;
+}
 
 export class BaseError extends Error {
   readonly code: number;

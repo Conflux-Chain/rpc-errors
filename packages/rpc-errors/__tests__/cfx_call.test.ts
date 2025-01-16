@@ -152,7 +152,7 @@ describe("cfx_call errors", async () => {
     expect(error.error.code).toBe(CallExecutionError.code);
 
     const parsedError = rpcError.parse(error.error);
-    console.log(error);
+
     expect(parsedError).toBeInstanceOf(NotExecutedDropNotEnoughGasLimitError);
     expect(parsedError.name).toBe("NotExecutedDropNotEnoughGasLimit");
     expect(parsedError.code).toBe(NotExecutedDropNotEnoughGasLimitError.code);

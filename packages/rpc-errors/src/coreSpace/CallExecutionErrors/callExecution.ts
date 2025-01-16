@@ -11,4 +11,8 @@ export class CallExecutionError extends BaseError {
   constructor(message: string, public readonly data?: any) {
     super(CallExecutionError.code, message);
   }
+
+  static parseError(message: string, data?: any): boolean {
+    return true;
+  }
 }
