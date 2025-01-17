@@ -13,9 +13,22 @@ import {
   MissingHexPrefixError,
 } from "../src/coreSpace/invalidParamsErrors/epoch";
 import {
+  ExecutionErrorBumpNonceNotEnoughCashError,
+  ExecutionErrorBumpNonceVmBadInstructionError,
+  ExecutionErrorBumpNonceVmBadJumpDestinationError,
+  ExecutionErrorBumpNonceVmOutOfGasError,
+  ExecutionErrorBumpNonceVmOutOfStackError,
+  ExecutionErrorBumpNonceVmRevertedError,
+  ExecutionErrorBumpNonceVmStackUnderflowError,
+  ExecutionErrorBumpNonceVmSubStackUnderflowError,
   NotExecutedDropInvalidRecipientAddress,
   NotExecutedDropNotEnoughGasLimitError,
   NotExecutedDropOldNonceError,
+  NotExecutedToReconsiderPackingEpochHeightOutOfBoundError,
+  NotExecutedToReconsiderPackingInvalidNonceError,
+  NotExecutedToReconsiderPackingNotEnoughBaseFeeError,
+  NotExecutedToReconsiderPackingNotEnoughCashFromSponsorError,
+  NotExecutedToReconsiderPackingSenderDoesNotExistError,
 } from "../src/coreSpace/CallExecutionErrors/executionOutcome";
 import { CallExecutionError } from "../src/coreSpace/CallExecutionErrors/callExecution";
 
@@ -156,6 +169,296 @@ describe("cfx_call errors", async () => {
     expect(parsedError).toBeInstanceOf(NotExecutedDropNotEnoughGasLimitError);
     expect(parsedError.name).toBe("NotExecutedDropNotEnoughGasLimit");
     expect(parsedError.code).toBe(NotExecutedDropNotEnoughGasLimitError.code);
+    expect(parsedError.message).toBe(error.error.message);
+  });
+
+  test("NotExecutedToReconsiderPackingInvalidNonceError", async () => {
+    // fake response
+    const error = createErrorResponse({
+      code: CallExecutionError.code,
+      message: "Transaction can not be executed",
+      data: "InvalidNonce { expected: 10, got: 20 }",
+    });
+
+    expect(isRpcError(error)).toBe(true);
+    assertRpcError(error);
+    expect(error.error.code).toBe(CallExecutionError.code);
+
+    const parsedError = rpcError.parse(error.error);
+
+    expect(parsedError).toBeInstanceOf(
+      NotExecutedToReconsiderPackingInvalidNonceError
+    );
+    expect(parsedError.name).toBe("NotExecutedToReconsiderPackingInvalidNonce");
+    expect(parsedError.code).toBe(
+      NotExecutedToReconsiderPackingInvalidNonceError.code
+    );
+    expect(parsedError.message).toBe(error.error.message);
+  });
+
+  test("NotExecutedToReconsiderPackingEpochHeightOutOfBound", async () => {
+    // fake response
+    const error = createErrorResponse({
+      code: CallExecutionError.code,
+      message: "Transaction can not be executed",
+      data: "EpochHeightOutOfBound { block_height: 100, set: 50, transaction_epoch_bound: 150 }",
+    });
+
+    expect(isRpcError(error)).toBe(true);
+    assertRpcError(error);
+    expect(error.error.code).toBe(CallExecutionError.code);
+
+    const parsedError = rpcError.parse(error.error);
+
+    expect(parsedError).toBeInstanceOf(
+      NotExecutedToReconsiderPackingEpochHeightOutOfBoundError
+    );
+    expect(parsedError.name).toBe(
+      "NotExecutedToReconsiderPackingEpochHeightOutOfBound"
+    );
+    expect(parsedError.code).toBe(
+      NotExecutedToReconsiderPackingEpochHeightOutOfBoundError.code
+    );
+    expect(parsedError.message).toBe(error.error.message);
+  });
+
+  test("NotExecutedToReconsiderPackingNotEnoughCashFromSponsorError", async () => {
+    // fake response
+    const error = createErrorResponse({
+      code: CallExecutionError.code,
+      message: "Transaction can not be executed",
+      data: "NotEnoughCashFromSponsor { required_gas_cost: 0, gas_sponsor_balance: 0, required_storage_cost: 0, storage_sponsor_balance: 0 }",
+    });
+
+    expect(isRpcError(error)).toBe(true);
+    assertRpcError(error);
+    expect(error.error.code).toBe(CallExecutionError.code);
+
+    const parsedError = rpcError.parse(error.error);
+
+    expect(parsedError).toBeInstanceOf(
+      NotExecutedToReconsiderPackingNotEnoughCashFromSponsorError
+    );
+    expect(parsedError.name).toBe(
+      "NotExecutedToReconsiderPackingNotEnoughCashFromSponsor"
+    );
+    expect(parsedError.code).toBe(
+      NotExecutedToReconsiderPackingNotEnoughCashFromSponsorError.code
+    );
+    expect(parsedError.message).toBe(error.error.message);
+  });
+
+  test("NotExecutedToReconsiderPackingSenderDoesNotExistError", async () => {
+    // fake response
+    const error = createErrorResponse({
+      code: CallExecutionError.code,
+      message: "Transaction can not be executed",
+      data: "SenderDoesNotExist",
+    });
+
+    expect(isRpcError(error)).toBe(true);
+    assertRpcError(error);
+    expect(error.error.code).toBe(CallExecutionError.code);
+
+    const parsedError = rpcError.parse(error.error);
+
+    expect(parsedError).toBeInstanceOf(
+      NotExecutedToReconsiderPackingSenderDoesNotExistError
+    );
+    expect(parsedError.name).toBe(
+      "NotExecutedToReconsiderPackingSenderDoesNotExist"
+    );
+    expect(parsedError.code).toBe(
+      NotExecutedToReconsiderPackingSenderDoesNotExistError.code
+    );
+    expect(parsedError.message).toBe(error.error.message);
+  });
+
+  test("NotExecutedToReconsiderPackingNotEnoughBaseFeeError", async () => {
+    // fake response
+    const error = createErrorResponse({
+      code: CallExecutionError.code,
+      message: "Transaction can not be executed",
+      data: "NotEnoughBaseFee { expected: 0, got: 0 }",
+    });
+
+    expect(isRpcError(error)).toBe(true);
+    assertRpcError(error);
+    expect(error.error.code).toBe(CallExecutionError.code);
+
+    const parsedError = rpcError.parse(error.error);
+
+    expect(parsedError).toBeInstanceOf(
+      NotExecutedToReconsiderPackingNotEnoughBaseFeeError
+    );
+    expect(parsedError.name).toBe(
+      "NotExecutedToReconsiderPackingNotEnoughBaseFee"
+    );
+    expect(parsedError.code).toBe(
+      NotExecutedToReconsiderPackingNotEnoughBaseFeeError.code
+    );
+    expect(parsedError.message).toBe(error.error.message);
+  });
+
+  test("ExecutionErrorBumpNonceVmRevertedError", async () => {
+    // fake response
+    const error = createErrorResponse({
+      code: CallExecutionError.code,
+      message: "Transaction reverted",
+      data: "0x0000000000000000000000000000000000000000000000000000000000000001",
+    });
+
+    expect(isRpcError(error)).toBe(true);
+    assertRpcError(error);
+    expect(error.error.code).toBe(CallExecutionError.code);
+
+    const parsedError = rpcError.parse(error.error);
+
+    expect(parsedError).toBeInstanceOf(ExecutionErrorBumpNonceVmRevertedError);
+    expect(parsedError.name).toBe("ExecutionErrorBumpNonceVmReverted");
+    expect(parsedError.code).toBe(ExecutionErrorBumpNonceVmRevertedError.code);
+    expect(parsedError.message).toBe(error.error.message);
+  });
+
+  test("ExecutionErrorBumpNonceNotEnoughCashError", async () => {
+    // fake response
+    const error = createErrorResponse({
+      code: CallExecutionError.code,
+      message: "Transaction execution failed",
+      data: "NotEnoughCash { required: 0, got: 0, actual_gas_cost: 0, max_storage_limit_cost: 0 }",
+    });
+
+    expect(isRpcError(error)).toBe(true);
+    assertRpcError(error);
+    expect(error.error.code).toBe(CallExecutionError.code);
+
+    const parsedError = rpcError.parse(error.error);
+
+    expect(parsedError).toBeInstanceOf(
+      ExecutionErrorBumpNonceNotEnoughCashError
+    );
+    expect(parsedError.name).toBe("ExecutionErrorBumpNonceNotEnoughCash");
+    expect(parsedError.code).toBe(
+      ExecutionErrorBumpNonceNotEnoughCashError.code
+    );
+    expect(parsedError.message).toBe(error.error.message);
+  });
+
+  test("ExecutionErrorBumpNonceVmOutOfGasError", async () => {
+    // fake response
+    const error = createErrorResponse({
+      code: CallExecutionError.code,
+      message: "Transaction execution failed",
+      data: "OutOfGas",
+    });
+
+    expect(isRpcError(error)).toBe(true);
+    assertRpcError(error);
+    expect(error.error.code).toBe(CallExecutionError.code);
+
+    const parsedError = rpcError.parse(error.error);
+
+    expect(parsedError).toBeInstanceOf(ExecutionErrorBumpNonceVmOutOfGasError);
+    expect(parsedError.name).toBe("ExecutionErrorBumpNonceVmOutOfGas");
+    expect(parsedError.code).toBe(ExecutionErrorBumpNonceVmOutOfGasError.code);
+    expect(parsedError.message).toBe(error.error.message);
+  });
+
+  test("ExecutionErrorBumpNonceVmBadJumpDestinationError", async () => {
+    // fake response
+    const error = createErrorResponse({
+      code: CallExecutionError.code,
+      message: "Transaction execution failed",
+      data: "BadJumpDestination { destination: 0 }",
+    });
+
+    expect(isRpcError(error)).toBe(true);
+    assertRpcError(error);
+    expect(error.error.code).toBe(CallExecutionError.code);
+
+    const parsedError = rpcError.parse(error.error);
+
+    expect(parsedError).toBeInstanceOf(
+      ExecutionErrorBumpNonceVmBadJumpDestinationError
+    );
+    expect(parsedError.name).toBe(
+      "ExecutionErrorBumpNonceVmBadJumpDestination"
+    );
+    expect(parsedError.code).toBe(
+      ExecutionErrorBumpNonceVmBadJumpDestinationError.code
+    );
+    expect(parsedError.message).toBe(error.error.message);
+  });
+
+  test("ExecutionErrorBumpNonceVmStackUnderflowError", async () => {
+    // fake response
+    const error = createErrorResponse({
+      code: CallExecutionError.code,
+      message: "Transaction execution failed",
+      data: 'StackUnderflow { instruction: "ADD", wanted: 2, on_stack: 1 }',
+    });
+
+    expect(isRpcError(error)).toBe(true);
+    assertRpcError(error);
+    expect(error.error.code).toBe(CallExecutionError.code);
+
+    const parsedError = rpcError.parse(error.error);
+
+    expect(parsedError).toBeInstanceOf(
+      ExecutionErrorBumpNonceVmStackUnderflowError
+    );
+    expect(parsedError.name).toBe("ExecutionErrorBumpNonceVmStackUnderflow");
+    expect(parsedError.code).toBe(
+      ExecutionErrorBumpNonceVmStackUnderflowError.code
+    );
+    expect(parsedError.message).toBe(error.error.message);
+  });
+
+  test("ExecutionErrorBumpNonceVmOutOfStackError", async () => {
+    // fake response
+    const error = createErrorResponse({
+      code: CallExecutionError.code,
+      message: "Transaction execution failed",
+      data: 'OutOfStack { instruction: "PUSH1", wanted: 1, limit: 1024 }',
+    });
+
+    expect(isRpcError(error)).toBe(true);
+    assertRpcError(error);
+    expect(error.error.code).toBe(CallExecutionError.code);
+
+    const parsedError = rpcError.parse(error.error);
+
+    expect(parsedError).toBeInstanceOf(
+      ExecutionErrorBumpNonceVmOutOfStackError
+    );
+    expect(parsedError.name).toBe("ExecutionErrorBumpNonceVmOutOfStack");
+    expect(parsedError.code).toBe(
+      ExecutionErrorBumpNonceVmOutOfStackError.code
+    );
+    expect(parsedError.message).toBe(error.error.message);
+  });
+
+  test("ExecutionErrorBumpNonceVmSubStackUnderflowError", async () => {
+    // fake response
+    const error = createErrorResponse({
+      code: CallExecutionError.code,
+      message: "Transaction execution failed",
+      data: "SubStackUnderflow { wanted: 2, on_stack: 1 }",
+    });
+
+    expect(isRpcError(error)).toBe(true);
+    assertRpcError(error);
+    expect(error.error.code).toBe(CallExecutionError.code);
+
+    const parsedError = rpcError.parse(error.error);
+
+    expect(parsedError).toBeInstanceOf(
+      ExecutionErrorBumpNonceVmSubStackUnderflowError
+    );
+    expect(parsedError.name).toBe("ExecutionErrorBumpNonceVmSubStackUnderflow");
+    expect(parsedError.code).toBe(
+      ExecutionErrorBumpNonceVmSubStackUnderflowError.code
+    );
     expect(parsedError.message).toBe(error.error.message);
   });
 });

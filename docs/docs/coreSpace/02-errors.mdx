@@ -118,3 +118,55 @@ InternalError occurs when an internal error occurs.
 3. **NotExecutedDropNotEnoughGasLimitError**
 
 > message: 'Transaction can not be executed', data: 'not enough gas limit with respected to tx size: expected 1 got 0'
+
+4. **NotExecutedToReconsiderPackingInvalidNonceError**
+
+> message: "Transaction can not be executed", data: "InvalidNonce \{ expected: 10, got: 20 \}"
+
+5. **NotExecutedToReconsiderPackingEpochHeightOutOfBoundError**
+
+>  message: "Transaction can not be executed",  data: "EpochHeightOutOfBound \{ block_height: 100, set: 50, transaction_epoch_bound: 150 \}"
+
+6. **NotExecutedToReconsiderPackingNotEnoughCashFromSponsorError**
+
+> message: "Transaction can not be executed", data: NotEnoughCashFromSponsor \{ required_gas_cost: 0, gas_sponsor_balance: 0, required_storage_cost: 0, storage_sponsor_balance: 0 \}
+
+7. **NotExecutedToReconsiderPackingSenderDoesNotExist**
+
+> message: "Transaction can not be executed", data: SenderDoesNotExist
+
+8. **NotExecutedToReconsiderPackingNotEnoughBaseFeeError**
+
+> message: "Transaction can not be executed", data: NotEnoughBaseFee \{ expected: 0, got: 0 \}
+
+9. **ExecutionErrorBumpNonceVmRevertedError**
+
+> message:Transaction reverted, data: 0x0000
+
+10.  **ExecutionErrorBumpNonceNotEnoughCashError**
+
+> message: "Transaction execution failed",  data: "NotEnoughCash \{ required: 0, got: 0, actual_gas_cost: 0, max_storage_limit_cost: 0 \}"
+
+11. **ExecutionErrorBumpNonceVmOutOfGasError**
+
+>  message: "Transaction execution failed",  data: "OutOfGas",
+
+12. **ExecutionErrorBumpNonceVmBadJumpDestinationError**
+
+>  message: "Transaction execution failed", data: "BadJumpDestination \{ destination: 0 \}",
+
+13. **ExecutionErrorBumpNonceVmBadInstructionError**
+
+>  message: "Transaction execution failed", data: "BadInstruction \{ instruction: 0 \}",
+
+14. **ExecutionErrorBumpNonceVmStackUnderflowError**
+
+>  message: "Transaction execution failed",  data: 'StackUnderflow \{ instruction: "ADD", wanted: 2, on_stack: 1 \}'
+
+15. **ExecutionErrorBumpNonceVmOutOfStackError**
+
+>    message: "Transaction execution failed", data: 'OutOfStack \{ instruction: "PUSH1", wanted: 1, limit: 1024 \}'
+
+16 **ExecutionErrorBumpNonceVmSubStackUnderflowError**
+
+> message: "Transaction execution failed",  data: "SubStackUnderflow \{ wanted: 2, on_stack: 1 }",

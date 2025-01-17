@@ -224,6 +224,23 @@ Virtually calls a contract, returns the output data. The transaction will not be
 2. **EmptyEpochStringError**
 3. **InvalidDigitEpochError**
 4. **MissingHexPrefixError**
-5. **NotExecutedDropOldNonceError**
-6. **NotExecutedDropInvalidRecipientAddress**
-7. **NotExecutedDropNotEnoughGasLimitError**
+
+### 2. [ExecutionOutcome](./errors#executionoutcome)
+
+1. **NotExecutedDropOldNonceError**
+2. **NotExecutedDropInvalidRecipientAddress**
+3. **NotExecutedDropNotEnoughGasLimitError**
+4. **NotExecutedToReconsiderPackingInvalidNonceError**
+5. **NotExecutedToReconsiderPackingEpochHeightOutOfBoundError**
+6. **NotExecutedToReconsiderPackingNotEnoughCashFromSponsorError**
+7. **NotExecutedToReconsiderPackingSenderDoesNotExist**
+8. **NotExecutedToReconsiderPackingNotEnoughBaseFeeError**
+9. **ExecutionErrorBumpNonceVmRevertedError**
+10. **ExecutionErrorBumpNonceNotEnoughCashError**
+11. **ExecutionErrorBumpNonceVmOutOfGasError**
+12. **ExecutionErrorBumpNonceVmBadJumpDestinationError**
+13. **ExecutionErrorBumpNonceVmBadInstructionError**
+14. **ExecutionErrorBumpNonceVmStackUnderflowError**
+15. **ExecutionErrorBumpNonceVmOutOfStackError**
+16. **ExecutionErrorBumpNonceVmSubStackUnderflowError**
+
