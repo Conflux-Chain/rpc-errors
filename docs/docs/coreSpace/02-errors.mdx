@@ -149,24 +149,76 @@ InternalError occurs when an internal error occurs.
 
 11. **ExecutionErrorBumpNonceVmOutOfGasError**
 
->  message: "Transaction execution failed",  data: "OutOfGas",
+>  message: "Transaction execution failed",  data: "Out of gas",
 
 12. **ExecutionErrorBumpNonceVmBadJumpDestinationError**
 
->  message: "Transaction execution failed", data: "BadJumpDestination \{ destination: 0 \}",
+>  message: "Transaction execution failed", data: ""Bad jump destination 1a"",
 
 13. **ExecutionErrorBumpNonceVmBadInstructionError**
 
->  message: "Transaction execution failed", data: "BadInstruction \{ instruction: 0 \}",
+>  message: "Transaction execution failed", data: "Bad instruction ff",
 
 14. **ExecutionErrorBumpNonceVmStackUnderflowError**
 
->  message: "Transaction execution failed",  data: 'StackUnderflow \{ instruction: "ADD", wanted: 2, on_stack: 1 \}'
+>  message: "Transaction execution failed",  data: "Stack underflow ADD 2/1"
 
 15. **ExecutionErrorBumpNonceVmOutOfStackError**
 
->    message: "Transaction execution failed", data: 'OutOfStack \{ instruction: "PUSH1", wanted: 1, limit: 1024 \}'
+>    message: "Transaction execution failed", data: "Out of stack PUSH 1024/1023"
 
 16 **ExecutionErrorBumpNonceVmSubStackUnderflowError**
 
-> message: "Transaction execution failed",  data: "SubStackUnderflow \{ wanted: 2, on_stack: 1 }",
+> message: "Transaction execution failed",  data: "Subroutine stack underflow 2/1",
+
+17. **ExecutionErrorBumpNonceVmOutOfSubStackError**
+
+> message: "Transaction execution failed",  data: "Out of subroutine stack 2/1"
+
+18. **ExecutionErrorBumpNonceVmInvalidSubEntryError**
+
+> message: "Transaction execution failed",  data: "Invalid Subroutine Entry via BEGINSUB"
+
+19. **ExecutionErrorBumpNonceVmNotEnoughBalanceForStorageError**
+
+> message: "Transaction execution failed",  data: "Not enough balance for storage 1000/500"
+
+20. **ExecutionErrorBumpNonceVmExceedStorageLimitError**
+
+> message: "Transaction execution failed",  data: "Exceed storage limit"
+
+21. **ExecutionErrorBumpNonceVmBuiltInError**
+
+> message: "Transaction execution failed",  data: "Built-in failed: modexp"
+
+22. **ExecutionErrorBumpNonceVmInternalContractError**
+
+> message: "Transaction execution failed",  data: "InternalContract failed: some error message"
+
+23. **ExecutionErrorBumpNonceVmStateDbError**
+
+> message: "Transaction execution failed",  data: "Irrecoverable state db error: database error message"
+
+24. **ExecutionErrorBumpNonceVmMutableCallInStaticContextError**
+
+> message: "Transaction execution failed",  data: "Mutable call in static context"
+
+25. **ExecutionErrorBumpNonceVmWasmError**
+
+> message: "Transaction execution failed",  data: "Internal error: wasm error message"
+
+26. **ExecutionErrorBumpNonceVmOutOfBoundsError**
+
+> message: "Transaction execution failed",  data: "Out of bounds"
+
+27. **ExecutionErrorBumpNonceVmRevertedByBytecodeError**
+
+> message: "Transaction execution failed",  data: "Reverted by bytecode"
+
+28. **ExecutionErrorBumpNonceVmInvalidAddressError**
+
+> message: "Transaction execution failed",  data: "InvalidAddress: cfx:aaaaaa"
+
+29. **ExecutionErrorBumpNonceVmConflictAddressError**
+
+> message: "Transaction execution failed",  data: "Contract creation on an existing address: xxxx"

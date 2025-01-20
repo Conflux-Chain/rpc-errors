@@ -207,6 +207,7 @@ export class ExecutionErrorBumpNonceNotEnoughCashError extends CallExecutionErro
   }
 }
 
+// OutOfGas
 export type ExecutionErrorBumpNonceVmOutOfGasErrorType = {
   name: "ExecutionErrorBumpNonceVmOutOfGas";
 } & ExecutionErrorBumpNonceVmOutOfGasError;
@@ -214,7 +215,7 @@ export type ExecutionErrorBumpNonceVmOutOfGasErrorType = {
 export class ExecutionErrorBumpNonceVmOutOfGasError extends CallExecutionError {
   override name = "ExecutionErrorBumpNonceVmOutOfGas";
 
-  static pattern = /OutOfGas/;
+  static pattern = /Out of gas/;
 
   constructor(message: string, data?: any) {
     super(message, data);
@@ -234,9 +235,10 @@ export type ExecutionErrorBumpNonceVmBadJumpDestinationErrorType = {
   name: "ExecutionErrorBumpNonceVmBadJumpDestination";
 } & ExecutionErrorBumpNonceVmBadJumpDestinationError;
 
+// BadJumpDestination
 export class ExecutionErrorBumpNonceVmBadJumpDestinationError extends CallExecutionError {
   override name = "ExecutionErrorBumpNonceVmBadJumpDestination";
-  static pattern = /BadJumpDestination \{ destination: \d+ \}/;
+  static pattern = /Bad jump destination ([0-9a-fA-F]+)/;
   constructor(message: string, data?: any) {
     super(message, data);
   }
@@ -255,9 +257,10 @@ export type ExecutionErrorBumpNonceVmBadInstructionErrorType = {
   name: "ExecutionErrorBumpNonceVmBadInstruction";
 } & ExecutionErrorBumpNonceVmBadInstructionError;
 
+// BadInstruction
 export class ExecutionErrorBumpNonceVmBadInstructionError extends CallExecutionError {
   override name = "ExecutionErrorBumpNonceVmBadInstruction";
-  static pattern = /BadInstruction \{ instruction: \d+ \}/;
+  static pattern = /Bad instruction ([0-9a-fA-F]+)/;
   constructor(message: string, data?: any) {
     super(message, data);
   }
@@ -275,10 +278,11 @@ export class ExecutionErrorBumpNonceVmBadInstructionError extends CallExecutionE
 export type ExecutionErrorBumpNonceVmStackUnderflowErrorType = {
   name: "ExecutionErrorBumpNonceVmStackUnderflow";
 } & ExecutionErrorBumpNonceVmStackUnderflowError;
+
+// StackUnderflow
 export class ExecutionErrorBumpNonceVmStackUnderflowError extends CallExecutionError {
   override name = "ExecutionErrorBumpNonceVmStackUnderflow";
-  static pattern =
-    /StackUnderflow \{ instruction: "[A-Z]+", wanted: \d+, on_stack: \d+ \}/;
+  static pattern = /Stack underflow ([A-Z0-9]+) (\d+)\/(\d+)/;
   constructor(message: string, data?: any) {
     super(message, data);
   }
@@ -297,11 +301,11 @@ export type ExecutionErrorBumpNonceVmOutOfStackErrorType = {
   name: "ExecutionErrorBumpNonceVmOutOfStack";
 } & ExecutionErrorBumpNonceVmOutOfStackError;
 
+// OutOfStack
 export class ExecutionErrorBumpNonceVmOutOfStackError extends CallExecutionError {
   override name = "ExecutionErrorBumpNonceVmOutOfStack";
 
-  static pattern =
-    /OutOfStack \{ instruction: "[A-Z0-9]+", wanted: \d+, limit: \d+ \}/;
+  static pattern = /Out of stack ([A-Z0-9]+) (\d+)\/(\d+)/;
   constructor(message: string, data?: any) {
     super(message, data);
   }
@@ -320,9 +324,11 @@ export type ExecutionErrorBumpNonceVmSubStackUnderflowErrorType = {
   name: "ExecutionErrorBumpNonceVmSubStackUnderflow";
 } & ExecutionErrorBumpNonceVmSubStackUnderflowError;
 
+// SubStackUnderflow
+
 export class ExecutionErrorBumpNonceVmSubStackUnderflowError extends CallExecutionError {
   override name = "ExecutionErrorBumpNonceVmSubStackUnderflow";
-  static pattern = /SubStackUnderflow \{ wanted: \d+, on_stack: \d+ \}/;
+  static pattern = /Subroutine stack underflow (\d+)\/(\d+)/;
   constructor(message: string, data?: any) {
     super(message, data);
   }
@@ -330,6 +336,310 @@ export class ExecutionErrorBumpNonceVmSubStackUnderflowError extends CallExecuti
     if (
       message === "Transaction execution failed" &&
       ExecutionErrorBumpNonceVmSubStackUnderflowError.pattern.test(data)
+    ) {
+      return true;
+    }
+    return false;
+  }
+}
+
+export type ExecutionErrorBumpNonceVmOutOfSubStackErrorType = {
+  name: "ExecutionErrorBumpNonceVmOutOfSubStack";
+} & ExecutionErrorBumpNonceVmOutOfSubStackError;
+
+// OutOfSubStack
+export class ExecutionErrorBumpNonceVmOutOfSubStackError extends CallExecutionError {
+  override name = "ExecutionErrorBumpNonceVmOutOfSubStack";
+  static pattern = /Out of subroutine stack (\d+)\/(\d+)/;
+
+  constructor(message: string, data?: any) {
+    super(message, data);
+  }
+  static override parseError(message: string, data?: any): boolean {
+    if (
+      message === "Transaction execution failed" &&
+      ExecutionErrorBumpNonceVmOutOfSubStackError.pattern.test(data)
+    ) {
+      return true;
+    }
+    return false;
+  }
+}
+
+export type ExecutionErrorBumpNonceVmInvalidSubEntryErrorType = {
+  name: "ExecutionErrorBumpNonceVmInvalidSubEntry";
+} & ExecutionErrorBumpNonceVmInvalidSubEntryError;
+
+// InvalidSubEntry
+export class ExecutionErrorBumpNonceVmInvalidSubEntryError extends CallExecutionError {
+  override name = "ExecutionErrorBumpNonceVmInvalidSubEntry";
+  static pattern = /Invalid Subroutine Entry via BEGINSUB/;
+  constructor(message: string, data?: any) {
+    super(message, data);
+  }
+  static override parseError(message: string, data?: any): boolean {
+    if (
+      message === "Transaction execution failed" &&
+      ExecutionErrorBumpNonceVmInvalidSubEntryError.pattern.test(data)
+    ) {
+      return true;
+    }
+    return false;
+  }
+}
+
+export type ExecutionErrorBumpNonceVmNotEnoughBalanceForStorageErrorType = {
+  name: "ExecutionErrorBumpNonceVmNotEnoughBalanceForStorage";
+} & ExecutionErrorBumpNonceVmNotEnoughBalanceForStorageError;
+
+// NotEnoughBalanceForStorage
+export class ExecutionErrorBumpNonceVmNotEnoughBalanceForStorageError extends CallExecutionError {
+  override name = "ExecutionErrorBumpNonceVmNotEnoughBalanceForStorage";
+  static pattern = /Not enough balance for storage (\d+)\/(\d+)/;
+  constructor(message: string, data?: any) {
+    super(message, data);
+  }
+
+  static override parseError(message: string, data?: any): boolean {
+    if (
+      message === "Transaction execution failed" &&
+      ExecutionErrorBumpNonceVmNotEnoughBalanceForStorageError.pattern.test(
+        data
+      )
+    ) {
+      return true;
+    }
+    return false;
+  }
+}
+
+export type ExecutionErrorBumpNonceVmExceedStorageLimitErrorType = {
+  name: "ExecutionErrorBumpNonceVmExceedStorageLimit";
+} & ExecutionErrorBumpNonceVmExceedStorageLimitError;
+
+// ExceedStorageLimit
+export class ExecutionErrorBumpNonceVmExceedStorageLimitError extends CallExecutionError {
+  override name = "ExecutionErrorBumpNonceVmExceedStorageLimit";
+  static pattern = /Exceed storage limit/;
+  constructor(message: string, data?: any) {
+    super(message, data);
+  }
+
+  static override parseError(message: string, data?: any): boolean {
+    if (
+      message === "Transaction execution failed" &&
+      ExecutionErrorBumpNonceVmExceedStorageLimitError.pattern.test(data)
+    ) {
+      return true;
+    }
+    return false;
+  }
+}
+
+export type ExecutionErrorBumpNonceVmBuiltInErrorType = {
+  name: "ExecutionErrorBumpNonceVmBuiltIn";
+} & ExecutionErrorBumpNonceVmBuiltInError;
+
+// Built-in
+export class ExecutionErrorBumpNonceVmBuiltInError extends CallExecutionError {
+  override name = "ExecutionErrorBumpNonceVmBuiltIn";
+  static pattern = /Built-in failed: (.+)/;
+  constructor(message: string, data?: any) {
+    super(message, data);
+  }
+
+  static override parseError(message: string, data?: any): boolean {
+    if (
+      message === "Transaction execution failed" &&
+      ExecutionErrorBumpNonceVmBuiltInError.pattern.test(data)
+    ) {
+      return true;
+    }
+    return false;
+  }
+}
+
+export type ExecutionErrorBumpNonceVmInternalContractErrorType = {
+  name: "ExecutionErrorBumpNonceVmInternalContract";
+} & ExecutionErrorBumpNonceVmInternalContractError;
+
+// InternalContract
+export class ExecutionErrorBumpNonceVmInternalContractError extends CallExecutionError {
+  override name = "ExecutionErrorBumpNonceVmInternalContract";
+  static pattern = /InternalContract failed: (.+)/;
+  constructor(message: string, data?: any) {
+    super(message, data);
+  }
+
+  static override parseError(message: string, data?: any): boolean {
+    if (
+      message === "Transaction execution failed" &&
+      ExecutionErrorBumpNonceVmInternalContractError.pattern.test(data)
+    ) {
+      return true;
+    }
+    return false;
+  }
+}
+
+export type ExecutionErrorBumpNonceVmStateDbErrorType = {
+  name: "ExecutionErrorBumpNonceVmStateDb";
+} & ExecutionErrorBumpNonceVmStateDbError;
+
+// StateDbError
+
+export class ExecutionErrorBumpNonceVmStateDbError extends CallExecutionError {
+  override name = "ExecutionErrorBumpNonceVmStateDb";
+  static pattern = /Irrecoverable state db error: (.+)/;
+  constructor(message: string, data?: any) {
+    super(message, data);
+  }
+
+  static override parseError(message: string, data?: any): boolean {
+    if (
+      message === "Transaction execution failed" &&
+      ExecutionErrorBumpNonceVmStateDbError.pattern.test(data)
+    ) {
+      return true;
+    }
+    return false;
+  }
+}
+
+export type ExecutionErrorBumpNonceVmMutableCallInStaticContextErrorType = {
+  name: "ExecutionErrorBumpNonceVmMutableCallInStaticContext";
+} & ExecutionErrorBumpNonceVmMutableCallInStaticContextError;
+
+// MutableCallInStaticContext
+export class ExecutionErrorBumpNonceVmMutableCallInStaticContextError extends CallExecutionError {
+  override name = "ExecutionErrorBumpNonceVmMutableCallInStaticContext";
+  static pattern = /Mutable call in static context/;
+  constructor(message: string, data?: any) {
+    super(message, data);
+  }
+
+  static override parseError(message: string, data?: any): boolean {
+    if (
+      message === "Transaction execution failed" &&
+      ExecutionErrorBumpNonceVmMutableCallInStaticContextError.pattern.test(
+        data
+      )
+    ) {
+      return true;
+    }
+    return false;
+  }
+}
+
+// Wasm
+export type ExecutionErrorBumpNonceVmWasmErrorType = {
+  name: "ExecutionErrorBumpNonceVmWasm";
+} & ExecutionErrorBumpNonceVmWasmError;
+
+export class ExecutionErrorBumpNonceVmWasmError extends CallExecutionError {
+  override name = "ExecutionErrorBumpNonceVmWasm";
+  static pattern = /Internal error: (.+)/;
+  constructor(message: string, data?: any) {
+    super(message, data);
+  }
+
+  static override parseError(message: string, data?: any): boolean {
+    if (
+      message === "Transaction execution failed" &&
+      ExecutionErrorBumpNonceVmWasmError.pattern.test(data)
+    ) {
+      return true;
+    }
+    return false;
+  }
+}
+
+export type ExecutionErrorBumpNonceVmOutOfBoundsErrorType = {
+  name: "ExecutionErrorBumpNonceVmOutOfBounds";
+} & ExecutionErrorBumpNonceVmOutOfBoundsError;
+
+//OutOfBounds
+export class ExecutionErrorBumpNonceVmOutOfBoundsError extends CallExecutionError {
+  override name = "ExecutionErrorBumpNonceVmOutOfBounds";
+  static pattern = /Out of bounds/;
+  constructor(message: string, data?: any) {
+    super(message, data);
+  }
+
+  static override parseError(message: string, data?: any): boolean {
+    if (
+      message === "Transaction execution failed" &&
+      ExecutionErrorBumpNonceVmOutOfBoundsError.pattern.test(data)
+    ) {
+      return true;
+    }
+    return false;
+  }
+}
+
+export type ExecutionErrorBumpNonceVmRevertedByBytecodeErrorType = {
+  name: "ExecutionErrorBumpNonceVmRevertedByBytecode";
+} & ExecutionErrorBumpNonceVmRevertedByBytecodeError;
+
+// Reverted
+export class ExecutionErrorBumpNonceVmRevertedByBytecodeError extends CallExecutionError {
+  override name = "ExecutionErrorBumpNonceVmRevertedByBytecode";
+  static pattern = /Reverted by bytecode/;
+  constructor(message: string, data?: any) {
+    super(message, data);
+  }
+
+  static override parseError(message: string, data?: any): boolean {
+    if (
+      message === "Transaction execution failed" &&
+      ExecutionErrorBumpNonceVmRevertedByBytecodeError.pattern.test(data)
+    ) {
+      return true;
+    }
+    return false;
+  }
+}
+
+export type ExecutionErrorBumpNonceVmInvalidAddressErrorType = {
+  name: "ExecutionErrorBumpNonceVmInvalidAddress";
+} & ExecutionErrorBumpNonceVmInvalidAddressError;
+
+// InvalidAddress
+
+export class ExecutionErrorBumpNonceVmInvalidAddressError extends CallExecutionError {
+  override name = "ExecutionErrorBumpNonceVmInvalidAddress";
+  static pattern = /InvalidAddress: (.+)/;
+  constructor(message: string, data?: any) {
+    super(message, data);
+  }
+
+  static override parseError(message: string, data?: any): boolean {
+    if (
+      message === "Transaction execution failed" &&
+      ExecutionErrorBumpNonceVmInvalidAddressError.pattern.test(data)
+    ) {
+      return true;
+    }
+    return false;
+  }
+}
+
+export type ExecutionErrorBumpNonceVmConflictAddressErrorType = {
+  name: "ExecutionErrorBumpNonceVmConflictAddress";
+} & ExecutionErrorBumpNonceVmConflictAddressError;
+
+// ConflictAddress
+export class ExecutionErrorBumpNonceVmConflictAddressError extends CallExecutionError {
+  override name = "ExecutionErrorBumpNonceVmConflictAddress";
+  static pattern = /Contract creation on an existing address: (.+)/;
+  constructor(message: string, data?: any) {
+    super(message, data);
+  }
+
+  static override parseError(message: string, data?: any): boolean {
+    if (
+      message === "Transaction execution failed" &&
+      ExecutionErrorBumpNonceVmConflictAddressError.pattern.test(data)
     ) {
       return true;
     }
