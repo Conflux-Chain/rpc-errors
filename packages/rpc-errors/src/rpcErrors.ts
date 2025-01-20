@@ -18,10 +18,13 @@ export class RPCError {
     if (detailErrors) {
       for (const DetailErrorClass of detailErrors) {
         if (DetailErrorClass.parseError(rpcError.message, rpcError.data)) {
-          const Error = new DetailErrorClass(rpcError.message, rpcError.data);
+          const DetailError = new DetailErrorClass(
+            rpcError.message,
+            rpcError.data
+          );
           // check the detail error code
-          if (rpcError.code === Error.code) {
-            return Error;
+          if (rpcError.code === DetailError.code) {
+            return DetailError;
           }
         }
       }
@@ -43,9 +46,8 @@ export class RPCError {
       ? registerErrors
       : [registerErrors];
 
-      
     for (const registerError of newRegisterErrors) {
-      Object.entries(registerError).forEach(([_, error]) => {
+      for (const [_, error] of Object.entries(registerError)) {
         this.registerErrorCode(error.code, error.baseError);
 
         if (this.messagePatterns.has(error.code)) {
@@ -53,7 +55,7 @@ export class RPCError {
         } else {
           this.messagePatterns.set(error.code, error.detailErrors);
         }
-      });
+      }
     }
   }
 }

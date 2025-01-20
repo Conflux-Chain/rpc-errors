@@ -11,11 +11,11 @@ export class NodeCatchUpError extends BaseError {
   static override code = -32077;
   override readonly code = -32077;
   override name = "InternalError";
-  constructor(message: string, public readonly data?: any) {
+  constructor(message: string, public readonly data = "") {
     super(-32077, message);
   }
 
-  static parseError(message: string, data?: any): boolean {
+  static parseError(message: string, data = ""): boolean {
     return true;
   }
 }

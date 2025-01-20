@@ -8,7 +8,7 @@ export class NotExecutedDropOldNonceError extends CallExecutionError {
   override name = "NotExecutedDropOldNonce";
   static pattern = /nonce is too old expected (\d+) got (\d+)/;
 
-  static override parseError(message: string, data?: any): boolean {
+  static override parseError(message: string, data = ""): boolean {
     return NotExecutedDropOldNonceError.pattern.test(data);
   }
 }
@@ -21,7 +21,7 @@ export class NotExecutedDropInvalidRecipientAddress extends CallExecutionError {
   override name = "NotExecutedDropInvalidRecipientAddress";
   static pattern = /invalid recipient address/;
 
-  static override parseError(message: string, data?: any): boolean {
+  static override parseError(message: string, data = ""): boolean {
     return NotExecutedDropInvalidRecipientAddress.pattern.test(data);
   }
 }
@@ -35,7 +35,7 @@ export class NotExecutedDropNotEnoughGasLimitError extends CallExecutionError {
   static pattern =
     /not enough gas limit with respected to tx size: expected (\d+) got (\d+)/;
 
-  static override parseError(message: string, data?: any): boolean {
+  static override parseError(message: string, data = ""): boolean {
     return NotExecutedDropNotEnoughGasLimitError.pattern.test(data);
   }
 }
@@ -48,7 +48,7 @@ export class NotExecutedToReconsiderPackingInvalidNonceError extends CallExecuti
   override name = "NotExecutedToReconsiderPackingInvalidNonce";
 
   static pattern = /InvalidNonce \{ expected: \d+, got: \d+ \}/;
-  static override parseError(message: string, data?: any): boolean {
+  static override parseError(message: string, data = ""): boolean {
     if (
       message === "Transaction can not be executed" &&
       NotExecutedToReconsiderPackingInvalidNonceError.pattern.test(data)
@@ -68,7 +68,7 @@ export class NotExecutedToReconsiderPackingEpochHeightOutOfBoundError extends Ca
 
   static pattern =
     /EpochHeightOutOfBound \{ block_height: \d+, set: \d+, transaction_epoch_bound: \d+ \}/;
-  static override parseError(message: string, data?: any): boolean {
+  static override parseError(message: string, data = ""): boolean {
     if (
       message === "Transaction can not be executed" &&
       NotExecutedToReconsiderPackingEpochHeightOutOfBoundError.pattern.test(
@@ -89,7 +89,7 @@ export class NotExecutedToReconsiderPackingNotEnoughCashFromSponsorError extends
   override name = "NotExecutedToReconsiderPackingNotEnoughCashFromSponsor";
   static pattern =
     /NotEnoughCashFromSponsor \{ required_gas_cost: \d+, gas_sponsor_balance: \d+, required_storage_cost: \d+, storage_sponsor_balance: \d+ \}/;
-  static override parseError(message: string, data?: any): boolean {
+  static override parseError(message: string, data = ""): boolean {
     if (
       message === "Transaction can not be executed" &&
       NotExecutedToReconsiderPackingNotEnoughCashFromSponsorError.pattern.test(
@@ -109,7 +109,7 @@ export type NotExecutedToReconsiderPackingSenderDoesNotExistErrorType = {
 export class NotExecutedToReconsiderPackingSenderDoesNotExistError extends CallExecutionError {
   override name = "NotExecutedToReconsiderPackingSenderDoesNotExist";
   static pattern = /SenderDoesNotExist/;
-  static override parseError(message: string, data?: any): boolean {
+  static override parseError(message: string, data = ""): boolean {
     if (
       message === "Transaction can not be executed" &&
       NotExecutedToReconsiderPackingSenderDoesNotExistError.pattern.test(data)
@@ -127,7 +127,7 @@ export type NotExecutedToReconsiderPackingNotEnoughBaseFeeErrorType = {
 export class NotExecutedToReconsiderPackingNotEnoughBaseFeeError extends CallExecutionError {
   override name = "NotExecutedToReconsiderPackingNotEnoughBaseFee";
   static pattern = /NotEnoughBaseFee \{ expected: \d+, got: \d+ \}/;
-  static override parseError(message: string, data?: any): boolean {
+  static override parseError(message: string, data = ""): boolean {
     if (
       message === "Transaction can not be executed" &&
       NotExecutedToReconsiderPackingNotEnoughBaseFeeError.pattern.test(data)
@@ -145,7 +145,7 @@ export type ExecutionErrorBumpNonceVmRevertedErrorType = {
 export class ExecutionErrorBumpNonceVmRevertedError extends CallExecutionError {
   override name = "ExecutionErrorBumpNonceVmReverted";
   static pattern = /0x[0-9a-f]*/;
-  static override parseError(message: string, data?: any): boolean {
+  static override parseError(message: string, data = ""): boolean {
     if (
       message === "Transaction reverted" &&
       ExecutionErrorBumpNonceVmRevertedError.pattern.test(data)
@@ -164,7 +164,7 @@ export class ExecutionErrorBumpNonceNotEnoughCashError extends CallExecutionErro
   override name = "ExecutionErrorBumpNonceNotEnoughCash";
   static pattern =
     /NotEnoughCash \{ required: \d+, got: \d+, actual_gas_cost: \d+, max_storage_limit_cost: \d+ \}/;
-  static override parseError(message: string, data?: any): boolean {
+  static override parseError(message: string, data = ""): boolean {
     if (
       message === "Transaction execution failed" &&
       ExecutionErrorBumpNonceNotEnoughCashError.pattern.test(data)
@@ -184,7 +184,7 @@ export class ExecutionErrorBumpNonceVmOutOfGasError extends CallExecutionError {
   override name = "ExecutionErrorBumpNonceVmOutOfGas";
 
   static pattern = /Out of gas/;
-  static override parseError(message: string, data?: any): boolean {
+  static override parseError(message: string, data = ""): boolean {
     if (
       message === "Transaction execution failed" &&
       ExecutionErrorBumpNonceVmOutOfGasError.pattern.test(data)
@@ -203,7 +203,7 @@ export type ExecutionErrorBumpNonceVmBadJumpDestinationErrorType = {
 export class ExecutionErrorBumpNonceVmBadJumpDestinationError extends CallExecutionError {
   override name = "ExecutionErrorBumpNonceVmBadJumpDestination";
   static pattern = /Bad jump destination ([0-9a-fA-F]+)/;
-  static override parseError(message: string, data?: any): boolean {
+  static override parseError(message: string, data = ""): boolean {
     if (
       message === "Transaction execution failed" &&
       ExecutionErrorBumpNonceVmBadJumpDestinationError.pattern.test(data)
@@ -222,7 +222,7 @@ export type ExecutionErrorBumpNonceVmBadInstructionErrorType = {
 export class ExecutionErrorBumpNonceVmBadInstructionError extends CallExecutionError {
   override name = "ExecutionErrorBumpNonceVmBadInstruction";
   static pattern = /Bad instruction ([0-9a-fA-F]+)/;
-  static override parseError(message: string, data?: any): boolean {
+  static override parseError(message: string, data = ""): boolean {
     if (
       message === "Transaction execution failed" &&
       ExecutionErrorBumpNonceVmBadInstructionError.pattern.test(data)
@@ -241,7 +241,7 @@ export type ExecutionErrorBumpNonceVmStackUnderflowErrorType = {
 export class ExecutionErrorBumpNonceVmStackUnderflowError extends CallExecutionError {
   override name = "ExecutionErrorBumpNonceVmStackUnderflow";
   static pattern = /Stack underflow ([A-Z0-9]+) (\d+)\/(\d+)/;
-  static override parseError(message: string, data?: any): boolean {
+  static override parseError(message: string, data = ""): boolean {
     if (
       message === "Transaction execution failed" &&
       ExecutionErrorBumpNonceVmStackUnderflowError.pattern.test(data)
@@ -261,7 +261,7 @@ export class ExecutionErrorBumpNonceVmOutOfStackError extends CallExecutionError
   override name = "ExecutionErrorBumpNonceVmOutOfStack";
 
   static pattern = /Out of stack ([A-Z0-9]+) (\d+)\/(\d+)/;
-  static override parseError(message: string, data?: any): boolean {
+  static override parseError(message: string, data = ""): boolean {
     if (
       message === "Transaction execution failed" &&
       ExecutionErrorBumpNonceVmOutOfStackError.pattern.test(data)
@@ -281,7 +281,7 @@ export type ExecutionErrorBumpNonceVmSubStackUnderflowErrorType = {
 export class ExecutionErrorBumpNonceVmSubStackUnderflowError extends CallExecutionError {
   override name = "ExecutionErrorBumpNonceVmSubStackUnderflow";
   static pattern = /Subroutine stack underflow (\d+)\/(\d+)/;
-  static override parseError(message: string, data?: any): boolean {
+  static override parseError(message: string, data = ""): boolean {
     if (
       message === "Transaction execution failed" &&
       ExecutionErrorBumpNonceVmSubStackUnderflowError.pattern.test(data)
@@ -300,7 +300,7 @@ export type ExecutionErrorBumpNonceVmOutOfSubStackErrorType = {
 export class ExecutionErrorBumpNonceVmOutOfSubStackError extends CallExecutionError {
   override name = "ExecutionErrorBumpNonceVmOutOfSubStack";
   static pattern = /Out of subroutine stack (\d+)\/(\d+)/;
-  static override parseError(message: string, data?: any): boolean {
+  static override parseError(message: string, data = ""): boolean {
     if (
       message === "Transaction execution failed" &&
       ExecutionErrorBumpNonceVmOutOfSubStackError.pattern.test(data)
@@ -319,7 +319,7 @@ export type ExecutionErrorBumpNonceVmInvalidSubEntryErrorType = {
 export class ExecutionErrorBumpNonceVmInvalidSubEntryError extends CallExecutionError {
   override name = "ExecutionErrorBumpNonceVmInvalidSubEntry";
   static pattern = /Invalid Subroutine Entry via BEGINSUB/;
-  static override parseError(message: string, data?: any): boolean {
+  static override parseError(message: string, data = ""): boolean {
     if (
       message === "Transaction execution failed" &&
       ExecutionErrorBumpNonceVmInvalidSubEntryError.pattern.test(data)
@@ -339,7 +339,7 @@ export class ExecutionErrorBumpNonceVmNotEnoughBalanceForStorageError extends Ca
   override name = "ExecutionErrorBumpNonceVmNotEnoughBalanceForStorage";
   static pattern = /Not enough balance for storage (\d+)\/(\d+)/;
 
-  static override parseError(message: string, data?: any): boolean {
+  static override parseError(message: string, data = ""): boolean {
     if (
       message === "Transaction execution failed" &&
       ExecutionErrorBumpNonceVmNotEnoughBalanceForStorageError.pattern.test(
@@ -361,7 +361,7 @@ export class ExecutionErrorBumpNonceVmExceedStorageLimitError extends CallExecut
   override name = "ExecutionErrorBumpNonceVmExceedStorageLimit";
   static pattern = /Exceed storage limit/;
 
-  static override parseError(message: string, data?: any): boolean {
+  static override parseError(message: string, data = ""): boolean {
     if (
       message === "Transaction execution failed" &&
       ExecutionErrorBumpNonceVmExceedStorageLimitError.pattern.test(data)
@@ -381,7 +381,7 @@ export class ExecutionErrorBumpNonceVmBuiltInError extends CallExecutionError {
   override name = "ExecutionErrorBumpNonceVmBuiltIn";
   static pattern = /Built-in failed: (.+)/;
 
-  static override parseError(message: string, data?: any): boolean {
+  static override parseError(message: string, data = ""): boolean {
     if (
       message === "Transaction execution failed" &&
       ExecutionErrorBumpNonceVmBuiltInError.pattern.test(data)
@@ -401,7 +401,7 @@ export class ExecutionErrorBumpNonceVmInternalContractError extends CallExecutio
   override name = "ExecutionErrorBumpNonceVmInternalContract";
   static pattern = /InternalContract failed: (.+)/;
 
-  static override parseError(message: string, data?: any): boolean {
+  static override parseError(message: string, data = ""): boolean {
     if (
       message === "Transaction execution failed" &&
       ExecutionErrorBumpNonceVmInternalContractError.pattern.test(data)
@@ -422,7 +422,7 @@ export class ExecutionErrorBumpNonceVmStateDbError extends CallExecutionError {
   override name = "ExecutionErrorBumpNonceVmStateDb";
   static pattern = /Irrecoverable state db error: (.+)/;
 
-  static override parseError(message: string, data?: any): boolean {
+  static override parseError(message: string, data = ""): boolean {
     if (
       message === "Transaction execution failed" &&
       ExecutionErrorBumpNonceVmStateDbError.pattern.test(data)
@@ -442,7 +442,7 @@ export class ExecutionErrorBumpNonceVmMutableCallInStaticContextError extends Ca
   override name = "ExecutionErrorBumpNonceVmMutableCallInStaticContext";
   static pattern = /Mutable call in static context/;
 
-  static override parseError(message: string, data?: any): boolean {
+  static override parseError(message: string, data = ""): boolean {
     if (
       message === "Transaction execution failed" &&
       ExecutionErrorBumpNonceVmMutableCallInStaticContextError.pattern.test(
@@ -464,7 +464,7 @@ export class ExecutionErrorBumpNonceVmWasmError extends CallExecutionError {
   override name = "ExecutionErrorBumpNonceVmWasm";
   static pattern = /Internal error: (.+)/;
 
-  static override parseError(message: string, data?: any): boolean {
+  static override parseError(message: string, data = ""): boolean {
     if (
       message === "Transaction execution failed" &&
       ExecutionErrorBumpNonceVmWasmError.pattern.test(data)
@@ -484,7 +484,7 @@ export class ExecutionErrorBumpNonceVmOutOfBoundsError extends CallExecutionErro
   override name = "ExecutionErrorBumpNonceVmOutOfBounds";
   static pattern = /Out of bounds/;
 
-  static override parseError(message: string, data?: any): boolean {
+  static override parseError(message: string, data = ""): boolean {
     if (
       message === "Transaction execution failed" &&
       ExecutionErrorBumpNonceVmOutOfBoundsError.pattern.test(data)
@@ -504,7 +504,7 @@ export class ExecutionErrorBumpNonceVmRevertedByBytecodeError extends CallExecut
   override name = "ExecutionErrorBumpNonceVmRevertedByBytecode";
   static pattern = /Reverted by bytecode/;
 
-  static override parseError(message: string, data?: any): boolean {
+  static override parseError(message: string, data = ""): boolean {
     if (
       message === "Transaction execution failed" &&
       ExecutionErrorBumpNonceVmRevertedByBytecodeError.pattern.test(data)
@@ -525,7 +525,7 @@ export class ExecutionErrorBumpNonceVmInvalidAddressError extends CallExecutionE
   override name = "ExecutionErrorBumpNonceVmInvalidAddress";
   static pattern = /InvalidAddress: (.+)/;
 
-  static override parseError(message: string, data?: any): boolean {
+  static override parseError(message: string, data = ""): boolean {
     if (
       message === "Transaction execution failed" &&
       ExecutionErrorBumpNonceVmInvalidAddressError.pattern.test(data)
@@ -545,7 +545,7 @@ export class ExecutionErrorBumpNonceVmConflictAddressError extends CallExecution
   override name = "ExecutionErrorBumpNonceVmConflictAddress";
   static pattern = /Contract creation on an existing address: (.+)/;
 
-  static override parseError(message: string, data?: any): boolean {
+  static override parseError(message: string, data = ""): boolean {
     if (
       message === "Transaction execution failed" &&
       ExecutionErrorBumpNonceVmConflictAddressError.pattern.test(data)

@@ -8,7 +8,7 @@ export class InvalidEpochTypeError extends InvalidParamsError {
   static pattern =
     /expected an epoch number or 'latest_mined', 'latest_state', 'latest_checkpoint', 'latest_finalized', 'latest_confirmed'/;
 
-  static override parseError(message: string, data?: any): boolean {
+  static override parseError(message: string, data = ""): boolean {
     return InvalidEpochTypeError.pattern.test(message);
   }
 }
@@ -20,7 +20,7 @@ export class EpochNumberTooLargeError extends InvalidParamsError {
   override name = "EpochNumberTooLarge";
   static pattern = /expected a numbers with less than largest epoch number/;
 
-  static override parseError(message: string, data?: any): boolean {
+  static override parseError(message: string, data = ""): boolean {
     return EpochNumberTooLargeError.pattern.test(message);
   }
 }
@@ -33,7 +33,7 @@ export class EmptyEpochStringError extends InvalidParamsError {
   static pattern =
     /Invalid epoch number: cannot parse integer from empty string/;
 
-  static override parseError(message: string, data?: any): boolean {
+  static override parseError(message: string, data = ""): boolean {
     return EmptyEpochStringError.pattern.test(message);
   }
 }
@@ -45,7 +45,7 @@ export class InvalidDigitEpochError extends InvalidParamsError {
   override name = "InvalidDigitEpoch";
   static pattern = /invalid digit found in string/;
 
-  static override parseError(message: string, data?: any): boolean {
+  static override parseError(message: string, data = ""): boolean {
     return InvalidDigitEpochError.pattern.test(message);
   }
 }
@@ -58,7 +58,7 @@ export class MissingHexPrefixError extends InvalidParamsError {
   override name = "MissingHexPrefix";
   static pattern = /missing 0x prefix/;
 
-  static override parseError(message: string, data?: any): boolean {
+  static override parseError(message: string, data = ""): boolean {
     return MissingHexPrefixError.pattern.test(message);
   }
 }
@@ -72,7 +72,7 @@ export class SpecifiedEpochNotExecutedError extends InvalidParamsError {
   static pattern =
     /Specified epoch (.*) is not executed, the latest state epoch is/;
 
-  static override parseError(message: string, data?: any): boolean {
+  static override parseError(message: string, data = ""): boolean {
     return SpecifiedEpochNotExecutedError.pattern.test(data);
   }
 }
@@ -84,7 +84,7 @@ export class LatestMinedNotExecutedError extends InvalidParamsError {
   override name = "LatestMinedNotExecuted";
   static pattern = /Latest mined epoch is not executed/;
 
-  static override parseError(message: string, data?: any): boolean {
+  static override parseError(message: string, data = ""): boolean {
     return LatestMinedNotExecutedError.pattern.test(data);
   }
 }

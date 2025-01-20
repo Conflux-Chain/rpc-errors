@@ -8,10 +8,10 @@ export class InvalidParamsError extends BaseError {
   static override code = -32602;
   override readonly code = InvalidParamsError.code;
   override name = "InvalidParams";
-  constructor(message: string, public readonly data?: any) {
+  constructor(message: string, public readonly data = "") {
     super(InvalidParamsError.code, message);
   }
-  static parseError(message: string, data?: any): boolean {
+  static parseError(message: string, data = ""): boolean {
     return  true
   }
 }
