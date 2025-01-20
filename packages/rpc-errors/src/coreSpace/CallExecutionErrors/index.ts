@@ -1,4 +1,4 @@
-import { RegisterErrorsType } from "../../types";
+import type { RegisterErrorsType } from "../../types";
 import { CallExecutionError } from "./callExecution";
 import {
   ExecutionErrorBumpNonceNotEnoughCashError,

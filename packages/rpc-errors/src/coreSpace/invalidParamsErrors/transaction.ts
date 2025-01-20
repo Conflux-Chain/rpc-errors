@@ -1,4 +1,4 @@
-import exp from "constants";
+import exp from "node:constants";
 import { InvalidParamsError } from "./invalidParams";
 
 export type RlpIsTooShortErrorType = {
@@ -7,10 +7,6 @@ export type RlpIsTooShortErrorType = {
 export class RlpIsTooShortError extends InvalidParamsError {
   override name = "RlpIsTooShort";
   static pattern = /RlpIsTooShort/;
-
-  constructor(message: string, data?: any) {
-    super(message, data);
-  }
 
   static override parseError(message: string, data?: any): boolean {
     return RlpIsTooShortError.pattern.test(data);
@@ -25,10 +21,6 @@ export class RlpInvalidLengthError extends InvalidParamsError {
   override name = "RlpInvalidLength";
   static pattern = /RlpInvalidLength/;
 
-  constructor(message: string, data?: any) {
-    super(message, data);
-  }
-
   static override parseError(message: string, data?: any): boolean {
     return RlpInvalidLengthError.pattern.test(data);
   }
@@ -41,10 +33,6 @@ export type UnrecoverablePubkeyErrorType = {
 export class UnrecoverablePubkeyError extends InvalidParamsError {
   override name = "UnrecoverablePubkey";
   static pattern = /Can not recover pubkey for Ethereum like tx/;
-
-  constructor(message: string, data?: any) {
-    super(message, data);
-  }
   static override parseError(message: string, data?: any): boolean {
     return UnrecoverablePubkeyError.pattern.test(data);
   }
@@ -58,10 +46,6 @@ export class TransactionAlreadyExistError extends InvalidParamsError {
   override name = "TransactionAlreadyExist";
   static pattern = /tx already exist/;
 
-  constructor(message: string, data?: any) {
-    super(message, data);
-  }
-
   static override parseError(message: string, data?: any): boolean {
     return TransactionAlreadyExistError.pattern.test(data);
   }
@@ -74,10 +58,6 @@ export type TransactionTooBigErrorType = {
 export class TransactionTooBigError extends InvalidParamsError {
   override name = "TransactionTooBig";
   static pattern = /TooBig/;
-
-  constructor(message: string, data?: any) {
-    super(message, data);
-  }
 
   static override parseError(message: string, data?: any): boolean {
     return TransactionTooBigError.pattern.test(data);
@@ -93,10 +73,6 @@ export class TransactionChainIdMismatchError extends InvalidParamsError {
   static pattern =
     /ChainIdMismatch\s*{\s*expected:\s*(\d+),\s*got:\s*(\d+),\s*space:\s*(\w+)\s*}/;
 
-  constructor(message: string, data?: any) {
-    super(message, data);
-  }
-
   static override parseError(message: string, data?: any): boolean {
     return TransactionChainIdMismatchError.pattern.test(data);
   }
@@ -109,10 +85,6 @@ export type TransactionZeroGasPriceErrorType = {
 export class TransactionZeroGasPriceError extends InvalidParamsError {
   override name = "TransactionZeroGasPrice";
   static pattern = /ZeroGasPrice/;
-
-  constructor(message: string, data?: any) {
-    super(message, data);
-  }
 
   static override parseError(message: string, data?: any): boolean {
     return TransactionZeroGasPriceError.pattern.test(data);
@@ -127,10 +99,6 @@ export class TransactionInvalidReceiverError extends InvalidParamsError {
   override name = "TransactionInvalidReceiver";
   static pattern = /InvalidReceiver/;
 
-  constructor(message: string, data?: any) {
-    super(message, data);
-  }
-
   static override parseError(message: string, data?: any): boolean {
     return TransactionInvalidReceiverError.pattern.test(data);
   }
@@ -143,9 +111,6 @@ export type TransactionNotEnoughBaseGasErrorType = {
 export class TransactionNotEnoughBaseGasError extends InvalidParamsError {
   override name = "TransactionNotEnoughBaseGas";
   static pattern = /NotEnoughBaseGas \{ required: \d+, got: \d+ \}/;
-  constructor(message: string, data?: any) {
-    super(message, data);
-  }
 
   static override parseError(message: string, data?: any): boolean {
     return TransactionNotEnoughBaseGasError.pattern.test(data);
@@ -160,10 +125,6 @@ export class TransactionNonceTooDistantError extends InvalidParamsError {
   override name = "TransactionNonceTooDistant";
   static pattern =
     /Transaction 0x[a-fA-F0-9]+ is discarded due to in too distant future/;
-
-  constructor(message: string, data?: any) {
-    super(message, data);
-  }
 
   static override parseError(message: string, data?: any): boolean {
     return TransactionNonceTooDistantError.pattern.test(data);
@@ -182,10 +143,6 @@ export class GasLimitExceededError extends InvalidParamsError {
   override name = "GasLimitExceeded";
   static pattern = /transaction gas (\d+) exceeds the maximum value (\d+)/;
 
-  constructor(message: string, data?: any) {
-    super(message, data);
-  }
-
   static override parseError(message: string, data?: any): boolean {
     return GasLimitExceededError.pattern.test(data);
   }
@@ -200,10 +157,6 @@ export class NonceTooDistantError extends InvalidParamsError {
 
   static pattern =
     /Transaction (0x[0-9a-fA-F]+) is discarded due to in too distant future/;
-
-  constructor(message: string, data?: any) {
-    super(message, data);
-  }
   static override parseError(message: string, data?: any): boolean {
     return NonceTooDistantError.pattern.test(data);
   }
@@ -218,10 +171,6 @@ export class NonceTooStaleError extends InvalidParamsError {
 
   static pattern =
     /Transaction (0x[0-9a-fA-F]+) is discarded due to a too stale nonce/;
-
-  constructor(message: string, data?: any) {
-    super(message, data);
-  }
   static override parseError(message: string, data?: any): boolean {
     return NonceTooStaleError.pattern.test(data);
   }
@@ -235,9 +184,6 @@ export class OutOfBalanceError extends InvalidParamsError {
   override name = "OutOfBalance";
   static pattern =
     /Transaction (0x[0-9a-fA-F]+) is discarded due to out of balance, needs (\d+) but account balance is (\d+)/;
-  constructor(message: string, data?: any) {
-    super(message, data);
-  }
   static override parseError(message: string, data?: any): boolean {
     return OutOfBalanceError.pattern.test(data);
   }
@@ -250,9 +196,6 @@ export type TxPoolFullErrorType = {
 export class TxPoolFullError extends InvalidParamsError {
   override name = "TxPoolFull";
   static pattern = /txpool is full/;
-  constructor(message: string, data?: any) {
-    super(message, data);
-  }
 
   static override parseError(message: string, data?: any): boolean {
     return TxPoolFullError.pattern.test(data);
@@ -267,9 +210,6 @@ export class HigherGasPriceNeededError extends InvalidParamsError {
   override name = "HigherGasPriceNeeded";
   static pattern =
     /Tx with same nonce already inserted. To replace it, you need to specify a gas price > (\d+)/;
-  constructor(message: string, data?: any) {
-    super(message, data);
-  }
 
   static override parseError(message: string, data?: any): boolean {
     return HigherGasPriceNeededError.pattern.test(data);
@@ -283,9 +223,6 @@ export type StateDbErrorType = {
 export class StateDbError extends InvalidParamsError {
   override name = "StateDbError";
   static pattern = /StateDbError/;
-  constructor(message: string, data?: any) {
-    super(message, data);
-  }
 
   static override parseError(message: string, data?: any): boolean {
     return StateDbError.pattern.test(data);

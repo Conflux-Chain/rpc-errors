@@ -7,9 +7,6 @@ export type NotExecutedDropOldNonceErrorType = {
 export class NotExecutedDropOldNonceError extends CallExecutionError {
   override name = "NotExecutedDropOldNonce";
   static pattern = /nonce is too old expected (\d+) got (\d+)/;
-  constructor(message: string, data?: any) {
-    super(message, data);
-  }
 
   static override parseError(message: string, data?: any): boolean {
     return NotExecutedDropOldNonceError.pattern.test(data);
@@ -23,9 +20,6 @@ export type NotExecutedDropInvalidRecipientAddressType = {
 export class NotExecutedDropInvalidRecipientAddress extends CallExecutionError {
   override name = "NotExecutedDropInvalidRecipientAddress";
   static pattern = /invalid recipient address/;
-  constructor(message: string, data?: any) {
-    super(message, data);
-  }
 
   static override parseError(message: string, data?: any): boolean {
     return NotExecutedDropInvalidRecipientAddress.pattern.test(data);
@@ -40,9 +34,6 @@ export class NotExecutedDropNotEnoughGasLimitError extends CallExecutionError {
   override name = "NotExecutedDropNotEnoughGasLimit";
   static pattern =
     /not enough gas limit with respected to tx size: expected (\d+) got (\d+)/;
-  constructor(message: string, data?: any) {
-    super(message, data);
-  }
 
   static override parseError(message: string, data?: any): boolean {
     return NotExecutedDropNotEnoughGasLimitError.pattern.test(data);
@@ -55,10 +46,6 @@ export type NotExecutedToReconsiderPackingInvalidNonceErrorType = {
 
 export class NotExecutedToReconsiderPackingInvalidNonceError extends CallExecutionError {
   override name = "NotExecutedToReconsiderPackingInvalidNonce";
-
-  constructor(message: string, data?: any) {
-    super(message, data);
-  }
 
   static pattern = /InvalidNonce \{ expected: \d+, got: \d+ \}/;
   static override parseError(message: string, data?: any): boolean {
@@ -81,10 +68,6 @@ export class NotExecutedToReconsiderPackingEpochHeightOutOfBoundError extends Ca
 
   static pattern =
     /EpochHeightOutOfBound \{ block_height: \d+, set: \d+, transaction_epoch_bound: \d+ \}/;
-
-  constructor(message: string, data?: any) {
-    super(message, data);
-  }
   static override parseError(message: string, data?: any): boolean {
     if (
       message === "Transaction can not be executed" &&
@@ -106,9 +89,6 @@ export class NotExecutedToReconsiderPackingNotEnoughCashFromSponsorError extends
   override name = "NotExecutedToReconsiderPackingNotEnoughCashFromSponsor";
   static pattern =
     /NotEnoughCashFromSponsor \{ required_gas_cost: \d+, gas_sponsor_balance: \d+, required_storage_cost: \d+, storage_sponsor_balance: \d+ \}/;
-  constructor(message: string, data?: any) {
-    super(message, data);
-  }
   static override parseError(message: string, data?: any): boolean {
     if (
       message === "Transaction can not be executed" &&
@@ -129,9 +109,6 @@ export type NotExecutedToReconsiderPackingSenderDoesNotExistErrorType = {
 export class NotExecutedToReconsiderPackingSenderDoesNotExistError extends CallExecutionError {
   override name = "NotExecutedToReconsiderPackingSenderDoesNotExist";
   static pattern = /SenderDoesNotExist/;
-  constructor(message: string, data?: any) {
-    super(message, data);
-  }
   static override parseError(message: string, data?: any): boolean {
     if (
       message === "Transaction can not be executed" &&
@@ -150,9 +127,6 @@ export type NotExecutedToReconsiderPackingNotEnoughBaseFeeErrorType = {
 export class NotExecutedToReconsiderPackingNotEnoughBaseFeeError extends CallExecutionError {
   override name = "NotExecutedToReconsiderPackingNotEnoughBaseFee";
   static pattern = /NotEnoughBaseFee \{ expected: \d+, got: \d+ \}/;
-  constructor(message: string, data?: any) {
-    super(message, data);
-  }
   static override parseError(message: string, data?: any): boolean {
     if (
       message === "Transaction can not be executed" &&
@@ -171,9 +145,6 @@ export type ExecutionErrorBumpNonceVmRevertedErrorType = {
 export class ExecutionErrorBumpNonceVmRevertedError extends CallExecutionError {
   override name = "ExecutionErrorBumpNonceVmReverted";
   static pattern = /0x[0-9a-f]*/;
-  constructor(message: string, data?: any) {
-    super(message, data);
-  }
   static override parseError(message: string, data?: any): boolean {
     if (
       message === "Transaction reverted" &&
@@ -193,9 +164,6 @@ export class ExecutionErrorBumpNonceNotEnoughCashError extends CallExecutionErro
   override name = "ExecutionErrorBumpNonceNotEnoughCash";
   static pattern =
     /NotEnoughCash \{ required: \d+, got: \d+, actual_gas_cost: \d+, max_storage_limit_cost: \d+ \}/;
-  constructor(message: string, data?: any) {
-    super(message, data);
-  }
   static override parseError(message: string, data?: any): boolean {
     if (
       message === "Transaction execution failed" &&
@@ -216,10 +184,6 @@ export class ExecutionErrorBumpNonceVmOutOfGasError extends CallExecutionError {
   override name = "ExecutionErrorBumpNonceVmOutOfGas";
 
   static pattern = /Out of gas/;
-
-  constructor(message: string, data?: any) {
-    super(message, data);
-  }
   static override parseError(message: string, data?: any): boolean {
     if (
       message === "Transaction execution failed" &&
@@ -239,9 +203,6 @@ export type ExecutionErrorBumpNonceVmBadJumpDestinationErrorType = {
 export class ExecutionErrorBumpNonceVmBadJumpDestinationError extends CallExecutionError {
   override name = "ExecutionErrorBumpNonceVmBadJumpDestination";
   static pattern = /Bad jump destination ([0-9a-fA-F]+)/;
-  constructor(message: string, data?: any) {
-    super(message, data);
-  }
   static override parseError(message: string, data?: any): boolean {
     if (
       message === "Transaction execution failed" &&
@@ -261,9 +222,6 @@ export type ExecutionErrorBumpNonceVmBadInstructionErrorType = {
 export class ExecutionErrorBumpNonceVmBadInstructionError extends CallExecutionError {
   override name = "ExecutionErrorBumpNonceVmBadInstruction";
   static pattern = /Bad instruction ([0-9a-fA-F]+)/;
-  constructor(message: string, data?: any) {
-    super(message, data);
-  }
   static override parseError(message: string, data?: any): boolean {
     if (
       message === "Transaction execution failed" &&
@@ -283,9 +241,6 @@ export type ExecutionErrorBumpNonceVmStackUnderflowErrorType = {
 export class ExecutionErrorBumpNonceVmStackUnderflowError extends CallExecutionError {
   override name = "ExecutionErrorBumpNonceVmStackUnderflow";
   static pattern = /Stack underflow ([A-Z0-9]+) (\d+)\/(\d+)/;
-  constructor(message: string, data?: any) {
-    super(message, data);
-  }
   static override parseError(message: string, data?: any): boolean {
     if (
       message === "Transaction execution failed" &&
@@ -306,9 +261,6 @@ export class ExecutionErrorBumpNonceVmOutOfStackError extends CallExecutionError
   override name = "ExecutionErrorBumpNonceVmOutOfStack";
 
   static pattern = /Out of stack ([A-Z0-9]+) (\d+)\/(\d+)/;
-  constructor(message: string, data?: any) {
-    super(message, data);
-  }
   static override parseError(message: string, data?: any): boolean {
     if (
       message === "Transaction execution failed" &&
@@ -329,9 +281,6 @@ export type ExecutionErrorBumpNonceVmSubStackUnderflowErrorType = {
 export class ExecutionErrorBumpNonceVmSubStackUnderflowError extends CallExecutionError {
   override name = "ExecutionErrorBumpNonceVmSubStackUnderflow";
   static pattern = /Subroutine stack underflow (\d+)\/(\d+)/;
-  constructor(message: string, data?: any) {
-    super(message, data);
-  }
   static override parseError(message: string, data?: any): boolean {
     if (
       message === "Transaction execution failed" &&
@@ -351,10 +300,6 @@ export type ExecutionErrorBumpNonceVmOutOfSubStackErrorType = {
 export class ExecutionErrorBumpNonceVmOutOfSubStackError extends CallExecutionError {
   override name = "ExecutionErrorBumpNonceVmOutOfSubStack";
   static pattern = /Out of subroutine stack (\d+)\/(\d+)/;
-
-  constructor(message: string, data?: any) {
-    super(message, data);
-  }
   static override parseError(message: string, data?: any): boolean {
     if (
       message === "Transaction execution failed" &&
@@ -374,9 +319,6 @@ export type ExecutionErrorBumpNonceVmInvalidSubEntryErrorType = {
 export class ExecutionErrorBumpNonceVmInvalidSubEntryError extends CallExecutionError {
   override name = "ExecutionErrorBumpNonceVmInvalidSubEntry";
   static pattern = /Invalid Subroutine Entry via BEGINSUB/;
-  constructor(message: string, data?: any) {
-    super(message, data);
-  }
   static override parseError(message: string, data?: any): boolean {
     if (
       message === "Transaction execution failed" &&
@@ -396,9 +338,6 @@ export type ExecutionErrorBumpNonceVmNotEnoughBalanceForStorageErrorType = {
 export class ExecutionErrorBumpNonceVmNotEnoughBalanceForStorageError extends CallExecutionError {
   override name = "ExecutionErrorBumpNonceVmNotEnoughBalanceForStorage";
   static pattern = /Not enough balance for storage (\d+)\/(\d+)/;
-  constructor(message: string, data?: any) {
-    super(message, data);
-  }
 
   static override parseError(message: string, data?: any): boolean {
     if (
@@ -421,9 +360,6 @@ export type ExecutionErrorBumpNonceVmExceedStorageLimitErrorType = {
 export class ExecutionErrorBumpNonceVmExceedStorageLimitError extends CallExecutionError {
   override name = "ExecutionErrorBumpNonceVmExceedStorageLimit";
   static pattern = /Exceed storage limit/;
-  constructor(message: string, data?: any) {
-    super(message, data);
-  }
 
   static override parseError(message: string, data?: any): boolean {
     if (
@@ -444,9 +380,6 @@ export type ExecutionErrorBumpNonceVmBuiltInErrorType = {
 export class ExecutionErrorBumpNonceVmBuiltInError extends CallExecutionError {
   override name = "ExecutionErrorBumpNonceVmBuiltIn";
   static pattern = /Built-in failed: (.+)/;
-  constructor(message: string, data?: any) {
-    super(message, data);
-  }
 
   static override parseError(message: string, data?: any): boolean {
     if (
@@ -467,9 +400,6 @@ export type ExecutionErrorBumpNonceVmInternalContractErrorType = {
 export class ExecutionErrorBumpNonceVmInternalContractError extends CallExecutionError {
   override name = "ExecutionErrorBumpNonceVmInternalContract";
   static pattern = /InternalContract failed: (.+)/;
-  constructor(message: string, data?: any) {
-    super(message, data);
-  }
 
   static override parseError(message: string, data?: any): boolean {
     if (
@@ -491,9 +421,6 @@ export type ExecutionErrorBumpNonceVmStateDbErrorType = {
 export class ExecutionErrorBumpNonceVmStateDbError extends CallExecutionError {
   override name = "ExecutionErrorBumpNonceVmStateDb";
   static pattern = /Irrecoverable state db error: (.+)/;
-  constructor(message: string, data?: any) {
-    super(message, data);
-  }
 
   static override parseError(message: string, data?: any): boolean {
     if (
@@ -514,9 +441,6 @@ export type ExecutionErrorBumpNonceVmMutableCallInStaticContextErrorType = {
 export class ExecutionErrorBumpNonceVmMutableCallInStaticContextError extends CallExecutionError {
   override name = "ExecutionErrorBumpNonceVmMutableCallInStaticContext";
   static pattern = /Mutable call in static context/;
-  constructor(message: string, data?: any) {
-    super(message, data);
-  }
 
   static override parseError(message: string, data?: any): boolean {
     if (
@@ -539,9 +463,6 @@ export type ExecutionErrorBumpNonceVmWasmErrorType = {
 export class ExecutionErrorBumpNonceVmWasmError extends CallExecutionError {
   override name = "ExecutionErrorBumpNonceVmWasm";
   static pattern = /Internal error: (.+)/;
-  constructor(message: string, data?: any) {
-    super(message, data);
-  }
 
   static override parseError(message: string, data?: any): boolean {
     if (
@@ -562,9 +483,6 @@ export type ExecutionErrorBumpNonceVmOutOfBoundsErrorType = {
 export class ExecutionErrorBumpNonceVmOutOfBoundsError extends CallExecutionError {
   override name = "ExecutionErrorBumpNonceVmOutOfBounds";
   static pattern = /Out of bounds/;
-  constructor(message: string, data?: any) {
-    super(message, data);
-  }
 
   static override parseError(message: string, data?: any): boolean {
     if (
@@ -585,9 +503,6 @@ export type ExecutionErrorBumpNonceVmRevertedByBytecodeErrorType = {
 export class ExecutionErrorBumpNonceVmRevertedByBytecodeError extends CallExecutionError {
   override name = "ExecutionErrorBumpNonceVmRevertedByBytecode";
   static pattern = /Reverted by bytecode/;
-  constructor(message: string, data?: any) {
-    super(message, data);
-  }
 
   static override parseError(message: string, data?: any): boolean {
     if (
@@ -609,9 +524,6 @@ export type ExecutionErrorBumpNonceVmInvalidAddressErrorType = {
 export class ExecutionErrorBumpNonceVmInvalidAddressError extends CallExecutionError {
   override name = "ExecutionErrorBumpNonceVmInvalidAddress";
   static pattern = /InvalidAddress: (.+)/;
-  constructor(message: string, data?: any) {
-    super(message, data);
-  }
 
   static override parseError(message: string, data?: any): boolean {
     if (
@@ -632,9 +544,6 @@ export type ExecutionErrorBumpNonceVmConflictAddressErrorType = {
 export class ExecutionErrorBumpNonceVmConflictAddressError extends CallExecutionError {
   override name = "ExecutionErrorBumpNonceVmConflictAddress";
   static pattern = /Contract creation on an existing address: (.+)/;
-  constructor(message: string, data?: any) {
-    super(message, data);
-  }
 
   static override parseError(message: string, data?: any): boolean {
     if (

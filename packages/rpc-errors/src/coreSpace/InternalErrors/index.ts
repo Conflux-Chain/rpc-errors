@@ -1,4 +1,4 @@
-import { RegisterErrorsType } from "../../types";
+import type { RegisterErrorsType } from "../../types";
 import { NonExistentBlockHeaderError } from "./fee";
 import { InternalError } from "./Internal";
 

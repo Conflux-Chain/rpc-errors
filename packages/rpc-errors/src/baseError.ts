@@ -6,7 +6,7 @@ export interface BaseErrorType {
 export class BaseError extends Error {
   readonly code: number;
   static readonly code: number;
-  override name: string = "BaseError";
+  override name = "BaseError";
   constructor(code: number, message: string) {
     super(message);
     this.code = code;

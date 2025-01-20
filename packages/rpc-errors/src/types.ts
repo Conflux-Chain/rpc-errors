@@ -1,4 +1,4 @@
-import { BaseError } from "./baseError";
+import type { BaseError } from "./baseError";
 
 export interface ErrorClassType {
   new (message: string, data?: any): BaseError;

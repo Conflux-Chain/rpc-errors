@@ -1,5 +1,5 @@
 import net from "node:net";
-import { RpcErrorResponse, RpcResponse } from "../src/utils/request";
+import type { RpcErrorResponse, RpcResponse } from "../src/utils/request";
 import { isRpcError } from "../src/utils/isRpcError";
 
 export const TEST_ADDRESS =

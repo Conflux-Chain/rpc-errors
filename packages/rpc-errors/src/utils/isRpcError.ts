@@ -1,4 +1,4 @@
-import { RpcErrorResponse, RpcResponse } from "./request";
+import type { RpcErrorResponse, RpcResponse } from "./request";
 
 export function isRpcError(
   response: RpcResponse

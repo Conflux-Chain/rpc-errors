@@ -1,4 +1,4 @@
-import { RegisterErrorsType } from "../../types";
+import type { RegisterErrorsType } from "../../types";
 import { NodeCatchUpError } from "./nodeCatchUp";
 
 const CustomErrors: RegisterErrorsType = {

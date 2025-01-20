@@ -1,6 +1,6 @@
 import { BaseError } from "./baseError";
-import { ErrorClassType, RegisterErrorsType } from "./types";
-import { RpcErrorResponse } from "./utils/request";
+import type { ErrorClassType, RegisterErrorsType } from "./types";
+import type { RpcErrorResponse } from "./utils/request";
 
 export class RPCError {
   errorCodeMap = new Map<number, ErrorClassType>([]);
