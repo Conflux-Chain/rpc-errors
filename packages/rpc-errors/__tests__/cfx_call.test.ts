@@ -42,8 +42,8 @@ import {
   NotExecutedToReconsiderPackingNotEnoughBaseFeeError,
   NotExecutedToReconsiderPackingNotEnoughCashFromSponsorError,
   NotExecutedToReconsiderPackingSenderDoesNotExistError,
-} from "../src/coreSpace/CallExecutionErrors/executionOutcome";
-import { CallExecutionError } from "../src/coreSpace/CallExecutionErrors/callExecution";
+} from "../src/coreSpace/callExecutionErrors/executionOutcome";
+import { CallExecutionError } from "../src/coreSpace/callExecutionErrors/callExecution";
 
 let HTTP_PORT: number;
 const rpcError = new RPCError();

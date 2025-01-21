@@ -4,8 +4,8 @@ import { assertRpcError, createErrorResponse } from "./help";
 import { InvalidParamsError } from "../src/coreSpace/invalidParamsErrors/invalidParams";
 import { coreSpaceErrors, RPCError } from "../src";
 import { NonExistentBlockHeaderError } from "../src/coreSpace/invalidParamsErrors/fee";
-import { NonExistentBlockHeaderError as InternalNonExistentBlockHeaderError } from "../src/coreSpace/InternalErrors/fee";
-import { InternalError } from "../src/coreSpace/InternalErrors/Internal";
+import { NonExistentBlockHeaderError as InternalNonExistentBlockHeaderError } from "../src/coreSpace/internalErrors/fee";
+import { InternalError } from "../src/coreSpace/internalErrors/Internal";
 
 const invalid_params_error = createErrorResponse({
   code: -32602,
