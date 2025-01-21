@@ -1,5 +1,4 @@
-import { BaseError } from "../../_cjs/src";
-import { ErrorClassType, type RegisterErrorsType } from "../types";
+import type { RegisterErrorsType } from "../types";
 import CallExecutionErrors from "./callExecutionErrors";
 import CustomErrors from "./customErrors";
 import InternalErrors from "./internalErrors";

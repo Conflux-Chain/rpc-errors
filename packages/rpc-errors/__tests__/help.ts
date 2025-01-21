@@ -42,7 +42,7 @@ export function assertRpcError(
 export function createErrorResponse(error: {
   code: number;
   message: string;
-  data?: any;
+  data?: string;
 }): RpcErrorResponse {
   return {
     jsonrpc: "2.0",

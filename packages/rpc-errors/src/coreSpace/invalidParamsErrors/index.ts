@@ -2,7 +2,10 @@ import type { RegisterErrorsType } from "../../types";
 import {
   InvalidBase32AddressError,
   InvalidSize160AddressError,
+  UnexpectedRpcAddressNetworkError,
 } from "./address";
+import { BlockHashesLimitExceededError } from "./block";
+
 import {
   EmptyEpochStringError,
   EpochNumberTooLargeError,
@@ -15,6 +18,8 @@ import {
 import { NonExistentBlockHeaderError } from "./fee";
 import { InvalidHashTypeError } from "./hash";
 import { InvalidParamsError } from "./invalidParams";
+import { ExceededLogsLimitError, MissingFilterParametersError } from "./logs";
+import { ExceededTopicsLimitError } from "./topic";
 import {
   GasLimitExceededError,
   HigherGasPriceNeededError,
@@ -72,6 +77,11 @@ const InvalidParamsErrors: RegisterErrorsType = {
       NonceTooStaleError,
       OutOfBalanceError,
       HigherGasPriceNeededError,
+      UnexpectedRpcAddressNetworkError,
+      BlockHashesLimitExceededError,
+      ExceededTopicsLimitError,
+      MissingFilterParametersError,
+      ExceededLogsLimitError
     ],
   },
 };

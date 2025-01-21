@@ -1,4 +1,4 @@
-export interface RpcSuccessResponse<T = any> {
+export interface RpcSuccessResponse<T = string> {
   jsonrpc: "2.0";
   id: number | string | null;
   result: T;
@@ -12,7 +12,7 @@ export interface RpcErrorResponse {
   error: {
     code: number;
     message: string;
-    data?: any;
+    data?: string;
   };
 }
 export type JSONRPCRequest = {
@@ -22,7 +22,7 @@ export type JSONRPCRequest = {
   params: unknown;
 };
 
-export type RpcResponse<T = any> = RpcSuccessResponse<T> | RpcErrorResponse;
+export type RpcResponse<T = string> = RpcSuccessResponse<T> | RpcErrorResponse;
 
 export const createRequest = (endpoint: string) => {
   let id = 1;

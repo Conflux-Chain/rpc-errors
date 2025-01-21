@@ -94,7 +94,24 @@ InvalidParamsError occurs when incorrect parameters are provided. To correct thi
 > message: "Invalid parameters: tx \"Transaction 0xe7cb20784bbaf32b54ae1a9415c9b0fd7728ba9f4f77221c2a1b69854c04e2bc is discarded due to out of balance, needs 10000000000000000000021000 but account balance is 10000000000000000000000\"", data: "\"Transaction 0xe7cb20784bbaf32b54ae1a9415c9b0fd7728ba9f4f77221c2a1b69854c04e2bc is discarded due to out of balance, needs 10000000000000000000021000 but account balance is 10000000000000000000000\"",
 
 23. **HigherGasPriceNeeded**
+
 >  message: "Invalid parameters: tx \"Tx with same nonce already inserted. To replace it, you need to specify a gas price > 1020000000\"", data: "\"Tx with same nonce already inserted. To replace it, you need to specify a gas price > 1020000000\"",
+
+24. **BlockHashesLimitExceededError**
+
+>  message: "Invalid parameters: tx \"filter.block_hashes can contain up to 128 hashes; 150 were provided.\"", data: "\"filter.block_hashes can contain up to 128 hashes; 150 were provided.\"",
+
+25. **ExceededTopicsLimitError**
+
+>  message: "Invalid parameters: tx \"filter.topics can contain up to 4 topics; 6 were provided.\"", data: "\"filter.topics can contain up to 4 topics; 6 were provided.\"",
+
+26. **MissingFilterParametersError**
+
+>  message: "Invalid parameters: tx \"Filter must provide one of the following: (1) an epoch range through `fromEpoch` and `toEpoch`, (2) a block number range through `fromBlock` and `toBlock`, (3) a set of block hashes through `blockHashes`\"", data: "\"Filter must provide one of the following: (1) an epoch range through `fromEpoch` and `toEpoch`, (2) a block number range through `fromBlock` and `toBlock`, (3) a set of block hashes through `blockHashes`\"",
+
+27. **ExceededLogsLimitError**
+
+>  message: "Invalid parameters: tx \"This query results in too many logs, max limitation is 10000, please filter results by a smaller epoch/block range\"", data: "\"This query results in too many logs, max limitation is 10000, please filter results by a smaller epoch/block range\"",
 
 ## InternalError
 

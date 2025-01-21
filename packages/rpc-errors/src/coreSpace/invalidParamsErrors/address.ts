@@ -17,3 +17,11 @@ export class InvalidSize160AddressError extends InvalidParamsError {
     return InvalidSize160AddressError.pattern.test(message);
   }
 }
+
+export class UnexpectedRpcAddressNetworkError extends InvalidParamsError {
+  override name = "UnexpectedRpcAddressNetwork";
+  static pattern = /network prefix unexpected: ours (\w+), got (\w+)/;
+  static override parseError(message: string, data = ""): boolean {
+    return UnexpectedRpcAddressNetworkError.pattern.test(data);
+  }
+}
