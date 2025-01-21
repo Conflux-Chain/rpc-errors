@@ -12,7 +12,7 @@ export interface RpcErrorResponse {
   error: {
     code: number;
     message: string;
-    data?: string;
+    data: string;
   };
 }
 export type JSONRPCRequest = {

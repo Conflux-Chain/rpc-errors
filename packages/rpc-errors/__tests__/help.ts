@@ -39,7 +39,11 @@ export function assertRpcError(
   }
 }
 
-export function createErrorResponse(error: {
+export function createErrorResponse({
+  code,
+  message,
+  data = "",
+}: {
   code: number;
   message: string;
   data?: string;
@@ -47,6 +51,10 @@ export function createErrorResponse(error: {
   return {
     jsonrpc: "2.0",
     id: Math.random() * 100,
-    error: error,
+    error: {
+      code,
+      message,
+      data,
+    },
   };
 }
