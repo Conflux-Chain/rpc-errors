@@ -50,7 +50,7 @@ export class NotExecutedToReconsiderPackingInvalidNonceError extends CallExecuti
   static pattern = /InvalidNonce \{ expected: \d+, got: \d+ \}/;
   static override parseError(message: string, data = ""): boolean {
     if (
-      message === "Transaction can not be executed" &&
+      /(?:Can not estimate: )?transaction can not be executed/i.test(message) &&
       NotExecutedToReconsiderPackingInvalidNonceError.pattern.test(data)
     ) {
       return true;
@@ -70,7 +70,7 @@ export class NotExecutedToReconsiderPackingEpochHeightOutOfBoundError extends Ca
     /EpochHeightOutOfBound \{ block_height: \d+, set: \d+, transaction_epoch_bound: \d+ \}/;
   static override parseError(message: string, data = ""): boolean {
     if (
-      message === "Transaction can not be executed" &&
+      /(?:Can not estimate: )?transaction can not be executed/i.test(message) &&
       NotExecutedToReconsiderPackingEpochHeightOutOfBoundError.pattern.test(
         data
       )
@@ -91,7 +91,7 @@ export class NotExecutedToReconsiderPackingNotEnoughCashFromSponsorError extends
     /NotEnoughCashFromSponsor \{ required_gas_cost: \d+, gas_sponsor_balance: \d+, required_storage_cost: \d+, storage_sponsor_balance: \d+ \}/;
   static override parseError(message: string, data = ""): boolean {
     if (
-      message === "Transaction can not be executed" &&
+      /(?:Can not estimate: )?transaction can not be executed/i.test(message) &&
       NotExecutedToReconsiderPackingNotEnoughCashFromSponsorError.pattern.test(
         data
       )
@@ -111,7 +111,7 @@ export class NotExecutedToReconsiderPackingSenderDoesNotExistError extends CallE
   static pattern = /SenderDoesNotExist/;
   static override parseError(message: string, data = ""): boolean {
     if (
-      message === "Transaction can not be executed" &&
+      /(?:Can not estimate: )?transaction can not be executed/i.test(message) &&
       NotExecutedToReconsiderPackingSenderDoesNotExistError.pattern.test(data)
     ) {
       return true;
@@ -129,7 +129,7 @@ export class NotExecutedToReconsiderPackingNotEnoughBaseFeeError extends CallExe
   static pattern = /NotEnoughBaseFee \{ expected: \d+, got: \d+ \}/;
   static override parseError(message: string, data = ""): boolean {
     if (
-      message === "Transaction can not be executed" &&
+      /(?:Can not estimate: )?transaction can not be executed/i.test(message) &&
       NotExecutedToReconsiderPackingNotEnoughBaseFeeError.pattern.test(data)
     ) {
       return true;

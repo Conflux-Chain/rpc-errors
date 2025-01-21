@@ -256,3 +256,47 @@ Virtually calls a contract, returns the output data. The transaction will not be
 27. **ExecutionErrorBumpNonceVmRevertedByBytecodeError**
 28. **ExecutionErrorBumpNonceVmInvalidAddressError**
 29. **ExecutionErrorBumpNonceVmConflictAddressError**
+
+## cfx_estimateGasAndCollateral
+
+Virtually executes a transaction, returns an estimate for the size of storage collateralized and the gas used by the transaction. The transaction will not be added to the blockchain.
+
+### 1. [InvalidParamsError](./errors#invalidparamserror)
+
+1. **EpochNumberTooLargeError**
+2. **EmptyEpochStringError**
+3. **InvalidDigitEpochError**
+4. **MissingHexPrefixError**
+
+
+### 2. [ExceptionError](./errors#exceptionerror)
+
+1. **NotExecutedDropOldNonceError**
+2. **NotExecutedDropInvalidRecipientAddress**
+3. **NotExecutedDropNotEnoughGasLimitError**
+4. **NotExecutedToReconsiderPackingInvalidNonceError**
+5. **NotExecutedToReconsiderPackingEpochHeightOutOfBoundError**
+6. **NotExecutedToReconsiderPackingNotEnoughCashFromSponsorError**
+7. **NotExecutedToReconsiderPackingSenderDoesNotExist**
+8. **NotExecutedToReconsiderPackingNotEnoughBaseFeeError**
+9. **ExecutionErrorBumpNonceVmRevertedError**
+10. **ExecutionErrorBumpNonceNotEnoughCashError**
+11. **ExecutionErrorBumpNonceVmOutOfGasError**
+12. **ExecutionErrorBumpNonceVmBadJumpDestinationError**
+13. **ExecutionErrorBumpNonceVmBadInstructionError**
+14. **ExecutionErrorBumpNonceVmStackUnderflowError**
+15. **ExecutionErrorBumpNonceVmOutOfStackError**
+16. **ExecutionErrorBumpNonceVmSubStackUnderflowError**
+17. **ExecutionErrorBumpNonceVmOutOfSubStackError**
+18. **ExecutionErrorBumpNonceVmInvalidSubEntryError**
+19. **ExecutionErrorBumpNonceVmNotEnoughBalanceForStorageError**
+20. **ExecutionErrorBumpNonceVmExceedStorageLimitError**
+21. **ExecutionErrorBumpNonceVmBuiltInError**
+22. **ExecutionErrorBumpNonceVmInternalContractError**
+23. **ExecutionErrorBumpNonceVmStateDbError**
+24. **ExecutionErrorBumpNonceVmMutableCallInStaticContextError**
+25. **ExecutionErrorBumpNonceVmWasmError**
+26. **ExecutionErrorBumpNonceVmOutOfBoundsError**
+27. **ExecutionErrorBumpNonceVmRevertedByBytecodeError**
+28. **ExecutionErrorBumpNonceVmInvalidAddressError**
+29. **ExecutionErrorBumpNonceVmConflictAddressError**
