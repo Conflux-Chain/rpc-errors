@@ -375,3 +375,10 @@ Check if a user's balance is enough to send a transaction with the specified gas
 5. **MissingHexPrefixError**
 6. **UnexpectedRpcAddressNetworkError**
 7. **StorageLimitOutOfRangeError**
+
+
+## cfx_getSkippedBlocksByEpoch
+
+Returns the list of non-executed blocks in an epoch. By default, Conflux only executes the last 200 blocks in each epoch (note that under normal circumstances, epochs should be much smaller).
+
+This RPC doesn't throw an error.
