@@ -320,3 +320,17 @@ Returns logs matching the filter provided.
 ## cfx_getTransactionReceipt
 
 The cfx_getTransactionReceipt RPC doesn't throw an error.
+
+
+## cfx_getAccount
+
+Returns an account, identified by its address.
+
+### 1. [InvalidParamsError](./errors#invalidparamserror)
+
+1. **InvalidEpochTypeError**
+2. **SpecifiedEpochNotExecutedError**
+3. **EmptyEpochStringError**
+4. **InvalidDigitEpochError**
+5. **MissingHexPrefixError**
+6. **UnexpectedRpcAddressNetworkError**
