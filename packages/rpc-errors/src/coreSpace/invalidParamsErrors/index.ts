@@ -19,6 +19,7 @@ import { NonExistentBlockHeaderError } from "./fee";
 import { InvalidHashTypeError } from "./hash";
 import { InvalidParamsError } from "./invalidParams";
 import { ExceededLogsLimitError, MissingFilterParametersError } from "./logs";
+import { StorageLimitOutOfRangeError } from "./storage";
 import { ExceededTopicsLimitError } from "./topic";
 import {
   GasLimitExceededError,
@@ -81,7 +82,8 @@ const InvalidParamsErrors: RegisterErrorsType = {
       BlockHashesLimitExceededError,
       ExceededTopicsLimitError,
       MissingFilterParametersError,
-      ExceededLogsLimitError
+      ExceededLogsLimitError,
+      StorageLimitOutOfRangeError,
     ],
   },
 };

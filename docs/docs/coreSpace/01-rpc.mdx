@@ -360,3 +360,18 @@ Returns the accumulate interest rate at the given epoch.
 3. **EmptyEpochStringError**
 4. **InvalidDigitEpochError**
 5. **MissingHexPrefixError**
+
+
+## cfx_checkBalanceAgainstTransaction
+
+Check if a user's balance is enough to send a transaction with the specified gas and storage limits to the specified contract. The balance is enough if the user can cover the up-front payment of both execution and storage, or if these costs are sponsored by the contract.
+
+### 1. [InvalidParamsError](./errors#invalidparamserror)
+
+1. **InvalidEpochTypeError**
+2. **SpecifiedEpochNotExecutedError**
+3. **EmptyEpochStringError**
+4. **InvalidDigitEpochError**
+5. **MissingHexPrefixError**
+6. **UnexpectedRpcAddressNetworkError**
+7. **StorageLimitOutOfRangeError**
