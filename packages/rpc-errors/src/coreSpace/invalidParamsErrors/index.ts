@@ -6,6 +6,7 @@ import {
 } from "./address";
 import {
   BlockHashesLimitExceededError,
+  BlockNotFoundError,
   PivotChainAssumptionFailedError,
 } from "./block";
 
@@ -90,6 +91,7 @@ const InvalidParamsErrors: RegisterErrorsType = {
       StorageLimitOutOfRangeError,
       RewardNotCalculatedError,
       PivotChainAssumptionFailedError,
+      BlockNotFoundError,
     ],
   },
 };
