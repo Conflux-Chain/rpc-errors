@@ -381,4 +381,10 @@ Check if a user's balance is enough to send a transaction with the specified gas
 
 Returns the list of non-executed blocks in an epoch. By default, Conflux only executes the last 200 blocks in each epoch (note that under normal circumstances, epochs should be much smaller).
 
-This RPC doesn't throw an error.
+### 1. [InvalidParamsError](./errors#invalidparamserror)
+
+1. **Invalid parameter type**
+2. **EpochNumberTooLargeError**
+3. **EmptyEpochStringError**
+4. **InvalidDigitEpochError**
+5. **MissingHexPrefixError**
