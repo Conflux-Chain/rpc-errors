@@ -4,7 +4,10 @@ import {
   InvalidSize160AddressError,
   UnexpectedRpcAddressNetworkError,
 } from "./address";
-import { BlockHashesLimitExceededError } from "./block";
+import {
+  BlockHashesLimitExceededError,
+  PivotChainAssumptionFailedError,
+} from "./block";
 
 import {
   EmptyEpochStringError,
@@ -19,6 +22,7 @@ import { NonExistentBlockHeaderError } from "./fee";
 import { InvalidHashTypeError } from "./hash";
 import { InvalidParamsError } from "./invalidParams";
 import { ExceededLogsLimitError, MissingFilterParametersError } from "./logs";
+import { RewardNotCalculatedError } from "./reward";
 import { StorageLimitOutOfRangeError } from "./storage";
 import { ExceededTopicsLimitError } from "./topic";
 import {
@@ -84,6 +88,8 @@ const InvalidParamsErrors: RegisterErrorsType = {
       MissingFilterParametersError,
       ExceededLogsLimitError,
       StorageLimitOutOfRangeError,
+      RewardNotCalculatedError,
+      PivotChainAssumptionFailedError,
     ],
   },
 };

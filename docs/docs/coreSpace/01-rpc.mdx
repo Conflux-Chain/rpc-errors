@@ -388,3 +388,46 @@ Returns the list of non-executed blocks in an epoch. By default, Conflux only ex
 3. **EmptyEpochStringError**
 4. **InvalidDigitEpochError**
 5. **MissingHexPrefixError**
+
+## cfx_getConfirmationRiskByHash
+
+Returns the confirmation risk of a given block, identified by its hash.
+
+This RPC doesn't throw an error.
+
+
+## cfx_getStatus
+
+Returns the node status.
+
+This RPC doesn't throw an error.
+
+## cfx_clientVersion
+
+Returns the conflux-rust version.
+
+This RPC doesn't throw an error.
+
+
+
+## cfx_getBlockRewardInfo
+
+Returns the reward info for all executed blocks in the specified epoch.
+
+### 1. [InvalidParamsError](./errors#invalidparamserror)
+
+1. **InvalidEpochType**
+2. **EmptyEpochString**
+3. **InvalidDigitEpoch**
+4. **MissingHexPrefix**
+5. **RewardNotCalculated**
+
+
+## cfx_getBlockByHashWithPivotAssumption
+
+Returns the requested block if the provided pivot hash is correct, returns an error otherwise.
+
+### 1. [InvalidParamsError](./errors#invalidparamserror)
+
+1. **PivotChainAssumptionFailed**
+2. **BlockNotFound**
