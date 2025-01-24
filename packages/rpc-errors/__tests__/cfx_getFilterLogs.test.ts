@@ -31,10 +31,10 @@ beforeAll(async () => {
   return async () => await server.stop();
 });
 
-describe("cfx_getFilterChanges errors", async () => {
+describe("cfx_getFilterLogs errors", async () => {
   test("FilterNotFound", async () => {
     const request = createRequest(`http://localhost:${HTTP_PORT}`);
-    const error = await request<string>("cfx_getFilterChanges", [
+    const error = await request<string>("cfx_getFilterLogs", [
       "0x09294f7b3b63b52d3771fcafb7b7ed61",
     ]);
     expect(isRpcError(error)).toBe(true);
