@@ -489,6 +489,8 @@ Returns pending transactions in pool of one account
 
 ## cfx_getPoSEconomics
 
+Returns PoS economics summary info.
+
 ### 1. [InvalidParamsError](./errors#invalidparamserror)
 
 1. **InvalidEpochType**
@@ -500,9 +502,22 @@ Returns pending transactions in pool of one account
 
 ## cfx_getPoSRewardByEpoch
 
+Get rewards information of a PoS epoch by it's correspond PoW epoch number. Only PoW epoch happen's at PoS epoch end will have rewards information. Others will return null.
+
 ### 1. [InvalidParamsError](./errors#invalidparamserror)
 
 1. **InvalidEpochType**
 2. **EmptyEpochString**
 3. **InvalidDigitEpoch**
 4. **MissingHexPrefix**
+
+## cfx_getParamsFromVote
+
+Returns DAO vote params info
+
+### 1. [InvalidParamsError](./errors#invalidparamserror)
+1. **InvalidEpochType**
+2. **SpecifiedEpochNotExecuted**
+3. **EmptyEpochString**
+4. **InvalidDigitEpoch**
+5. **MissingHexPrefix**
