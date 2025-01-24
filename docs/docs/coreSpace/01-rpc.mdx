@@ -540,3 +540,33 @@ It is important to note that the filter object will expire after a certain perio
 7. **ExceededTopicsLimitError**
 8. **MissingFilterParametersError**
 
+
+
+## cfx_newBlockFilter
+
+Create a block filter for following up usage. Returns the block filter id which can be used via cfx_getFilterChanges to retrieve latest executed blocks.
+
+It is important to note that the filter object will expire after a certain period of inactivity from the last request, typically 60 seconds. This expiration duration is configured by the node. To avoid losing log tracking, it is recommended to refresh or recreate the filter as necessary.
+
+
+This RPC doesn't throw an error.
+
+
+
+## cfx_newPendingTransactionFilter
+
+Create a pending transaction filter for following up usage. Returns the transaction filter id which can be used via cfx_getFilterChanges to retrieve ready but not executed transactions.
+
+This RPC doesn't throw an error.
+
+
+## cfx_getFilterChanges
+
+Get filter changes since last retrieve. Return value depends on which type of filter id is provided. Filter id can be returned from current RPCs:
+
+cfx_newFilter: new logs generated from newly executed transactions matching the filter. Noting that from* fields will be ignored by this RPC.
+cfx_newBlockFilter: new executed blocks.
+cfx_newPendingTransactionFilter: new pending transactions which are ready to execute.
+
+
+### 1. [InvalidRequestError](./errors#invalidRequestError)

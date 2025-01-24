@@ -3,6 +3,7 @@ import CallExecutionErrors from "./callExecutionErrors";
 import CustomErrors from "./customErrors";
 import InternalErrors from "./internalErrors";
 import InvalidParamsErrors from "./invalidParamsErrors";
+import { InvalidRequestErrors } from "./JSONRPC";
 
 export type {
   InvalidParamsErrorType,
@@ -20,6 +21,7 @@ const coreSpaceErrors: CoreSpaceErrorsType = [
   InternalErrors,
   CustomErrors,
   CallExecutionErrors,
+  InvalidRequestErrors,
 ];
 
 export default coreSpaceErrors;
