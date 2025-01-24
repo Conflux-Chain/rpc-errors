@@ -38,10 +38,10 @@ beforeAll(async () => {
 const waringAddr =
   "cfx:type.contract:acc7uawf5ubtnmezvhu9dhc6sghea0403y2dgpyfjp";
 
-describe("cfx_getAccountPendingInfo errors", async () => {
+describe("cfx_getAccountPendingTransactions errors", async () => {
   test("UnexpectedRpcAddressNetworkError", async () => {
     const request = createRequest(`http://localhost:${HTTP_PORT}`);
-    const error = await request<string>("cfx_getAccountPendingInfo", [
+    const error = await request<string>("cfx_getAccountPendingTransactions", [
       waringAddr,
     ]);
 
