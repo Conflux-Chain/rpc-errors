@@ -521,3 +521,22 @@ Returns DAO vote params info
 3. **EmptyEpochString**
 4. **InvalidDigitEpoch**
 5. **MissingHexPrefix**
+
+
+## cfx_newFilter
+
+This function creates a log filter for tracking usage. It returns a log filter ID, which can be employed through the cfx_getFilterChanges command to retrieve logs newly generated from recently executed transactions. The from* field in this context will be disregarded by this RPC (Remote Procedure Call). This function can also be used via cfx_getFilterLogs to retrieve all logs that match the filter criteria. In this instance, the from* fields are considered.
+
+It is important to note that the filter object will expire after a certain period of inactivity from the last request, typically 60 seconds. This expiration duration is configured by the node. To avoid losing log tracking, it is recommended to refresh or recreate the filter as necessary.
+
+### 1. [InvalidParamsError](./errors#invalidparamserror)
+
+1. **InvalidEpochType**
+2. **EpochNumberTooLarge**
+3. **EmptyEpochString**
+4. **InvalidDigitEpoch**
+5. **MissingHexPrefix**
+6. **BlockHashesLimitExceededError**
+7. **ExceededTopicsLimitError**
+8. **MissingFilterParametersError**
+
