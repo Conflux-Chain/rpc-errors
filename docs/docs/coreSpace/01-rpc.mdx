@@ -587,3 +587,36 @@ Returns all logs matching the log filter (Unlike cfx_getFilterChanges, from* fie
 Uninstalls a filter.
 
 This RPC doesn't throw an error.
+
+
+## cfx_getEpochReceipts
+
+Returns all transaction receipts within the specific epoch.
+
+### 1. [InvalidParamsError](./errors#invalidparamserror)
+
+1. **InvalidEpochType**
+2. **EpochNumberTooLarge**
+3. **EmptyEpochString**
+4. **InvalidDigitEpoch**
+5. **MissingHexPrefix**
+
+
+
+## cfx_getCollateralInfo
+Returns current chain collateral status info.
+
+### 1. [InvalidParamsError](./errors#invalidparamserror)
+
+1. **InvalidEpochType**
+2. **SpecifiedEpochNotExecuted**
+3. **EmptyEpochString**
+4. **InvalidDigitEpoch**
+5. **MissingHexPrefix**
+
+
+## cfx_getFeeBurnt
+
+Returns the total burnt tx gas fee by 1559. Added in Conflux-Rust v2.4.0.
+
+This RPC doesn't throw an error.
