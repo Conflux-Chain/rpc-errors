@@ -1,12 +1,33 @@
 {
-  "name": "core-space-errors",
-  "version": "1.0.0",
+  "name": "@cfxjs/rpc-errors",
+  "version": "0.0.0",
+  "type": "module",
   "description": "",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Conflux-Chain/rpc-errors.git"
+  },
   "main": "./_cjs/index.js",
+  "module": "./_esm/index.js",
+  "types": "./_types/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./_cjs/index.js",
+      "import": "./_esm/index.js",
+      "types": "./_types/index.d.ts"
+    }
+  },
   "scripts": {
-    "clean": "rm -rf *.tsbuildinfo src/*.tsbuildinfo src/_cjs",
-    "build": "pnpm clean && tsc --project tsconfig.build.json",
-    "test": "vitest run"
+    "clean": "rm -rf *.tsbuildinfo src/*.tsbuildinfo _cjs _esm _types",
+    "test": "vitest run",
+    "build": "pnpm run clean && npm run build:esm && npm run build:cjs && npm run build:types",
+    "build:esm": "tsc --module ES2020 --outDir ./_esm",
+    "build:cjs": "tsc --module CommonJS --outDir ./_cjs",
+    "build:types": "tsc --declaration --declarationDir ./_types"
   },
   "keywords": [],
   "author": "",
