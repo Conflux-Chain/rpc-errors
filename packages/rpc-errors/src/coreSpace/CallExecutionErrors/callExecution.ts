@@ -12,7 +12,7 @@ export class CallExecutionError extends BaseError {
     super(CallExecutionError.code, message);
   }
 
-  static parseError(message: string, data = ""): boolean {
+  static parseError(_message: string, _data = ""): boolean {
     return true;
   }
 }

@@ -10,6 +10,7 @@ export const TEST_PK =
 export async function getPort(): Promise<number> {
   return new Promise((resolve, reject) => {
     const srv = net.createServer();
+    // @ts-ignore
     srv.listen(0, () => {
       const AddressInfo = srv.address();
 

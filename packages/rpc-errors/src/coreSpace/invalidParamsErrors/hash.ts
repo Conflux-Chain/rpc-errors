@@ -9,7 +9,7 @@ export class InvalidHashTypeError extends InvalidParamsError {
   static pattern =
     /expected a \(both 0x-prefixed or not\) hex string with length/;
 
-  static override parseError(message: string, data = ""): boolean {
+  static override parseError(message: string): boolean {
     return InvalidHashTypeError.pattern.test(message);
   }
 }

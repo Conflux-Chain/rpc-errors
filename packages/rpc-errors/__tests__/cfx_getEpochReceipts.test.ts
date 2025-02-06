@@ -8,12 +8,10 @@ import { InvalidParamsError } from "../src/coreSpace/invalidParamsErrors/invalid
 import { coreSpaceErrors, RPCError } from "../src";
 import {
   EmptyEpochStringError,
-  EpochNumberTooLargeError,
   InvalidDigitEpochError,
   InvalidEpochTypeError,
   MissingHexPrefixError,
 } from "../src/coreSpace/invalidParamsErrors/epoch";
-import { BlockNotFoundError } from "../src/coreSpace/invalidParamsErrors/block";
 
 const rpcError = new RPCError();
 rpcError.registerError(coreSpaceErrors);

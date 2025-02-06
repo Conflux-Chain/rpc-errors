@@ -14,11 +14,8 @@ import {
 const rpcError = new RPCError();
 rpcError.registerError(coreSpaceErrors);
 
-let HTTP_PORT: number;
-
 beforeAll(async () => {
   const [jsonrpcHttpPort, udpAndTcpPort] = await getFreePorts(2);
-  HTTP_PORT = jsonrpcHttpPort as number;
   const server = await createServer({
     tcpPort: udpAndTcpPort,
     udpPort: udpAndTcpPort,

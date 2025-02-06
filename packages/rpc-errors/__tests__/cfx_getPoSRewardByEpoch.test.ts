@@ -8,11 +8,9 @@ import { InvalidParamsError } from "../src/coreSpace/invalidParamsErrors/invalid
 import { coreSpaceErrors, RPCError } from "../src";
 import {
   EmptyEpochStringError,
-  EpochNumberTooLargeError,
   InvalidDigitEpochError,
   InvalidEpochTypeError,
   MissingHexPrefixError,
-  SpecifiedEpochNotExecutedError,
 } from "../src/coreSpace/invalidParamsErrors/epoch";
 
 const rpcError = new RPCError();

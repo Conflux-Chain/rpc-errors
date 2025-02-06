@@ -27,7 +27,7 @@
     "build": "pnpm run clean && npm run build:esm && npm run build:cjs && npm run build:types",
     "build:esm": "tsc --module ES2020 --outDir ./_esm",
     "build:cjs": "tsc --module CommonJS --outDir ./_cjs",
-    "build:types": "tsc --declaration --declarationDir ./_types"
+    "build:types": "tsc --declaration --declarationDir ./_types --emitDeclarationOnly"
   },
   "keywords": [],
   "author": "",

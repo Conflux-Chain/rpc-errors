@@ -7,7 +7,7 @@ export type NonExistentBlockHeaderErrorType = {
 export class NonExistentBlockHeaderError extends InternalError {
   override name = "NonExistentBlockHeader";
   static pattern = /Specified block header does not exist/;
-  static override parseError(message: string, data = ""): boolean {
+  static override parseError(message: string): boolean {
     return NonExistentBlockHeaderError.pattern.test(message);
   }
 }

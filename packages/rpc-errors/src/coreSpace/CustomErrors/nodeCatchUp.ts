@@ -15,7 +15,7 @@ export class NodeCatchUpError extends BaseError {
     super(-32077, message);
   }
 
-  static parseError(message: string, data = ""): boolean {
+  static parseError(_message: string, _data = ""): boolean {
     return true;
   }
 }

@@ -1,6 +1,6 @@
 import { createServer } from "@xcfx/node";
 import { beforeAll, describe, expect, test } from "vitest";
-import { assertRpcError, getFreePorts, TEST_ADDRESS, TEST_PK } from "./help";
+import { assertRpcError, getFreePorts, TEST_PK } from "./help";
 
 import { createRequest } from "../src/utils/request";
 import { isRpcError } from "../src/utils/isRpcError";

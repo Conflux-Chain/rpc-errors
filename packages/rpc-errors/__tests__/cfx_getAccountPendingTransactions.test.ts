@@ -1,19 +1,11 @@
 import { createServer } from "@xcfx/node";
 import { beforeAll, describe, expect, test } from "vitest";
-import { assertRpcError, getFreePorts, TEST_ADDRESS } from "./help";
+import { assertRpcError, getFreePorts } from "./help";
 
 import { createRequest } from "../src/utils/request";
 import { isRpcError } from "../src/utils/isRpcError";
 import { InvalidParamsError } from "../src/coreSpace/invalidParamsErrors/invalidParams";
 import { coreSpaceErrors, RPCError } from "../src";
-import {
-  EmptyEpochStringError,
-  EpochNumberTooLargeError,
-  InvalidDigitEpochError,
-  InvalidEpochTypeError,
-  MissingHexPrefixError,
-  SpecifiedEpochNotExecutedError,
-} from "../src/coreSpace/invalidParamsErrors/epoch";
 import { UnexpectedRpcAddressNetworkError } from "../src/coreSpace/invalidParamsErrors/address";
 
 const rpcError = new RPCError();

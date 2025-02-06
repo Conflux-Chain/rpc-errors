@@ -5,7 +5,7 @@ export class StorageLimitOutOfRangeError extends InvalidParamsError {
   static pattern =
     /storage_limit has to be within the range of u64 but (\d+) supplied!/;
 
-  static override parseError(message: string, data = ""): boolean {
+  static override parseError(message: string): boolean {
     return StorageLimitOutOfRangeError.pattern.test(message);
   }
 }

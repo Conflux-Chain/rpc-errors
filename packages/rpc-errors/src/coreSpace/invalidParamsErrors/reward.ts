@@ -7,7 +7,7 @@ export class RewardNotCalculatedError extends InvalidParamsError {
   override name = "RewardNotCalculated";
   static pattern = /Reward not calculated yet/;
 
-  static override parseError(message: string, data = ""): boolean {
+  static override parseError(_message: string, data = ""): boolean {
     return RewardNotCalculatedError.pattern.test(data);
   }
 }

@@ -11,7 +11,7 @@ export class InternalError extends BaseError {
   constructor(message: string, public readonly data = "") {
     super(InternalError.code, message);
   }
-  static parseError(message: string, data = ""): boolean {
+  static parseError(_message: string, _data = ""): boolean {
     return true;
   }
 }

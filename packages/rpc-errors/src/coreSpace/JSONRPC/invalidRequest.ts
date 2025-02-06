@@ -8,7 +8,7 @@ export class InvalidRequestError extends BaseError {
     super(InvalidRequestError.code, message);
   }
 
-  static parseError(message: string, data = ""): boolean {
+  static parseError(_message: string, _data = ""): boolean {
     return true;
   }
 }
@@ -17,7 +17,7 @@ export class FilterNotFoundError extends InvalidRequestError {
   override name = "FilterNotFound";
 
   static pattern = /Filter not found/;
-  static override parseError(message: string, data = ""): boolean {
+  static override parseError(message: string): boolean {
     return FilterNotFoundError.pattern.test(message);
   }
 }
