@@ -3,12 +3,18 @@ title: RPC
 ---
 
 ## cfx_getTransactionByHash
-### 1. [InvalidParamsError](./errors#invalidparamserror)
-1. **InvalidHashTypeError**
+
+### Errors
+
+1.  [InvalidParamsError](./errors#invalidparamserror)
+    *   **InvalidHashTypeError**
 
 ## cfx_getBlockByHash
-### 1. [InvalidParamsError](./errors#invalidparamserror)
-1. **InvalidHashTypeError**
+
+### Errors
+
+1.  [InvalidParamsError](./errors#invalidparamserror)
+    *   **InvalidHashTypeError**
 
 ## cfx_getBestBlockHash
 
@@ -19,382 +25,395 @@ This RPC doesn't throw an error.
 This RPC doesn't throw an error. The value at least `1_000_000_000` is returned.
 
 ## cfx_feeHistory
-Returns transaction base fee per gas and effective priority fee per gas for the requested/supported epoch range.
-### 1. [InvalidParamsError](./errors#invalidparamserror)
-### 2. [InternalError](./errors#internalerror)
 
-1. NonExistentBlockHeaderError
+Returns transaction base fee per gas and effective priority fee per gas for the requested/supported epoch range.
+
+### Errors
+
+1.  [InvalidParamsError](./errors#invalidparamserror)
+2.  [InternalError](./errors#internalerror)
+    *   NonExistentBlockHeaderError
 
 ## cfx_getBlocksByEpoch
-Returns the block hashes in the specified epoch.
-1. **EpochNumberTooLargeError**
-2. **EmptyEpochStringError**
-3. **InvalidDigitEpochError**
-4. **MissingHexPrefixError**
 
+Returns the block hashes in the specified epoch.
+
+### Errors
+
+*   **EpochNumberTooLargeError**
+*   **EmptyEpochStringError**
+*   **InvalidDigitEpochError**
+*   **MissingHexPrefixError**
 
 ## cfx_epochNumber
 
 Get epoch number by params.
 
-### 1. [InvalidParamsError](./errors#invalidparamserror)
-1. **Invalid parameter type**
-2. **EpochNumberTooLargeError**
-3. **EmptyEpochStringError**
-4. **InvalidDigitEpochError**
-5. **MissingHexPrefixError**
+### Errors
 
+1.  [InvalidParamsError](./errors#invalidparamserror)
+    *   **Invalid parameter type**
+    *   **EpochNumberTooLargeError**
+    *   **EmptyEpochStringError**
+    *   **InvalidDigitEpochError**
+    *   **MissingHexPrefixError**
 
 ## cfx_getBlockByEpochNumber
 
 Get block with given epoch number.
 
-### 1. [InvalidParamsError](./errors#invalidparamserror)
+### Errors
 
-1. **EpochNumberTooLargeError**
-2. **EmptyEpochStringError**
-3. **InvalidDigitEpochError**
-4. **MissingHexPrefixError**
-
+1.  [InvalidParamsError](./errors#invalidparamserror)
+    *   **EpochNumberTooLargeError**
+    *   **EmptyEpochStringError**
+    *   **InvalidDigitEpochError**
+    *   **MissingHexPrefixError**
 
 ## cfx_getBalance
 
 Returns the balance of the given account, identified by its address.
 
+### Errors
 
-### 1. [InvalidParamsError](./errors#invalidparamserror)
+1.  [InvalidParamsError](./errors#invalidparamserror)
+    *   **InvalidBase32AddressError**
+    *   **InvalidSize160AddressError**
+    *   **Invalid parameter type**
+    *   **SpecifiedEpochNotExecutedError**
+    *   **EmptyEpochStringError**
+    *   **InvalidDigitEpochError**
+    *   **MissingHexPrefixError**
+    *   **LatestMinedNotExecutedError**
 
-1. **InvalidBase32AddressError**
-2. **InvalidSize160AddressError**
-3. **Invalid parameter type**
-4. **SpecifiedEpochNotExecutedError**
-5. **EmptyEpochStringError**
-6. **InvalidDigitEpochError**
-7. **MissingHexPrefixError**
-8. **LatestMinedNotExecutedError**
 ## cfx_getStakingBalance
 
 Returns the stacking balance of the given account, identified by its address.
 
-### 1. [InvalidParamsError](./errors#invalidparamserror)
+### Errors
 
-1. **InvalidBase32AddressError**
-2. **InvalidSize160AddressError**
-3. **Invalid parameter type**
-4. **SpecifiedEpochNotExecutedError**
-5. **EmptyEpochStringError**
-6. **InvalidDigitEpochError**
-7. **MissingHexPrefixError**
-8. **LatestMinedNotExecutedError**
+1.  [InvalidParamsError](./errors#invalidparamserror)
+    *   **InvalidBase32AddressError**
+    *   **InvalidSize160AddressError**
+    *   **Invalid parameter type**
+    *   **SpecifiedEpochNotExecutedError**
+    *   **EmptyEpochStringError**
+    *   **InvalidDigitEpochError**
+    *   **MissingHexPrefixError**
+    *   **LatestMinedNotExecutedError**
+
 ## cfx_getCollateralForStorage
 
 Returns the size of the collateral storage of a given address, in bytes.
 
-### 1. [InvalidParamsError](./errors#invalidparamserror)
+### Errors
 
-1. **InvalidBase32AddressError**
-2. **InvalidSize160AddressError**
-3. **Invalid parameter type**
-4. **SpecifiedEpochNotExecutedError**
-5. **EmptyEpochStringError**
-6. **InvalidDigitEpochError**
-7. **MissingHexPrefixError**
-8. **LatestMinedNotExecutedError**
+1.  [InvalidParamsError](./errors#invalidparamserror)
+    *   **InvalidBase32AddressError**
+    *   **InvalidSize160AddressError**
+    *   **Invalid parameter type**
+    *   **SpecifiedEpochNotExecutedError**
+    *   **EmptyEpochStringError**
+    *   **InvalidDigitEpochError**
+    *   **MissingHexPrefixError**
+    *   **LatestMinedNotExecutedError**
 
 ## cfx_getAdmin
 
 Returns the admin of the specified contract.
 
-### 1. [InvalidParamsError](./errors#invalidparamserror)
+### Errors
 
-1. **InvalidBase32AddressError**
-2. **InvalidSize160AddressError**
-3. **Invalid parameter type**
-4. **SpecifiedEpochNotExecutedError**
-5. **EmptyEpochStringError**
-6. **InvalidDigitEpochError**
-7. **MissingHexPrefixError**
-8. **LatestMinedNotExecutedError**
+1.  [InvalidParamsError](./errors#invalidparamserror)
+    *   **InvalidBase32AddressError**
+    *   **InvalidSize160AddressError**
+    *   **Invalid parameter type**
+    *   **SpecifiedEpochNotExecutedError**
+    *   **EmptyEpochStringError**
+    *   **InvalidDigitEpochError**
+    *   **MissingHexPrefixError**
+    *   **LatestMinedNotExecutedError**
 
 ## cfx_getCode
 
 Returns the code of the specified contract. If contract not exist will return 0x
 
-### 1. [InvalidParamsError](./errors#invalidparamserror)
+### Errors
 
-1. **InvalidBase32AddressError**
-2. **InvalidSize160AddressError**
-3. **Invalid parameter type**
-4. **SpecifiedEpochNotExecutedError**
-5. **EmptyEpochStringError**
-6. **InvalidDigitEpochError**
-7. **MissingHexPrefixError**
-8. **LatestMinedNotExecutedError**
+1.  [InvalidParamsError](./errors#invalidparamserror)
+    *   **InvalidBase32AddressError**
+    *   **InvalidSize160AddressError**
+    *   **Invalid parameter type**
+    *   **SpecifiedEpochNotExecutedError**
+    *   **EmptyEpochStringError**
+    *   **InvalidDigitEpochError**
+    *   **MissingHexPrefixError**
+    *   **LatestMinedNotExecutedError**
 
 ## cfx_getStorageAt
 
 Returns storage entries from a given contract.
 
-### 1. [InvalidParamsError](./errors#invalidparamserror)
+### Errors
 
-1. **InvalidBase32AddressError**
-2. **InvalidSize160AddressError**
-3. **Invalid parameter type**
-4. **SpecifiedEpochNotExecutedError**
-5. **EmptyEpochStringError**
-6. **InvalidDigitEpochError**
-7. **MissingHexPrefixError**
-8. **InvalidHashTypeError**
-9. **LatestMinedNotExecutedError**
-
+1.  [InvalidParamsError](./errors#invalidparamserror)
+    *   **InvalidBase32AddressError**
+    *   **InvalidSize160AddressError**
+    *   **Invalid parameter type**
+    *   **SpecifiedEpochNotExecutedError**
+    *   **EmptyEpochStringError**
+    *   **InvalidDigitEpochError**
+    *   **MissingHexPrefixError**
+    *   **InvalidHashTypeError**
+    *   **LatestMinedNotExecutedError**
 
 ## cfx_getStorageRoot
 
 Returns the storage root of a given contract.
 
+### Errors
 
-### 1. [InvalidParamsError](./errors#invalidparamserror)
-
-1. **InvalidBase32AddressError**
-2. **InvalidSize160AddressError**
-3. **Invalid parameter type**
-4. **SpecifiedEpochNotExecutedError**
-5. **EmptyEpochStringError**
-6. **InvalidDigitEpochError**
-7. **MissingHexPrefixError**
-8. **LatestMinedNotExecutedError**
+1.  [InvalidParamsError](./errors#invalidparamserror)
+    *   **InvalidBase32AddressError**
+    *   **InvalidSize160AddressError**
+    *   **Invalid parameter type**
+    *   **SpecifiedEpochNotExecutedError**
+    *   **EmptyEpochStringError**
+    *   **InvalidDigitEpochError**
+    *   **MissingHexPrefixError**
+    *   **LatestMinedNotExecutedError**
 
 ## cfx_getSponsorInfo
 
 Returns the sponsor info of a given contract.
 
-### 1. [InvalidParamsError](./errors#invalidparamserror)
+### Errors
 
-1. **InvalidBase32AddressError**
-2. **InvalidSize160AddressError**
-3. **Invalid parameter type**
-4. **SpecifiedEpochNotExecutedError**
-5. **EmptyEpochStringError**
-6. **InvalidDigitEpochError**
-7. **MissingHexPrefixError**
-8. **LatestMinedNotExecutedError**
-
+1.  [InvalidParamsError](./errors#invalidparamserror)
+    *   **InvalidBase32AddressError**
+    *   **InvalidSize160AddressError**
+    *   **Invalid parameter type**
+    *   **SpecifiedEpochNotExecutedError**
+    *   **EmptyEpochStringError**
+    *   **InvalidDigitEpochError**
+    *   **MissingHexPrefixError**
+    *   **LatestMinedNotExecutedError**
 
 ## cfx_getNextNonce
 
 Returns the next nonce that should be used by the given account when sending a transaction.
 
-### 1. [InvalidParamsError](./errors#invalidparamserror)
+### Errors
 
-1. **InvalidBase32AddressError**
-2. **InvalidSize160AddressError**
-3. **Invalid parameter type**
-4. **SpecifiedEpochNotExecutedError**
-5. **EmptyEpochStringError**
-6. **InvalidDigitEpochError**
-7. **MissingHexPrefixError**
-8. **LatestMinedNotExecutedError**
+1.  [InvalidParamsError](./errors#invalidparamserror)
+    *   **InvalidBase32AddressError**
+    *   **InvalidSize160AddressError**
+    *   **Invalid parameter type**
+    *   **SpecifiedEpochNotExecutedError**
+    *   **EmptyEpochStringError**
+    *   **InvalidDigitEpochError**
+    *   **MissingHexPrefixError**
+    *   **LatestMinedNotExecutedError**
 
 ## cfx_sendRawTransaction
 
 Sends a signed transaction into the network for processing.
-### 1. [InvalidParamsError](./errors#invalidparamserror)
 
-1. **RlpIsTooShortError**
-2. **RlpInvalidLengthError**
-3. **UnrecoverablePubkeyError**
-4. **TransactionAlreadyExistError**
-5. **TransactionTooBigError**
-6. **TransactionChainIdMismatchError**
-7. **TransactionInvalidReceiverError**
-8. **GasLimitExceededError**
-9. **TransactionNonceTooDistantError**
-10. **NonceTooStaleError**
-11. **OutOfBalanceError**
-12. **HigherGasPriceNeededError**
+### Errors
 
+1.  [InvalidParamsError](./errors#invalidparamserror)
+    *   **RlpIsTooShortError**
+    *   **RlpInvalidLengthError**
+    *   **UnrecoverablePubkeyError**
+    *   **TransactionAlreadyExistError**
+    *   **TransactionTooBigError**
+    *   **TransactionChainIdMismatchError**
+    *   **TransactionInvalidReceiverError**
+    *   **GasLimitExceededError**
+    *   **TransactionNonceTooDistantError**
+    *   **NonceTooStaleError**
+    *   **OutOfBalanceError**
+    *   **HigherGasPriceNeededError**
 
 ## cfx_call
 
 Virtually calls a contract, returns the output data. The transaction will not be added to the blockchain. The error message of cfx_call is similar to cfx_estimateGasAndCollateral and error solutions can be found in cfx_estimateGasAndCollateral behaviour#errors.
 
-### 1. [InvalidParamsError](./errors#invalidparamserror)
+### Errors
 
-1. **EpochNumberTooLargeError**
-2. **EmptyEpochStringError**
-3. **InvalidDigitEpochError**
-4. **MissingHexPrefixError**
+1.  [InvalidParamsError](./errors#invalidparamserror)
+    *   **EpochNumberTooLargeError**
+    *   **EmptyEpochStringError**
+    *   **InvalidDigitEpochError**
+    *   **MissingHexPrefixError**
 
-### 2. [ExecutionOutcome](./errors#executionoutcome)
-
-1. **NotExecutedDropOldNonceError**
-2. **NotExecutedDropInvalidRecipientAddress**
-3. **NotExecutedDropNotEnoughGasLimitError**
-4. **NotExecutedToReconsiderPackingInvalidNonceError**
-5. **NotExecutedToReconsiderPackingEpochHeightOutOfBoundError**
-6. **NotExecutedToReconsiderPackingNotEnoughCashFromSponsorError**
-7. **NotExecutedToReconsiderPackingSenderDoesNotExist**
-8. **NotExecutedToReconsiderPackingNotEnoughBaseFeeError**
-9. **ExecutionErrorBumpNonceVmRevertedError**
-10. **ExecutionErrorBumpNonceNotEnoughCashError**
-11. **ExecutionErrorBumpNonceVmOutOfGasError**
-12. **ExecutionErrorBumpNonceVmBadJumpDestinationError**
-13. **ExecutionErrorBumpNonceVmBadInstructionError**
-14. **ExecutionErrorBumpNonceVmStackUnderflowError**
-15. **ExecutionErrorBumpNonceVmOutOfStackError**
-16. **ExecutionErrorBumpNonceVmSubStackUnderflowError**
-17. **ExecutionErrorBumpNonceVmOutOfSubStackError**
-18. **ExecutionErrorBumpNonceVmInvalidSubEntryError**
-19. **ExecutionErrorBumpNonceVmNotEnoughBalanceForStorageError**
-20. **ExecutionErrorBumpNonceVmExceedStorageLimitError**
-21. **ExecutionErrorBumpNonceVmBuiltInError**
-22. **ExecutionErrorBumpNonceVmInternalContractError**
-23. **ExecutionErrorBumpNonceVmStateDbError**
-24. **ExecutionErrorBumpNonceVmMutableCallInStaticContextError**
-25. **ExecutionErrorBumpNonceVmWasmError**
-26. **ExecutionErrorBumpNonceVmOutOfBoundsError**
-27. **ExecutionErrorBumpNonceVmRevertedByBytecodeError**
-28. **ExecutionErrorBumpNonceVmInvalidAddressError**
-29. **ExecutionErrorBumpNonceVmConflictAddressError**
+2.  [ExecutionOutcome](./errors#executionoutcome)
+    *   **NotExecutedDropOldNonceError**
+    *   **NotExecutedDropInvalidRecipientAddress**
+    *   **NotExecutedDropNotEnoughGasLimitError**
+    *   **NotExecutedToReconsiderPackingInvalidNonceError**
+    *   **NotExecutedToReconsiderPackingEpochHeightOutOfBoundError**
+    *   **NotExecutedToReconsiderPackingNotEnoughCashFromSponsorError**
+    *   **NotExecutedToReconsiderPackingSenderDoesNotExist**
+    *   **NotExecutedToReconsiderPackingNotEnoughBaseFeeError**
+    *   **ExecutionErrorBumpNonceVmRevertedError**
+    *   **ExecutionErrorBumpNonceNotEnoughCashError**
+    *   **ExecutionErrorBumpNonceVmOutOfGasError**
+    *   **ExecutionErrorBumpNonceVmBadJumpDestinationError**
+    *   **ExecutionErrorBumpNonceVmBadInstructionError**
+    *   **ExecutionErrorBumpNonceVmStackUnderflowError**
+    *   **ExecutionErrorBumpNonceVmOutOfStackError**
+    *   **ExecutionErrorBumpNonceVmSubStackUnderflowError**
+    *   **ExecutionErrorBumpNonceVmOutOfSubStackError**
+    *   **ExecutionErrorBumpNonceVmInvalidSubEntryError**
+    *   **ExecutionErrorBumpNonceVmNotEnoughBalanceForStorageError**
+    *   **ExecutionErrorBumpNonceVmExceedStorageLimitError**
+    *   **ExecutionErrorBumpNonceVmBuiltInError**
+    *   **ExecutionErrorBumpNonceVmInternalContractError**
+    *   **ExecutionErrorBumpNonceVmStateDbError**
+    *   **ExecutionErrorBumpNonceVmMutableCallInStaticContextError**
+    *   **ExecutionErrorBumpNonceVmWasmError**
+    *   **ExecutionErrorBumpNonceVmOutOfBoundsError**
+    *   **ExecutionErrorBumpNonceVmRevertedByBytecodeError**
+    *   **ExecutionErrorBumpNonceVmInvalidAddressError**
+    *   **ExecutionErrorBumpNonceVmConflictAddressError**
 
 ## cfx_estimateGasAndCollateral
 
 Virtually executes a transaction, returns an estimate for the size of storage collateralized and the gas used by the transaction. The transaction will not be added to the blockchain.
 
-### 1. [InvalidParamsError](./errors#invalidparamserror)
+### Errors
 
-1. **EpochNumberTooLargeError**
-2. **EmptyEpochStringError**
-3. **InvalidDigitEpochError**
-4. **MissingHexPrefixError**
+1.  [InvalidParamsError](./errors#invalidparamserror)
+    *   **EpochNumberTooLargeError**
+    *   **EmptyEpochStringError**
+    *   **InvalidDigitEpochError**
+    *   **MissingHexPrefixError**
 
-
-### 2. [ExceptionError](./errors#exceptionerror)
-
-1. **NotExecutedDropOldNonceError**
-2. **NotExecutedDropInvalidRecipientAddress**
-3. **NotExecutedDropNotEnoughGasLimitError**
-4. **NotExecutedToReconsiderPackingInvalidNonceError**
-5. **NotExecutedToReconsiderPackingEpochHeightOutOfBoundError**
-6. **NotExecutedToReconsiderPackingNotEnoughCashFromSponsorError**
-7. **NotExecutedToReconsiderPackingSenderDoesNotExist**
-8. **NotExecutedToReconsiderPackingNotEnoughBaseFeeError**
-9. **ExecutionErrorBumpNonceVmRevertedError**
-10. **ExecutionErrorBumpNonceNotEnoughCashError**
-11. **ExecutionErrorBumpNonceVmOutOfGasError**
-12. **ExecutionErrorBumpNonceVmBadJumpDestinationError**
-13. **ExecutionErrorBumpNonceVmBadInstructionError**
-14. **ExecutionErrorBumpNonceVmStackUnderflowError**
-15. **ExecutionErrorBumpNonceVmOutOfStackError**
-16. **ExecutionErrorBumpNonceVmSubStackUnderflowError**
-17. **ExecutionErrorBumpNonceVmOutOfSubStackError**
-18. **ExecutionErrorBumpNonceVmInvalidSubEntryError**
-19. **ExecutionErrorBumpNonceVmNotEnoughBalanceForStorageError**
-20. **ExecutionErrorBumpNonceVmExceedStorageLimitError**
-21. **ExecutionErrorBumpNonceVmBuiltInError**
-22. **ExecutionErrorBumpNonceVmInternalContractError**
-23. **ExecutionErrorBumpNonceVmStateDbError**
-24. **ExecutionErrorBumpNonceVmMutableCallInStaticContextError**
-25. **ExecutionErrorBumpNonceVmWasmError**
-26. **ExecutionErrorBumpNonceVmOutOfBoundsError**
-27. **ExecutionErrorBumpNonceVmRevertedByBytecodeError**
-28. **ExecutionErrorBumpNonceVmInvalidAddressError**
-29. **ExecutionErrorBumpNonceVmConflictAddressError**
-
+2.  [ExceptionError](./errors#exceptionerror)
+    *   **NotExecutedDropOldNonceError**
+    *   **NotExecutedDropInvalidRecipientAddress**
+    *   **NotExecutedDropNotEnoughGasLimitError**
+    *   **NotExecutedToReconsiderPackingInvalidNonceError**
+    *   **NotExecutedToReconsiderPackingEpochHeightOutOfBoundError**
+    *   **NotExecutedToReconsiderPackingNotEnoughCashFromSponsorError**
+    *   **NotExecutedToReconsiderPackingSenderDoesNotExist**
+    *   **NotExecutedToReconsiderPackingNotEnoughBaseFeeError**
+    *   **ExecutionErrorBumpNonceVmRevertedError**
+    *   **ExecutionErrorBumpNonceNotEnoughCashError**
+    *   **ExecutionErrorBumpNonceVmOutOfGasError**
+    *   **ExecutionErrorBumpNonceVmBadJumpDestinationError**
+    *   **ExecutionErrorBumpNonceVmBadInstructionError**
+    *   **ExecutionErrorBumpNonceVmStackUnderflowError**
+    *   **ExecutionErrorBumpNonceVmOutOfStackError**
+    *   **ExecutionErrorBumpNonceVmSubStackUnderflowError**
+    *   **ExecutionErrorBumpNonceVmOutOfSubStackError**
+    *   **ExecutionErrorBumpNonceVmInvalidSubEntryError**
+    *   **ExecutionErrorBumpNonceVmNotEnoughBalanceForStorageError**
+    *   **ExecutionErrorBumpNonceVmExceedStorageLimitError**
+    *   **ExecutionErrorBumpNonceVmBuiltInError**
+    *   **ExecutionErrorBumpNonceVmInternalContractError**
+    *   **ExecutionErrorBumpNonceVmStateDbError**
+    *   **ExecutionErrorBumpNonceVmMutableCallInStaticContextError**
+    *   **ExecutionErrorBumpNonceVmWasmError**
+    *   **ExecutionErrorBumpNonceVmOutOfBoundsError**
+    *   **ExecutionErrorBumpNonceVmRevertedByBytecodeError**
+    *   **ExecutionErrorBumpNonceVmInvalidAddressError**
+    *   **ExecutionErrorBumpNonceVmConflictAddressError**
 
 ## cfx_getLogs
 
 Returns logs matching the filter provided.
 
-### 1. [InvalidParamsError](./errors#invalidparamserror)
+### Errors
 
-1. **UnexpectedRpcAddressNetworkError**
-2. **EmptyEpochStringError**
-3. **InvalidDigitEpochError**
-4. **MissingHexPrefixError**
-5. **BlockHashesLimitExceededError**
-6. **ExceededTopicsLimitError**
-7. **MissingFilterParametersError**
-8. **ExceededLogsLimitError**
+1.  [InvalidParamsError](./errors#invalidparamserror)
+    *   **UnexpectedRpcAddressNetworkError**
+    *   **EmptyEpochStringError**
+    *   **InvalidDigitEpochError**
+    *   **MissingHexPrefixError**
+    *   **BlockHashesLimitExceededError**
+    *   **ExceededTopicsLimitError**
+    *   **MissingFilterParametersError**
+    *   **ExceededLogsLimitError**
 
 ## cfx_getTransactionReceipt
 
 The cfx_getTransactionReceipt RPC doesn't throw an error.
 
-
 ## cfx_getAccount
 
 Returns an account, identified by its address.
 
-### 1. [InvalidParamsError](./errors#invalidparamserror)
+### Errors
 
-1. **InvalidEpochTypeError**
-2. **SpecifiedEpochNotExecutedError**
-3. **EmptyEpochStringError**
-4. **InvalidDigitEpochError**
-5. **MissingHexPrefixError**
-6. **UnexpectedRpcAddressNetworkError**
-
+1.  [InvalidParamsError](./errors#invalidparamserror)
+    *   **InvalidEpochTypeError**
+    *   **SpecifiedEpochNotExecutedError**
+    *   **EmptyEpochStringError**
+    *   **InvalidDigitEpochError**
+    *   **MissingHexPrefixError**
+    *   **UnexpectedRpcAddressNetworkError**
 
 ## cfx_getInterestRate
 
 Returns the interest rate of the specified epoch.
 
-### 1. [InvalidParamsError](./errors#invalidparamserror)
+### Errors
 
-1. **InvalidEpochTypeError**
-2. **SpecifiedEpochNotExecutedError**
-3. **EmptyEpochStringError**
-4. **InvalidDigitEpochError**
-5. **MissingHexPrefixError**
-
+1.  [InvalidParamsError](./errors#invalidparamserror)
+    *   **InvalidEpochTypeError**
+    *   **SpecifiedEpochNotExecutedError**
+    *   **EmptyEpochStringError**
+    *   **InvalidDigitEpochError**
+    *   **MissingHexPrefixError**
 
 ## cfx_getAccumulateInterestRate
 
 Returns the accumulate interest rate at the given epoch.
 
-### 1. [InvalidParamsError](./errors#invalidparamserror)
+### Errors
 
-1. **InvalidEpochTypeError**
-2. **SpecifiedEpochNotExecutedError**
-3. **EmptyEpochStringError**
-4. **InvalidDigitEpochError**
-5. **MissingHexPrefixError**
-
+1.  [InvalidParamsError](./errors#invalidparamserror)
+    *   **InvalidEpochTypeError**
+    *   **SpecifiedEpochNotExecutedError**
+    *   **EmptyEpochStringError**
+    *   **InvalidDigitEpochError**
+    *   **MissingHexPrefixError**
 
 ## cfx_checkBalanceAgainstTransaction
 
 Check if a user's balance is enough to send a transaction with the specified gas and storage limits to the specified contract. The balance is enough if the user can cover the up-front payment of both execution and storage, or if these costs are sponsored by the contract.
 
-### 1. [InvalidParamsError](./errors#invalidparamserror)
+### Errors
 
-1. **InvalidEpochTypeError**
-2. **SpecifiedEpochNotExecutedError**
-3. **EmptyEpochStringError**
-4. **InvalidDigitEpochError**
-5. **MissingHexPrefixError**
-6. **UnexpectedRpcAddressNetworkError**
-7. **StorageLimitOutOfRangeError**
-
+1.  [InvalidParamsError](./errors#invalidparamserror)
+    *   **InvalidEpochTypeError**
+    *   **SpecifiedEpochNotExecutedError**
+    *   **EmptyEpochStringError**
+    *   **InvalidDigitEpochError**
+    *   **MissingHexPrefixError**
+    *   **UnexpectedRpcAddressNetworkError**
+    *   **StorageLimitOutOfRangeError**
 
 ## cfx_getSkippedBlocksByEpoch
 
 Returns the list of non-executed blocks in an epoch. By default, Conflux only executes the last 200 blocks in each epoch (note that under normal circumstances, epochs should be much smaller).
 
-### 1. [InvalidParamsError](./errors#invalidparamserror)
+### Errors
 
-1. **Invalid parameter type**
-2. **EpochNumberTooLargeError**
-3. **EmptyEpochStringError**
-4. **InvalidDigitEpochError**
-5. **MissingHexPrefixError**
+1.  [InvalidParamsError](./errors#invalidparamserror)
+    *   **Invalid parameter type**
+    *   **EpochNumberTooLargeError**
+    *   **EmptyEpochStringError**
+    *   **InvalidDigitEpochError**
+    *   **MissingHexPrefixError**
 
 ## cfx_getConfirmationRiskByHash
 
 Returns the confirmation risk of a given block, identified by its hash.
 
 This RPC doesn't throw an error.
-
 
 ## cfx_getStatus
 
@@ -408,120 +427,125 @@ Returns the conflux-rust version.
 
 This RPC doesn't throw an error.
 
-
-
 ## cfx_getBlockRewardInfo
 
 Returns the reward info for all executed blocks in the specified epoch.
 
-### 1. [InvalidParamsError](./errors#invalidparamserror)
+### Errors
 
-1. **InvalidEpochType**
-2. **EmptyEpochString**
-3. **InvalidDigitEpoch**
-4. **MissingHexPrefix**
-5. **RewardNotCalculated**
-
+1.  [InvalidParamsError](./errors#invalidparamserror)
+    *   **InvalidEpochType**
+    *   **EmptyEpochString**
+    *   **InvalidDigitEpoch**
+    *   **MissingHexPrefix**
+    *   **RewardNotCalculated**
 
 ## cfx_getBlockByHashWithPivotAssumption
 
 Returns the requested block if the provided pivot hash is correct, returns an error otherwise.
 
-### 1. [InvalidParamsError](./errors#invalidparamserror)
+### Errors
 
-1. **PivotChainAssumptionFailed**
-2. **BlockNotFound**
-
+1.  [InvalidParamsError](./errors#invalidparamserror)
+    *   **PivotChainAssumptionFailed**
+    *   **BlockNotFound**
 
 ## cfx_getDepositList
 
 Returns the deposit list of the given account, identified by its address.
 
-### 1. [InvalidParamsError](./errors#invalidparamserror)
+### Errors
 
-1. **InvalidEpochType**
-2. **SpecifiedEpochNotExecuted**
-3. **EmptyEpochString**
-4. **InvalidDigitEpoch**
-5. **MissingHexPrefix**
-6. **UnexpectedRpcAddressNetwork**
-
+1.  [InvalidParamsError](./errors#invalidparamserror)
+    *   **InvalidEpochType**
+    *   **SpecifiedEpochNotExecuted**
+    *   **EmptyEpochString**
+    *   **InvalidDigitEpoch**
+    *   **MissingHexPrefix**
+    *   **UnexpectedRpcAddressNetwork**
 
 ## cfx_getVoteList
 
 Returns the vote list of the given account, identified by its address.
 
-### 1. [InvalidParamsError](./errors#invalidparamserror)
+### Errors
 
-1. **InvalidEpochType**
-2. **SpecifiedEpochNotExecuted**
-3. **EmptyEpochString**
-4. **InvalidDigitEpoch**
-5. **MissingHexPrefix**
-6. **UnexpectedRpcAddressNetwork**
+1.  [InvalidParamsError](./errors#invalidparamserror)
+    *   **InvalidEpochType**
+    *   **SpecifiedEpochNotExecuted**
+    *   **EmptyEpochString**
+    *   **InvalidDigitEpoch**
+    *   **MissingHexPrefix**
+    *   **UnexpectedRpcAddressNetwork**
 
 ## cfx_getSupplyInfo
 
 Returns summary supply info of the entire chain.
 
-1. **InvalidEpochTypeError**
-2. **SpecifiedEpochNotExecutedError**
-3. **EmptyEpochStringError**
-4. **InvalidDigitEpochError**
-5. **MissingHexPrefixError**
+### Errors
 
+1.  **InvalidEpochTypeError**
+2.  **SpecifiedEpochNotExecutedError**
+3.  **EmptyEpochStringError**
+4.  **InvalidDigitEpochError**
+5.  **MissingHexPrefixError**
 
 ## cfx_getAccountPendingInfo
 
 Returns transaction pool pending info of one account
 
-### 1. [InvalidParamsError](./errors#invalidparamserror)
-1. **UnexpectedRpcAddressNetworkError**
+### Errors
 
+1.  [InvalidParamsError](./errors#invalidparamserror)
+    *   **UnexpectedRpcAddressNetworkError**
 
 ## cfx_getAccountPendingTransactions
 
 Returns pending transactions in pool of one account
 
-### 1. [InvalidParamsError](./errors#invalidparamserror)
-1. **UnexpectedRpcAddressNetworkError**
+### Errors
 
+1.  [InvalidParamsError](./errors#invalidparamserror)
+    *   **UnexpectedRpcAddressNetworkError**
 
 ## cfx_getPoSEconomics
 
 Returns PoS economics summary info.
 
-### 1. [InvalidParamsError](./errors#invalidparamserror)
+### Errors
 
-1. **InvalidEpochType**
-2. **SpecifiedEpochNotExecuted**
-3. **EmptyEpochString**
-4. **InvalidDigitEpoch**
-5. **MissingHexPrefix**
-
+1.  [InvalidParamsError](./errors#invalidparamserror)
+    *   **InvalidEpochType**
+    *   **SpecifiedEpochNotExecuted**
+    *   **EmptyEpochString**
+    *   **InvalidDigitEpoch**
+    *   **MissingHexPrefix**
 
 ## cfx_getPoSRewardByEpoch
 
 Get rewards information of a PoS epoch by it's correspond PoW epoch number. Only PoW epoch happen's at PoS epoch end will have rewards information. Others will return null.
 
-### 1. [InvalidParamsError](./errors#invalidparamserror)
+### Errors
 
-1. **InvalidEpochType**
-2. **EmptyEpochString**
-3. **InvalidDigitEpoch**
-4. **MissingHexPrefix**
+1.  [InvalidParamsError](./errors#invalidparamserror)
+    *   **InvalidEpochType**
+    *   **EmptyEpochString**
+    *   **InvalidDigitEpoch**
+    *   **MissingHexPrefix**
 
 ## cfx_getParamsFromVote
 
 Returns DAO vote params info
 
-### 1. [InvalidParamsError](./errors#invalidparamserror)
-1. **InvalidEpochType**
-2. **SpecifiedEpochNotExecuted**
-3. **EmptyEpochString**
-4. **InvalidDigitEpoch**
-5. **MissingHexPrefix**
+### Errors
 
+1.  [InvalidParamsError](./errors#invalidparamserror)
+    *   **InvalidEpochType**
+    *   **SpecifiedEpochNotExecuted**
+    *   **EmptyEpochString**
+    *   **EmptyEpochString**
+    *   **InvalidDigitEpoch**
+    *   **MissingHexPrefix**
 
 ## cfx_newFilter
 
@@ -529,18 +553,17 @@ This function creates a log filter for tracking usage. It returns a log filter I
 
 It is important to note that the filter object will expire after a certain period of inactivity from the last request, typically 60 seconds. This expiration duration is configured by the node. To avoid losing log tracking, it is recommended to refresh or recreate the filter as necessary.
 
-### 1. [InvalidParamsError](./errors#invalidparamserror)
+### Errors
 
-1. **InvalidEpochType**
-2. **EpochNumberTooLarge**
-3. **EmptyEpochString**
-4. **InvalidDigitEpoch**
-5. **MissingHexPrefix**
-6. **BlockHashesLimitExceededError**
-7. **ExceededTopicsLimitError**
-8. **MissingFilterParametersError**
-
-
+1.  [InvalidParamsError](./errors#invalidparamserror)
+    *   **InvalidEpochType**
+    *   **EpochNumberTooLarge**
+    *   **EmptyEpochString**
+    *   **InvalidDigitEpoch**
+    *   **MissingHexPrefix**
+    *   **BlockHashesLimitExceededError**
+    *   **ExceededTopicsLimitError**
+    *   **MissingFilterParametersError**
 
 ## cfx_newBlockFilter
 
@@ -548,10 +571,7 @@ Create a block filter for following up usage. Returns the block filter id which 
 
 It is important to note that the filter object will expire after a certain period of inactivity from the last request, typically 60 seconds. This expiration duration is configured by the node. To avoid losing log tracking, it is recommended to refresh or recreate the filter as necessary.
 
-
 This RPC doesn't throw an error.
-
-
 
 ## cfx_newPendingTransactionFilter
 
@@ -559,28 +579,27 @@ Create a pending transaction filter for following up usage. Returns the transact
 
 This RPC doesn't throw an error.
 
-
 ## cfx_getFilterChanges
 
 Get filter changes since last retrieve. Return value depends on which type of filter id is provided. Filter id can be returned from current RPCs:
 
-cfx_newFilter: new logs generated from newly executed transactions matching the filter. Noting that from* fields will be ignored by this RPC.
-cfx_newBlockFilter: new executed blocks.
-cfx_newPendingTransactionFilter: new pending transactions which are ready to execute.
+*   cfx_newFilter: new logs generated from newly executed transactions matching the filter. Noting that from* fields will be ignored by this RPC.
+*   cfx_newBlockFilter: new executed blocks.
+*   cfx_newPendingTransactionFilter: new pending transactions which are ready to execute.
 
+### Errors
 
-### 1. [InvalidRequestError](./errors#invalidRequestError)
-
-1. **FilterNotFoundError**
+1.  [InvalidRequestError](./errors#invalidRequestError)
+    *   **FilterNotFoundError**
 
 ## cfx_getFilterLogs
 
 Returns all logs matching the log filter (Unlike cfx_getFilterChanges, from* fields still work).
 
-### 1. [InvalidRequestError](./errors#invalidRequestError)
+### Errors
 
-1. **FilterNotFoundError**
-
+1.  [InvalidRequestError](./errors#invalidRequestError)
+    *   **FilterNotFoundError**
 
 ## cfx_uninstallFilter
 
@@ -588,32 +607,31 @@ Uninstalls a filter.
 
 This RPC doesn't throw an error.
 
-
 ## cfx_getEpochReceipts
 
 Returns all transaction receipts within the specific epoch.
 
-### 1. [InvalidParamsError](./errors#invalidparamserror)
+### Errors
 
-1. **InvalidEpochType**
-2. **EpochNumberTooLarge**
-3. **EmptyEpochString**
-4. **InvalidDigitEpoch**
-5. **MissingHexPrefix**
-
-
+1.  [InvalidParamsError](./errors#invalidparamserror)
+    *   **InvalidEpochType**
+    *   **EpochNumberTooLarge**
+    *   **EmptyEpochString**
+    *   **InvalidDigitEpoch**
+    *   **MissingHexPrefix**
 
 ## cfx_getCollateralInfo
+
 Returns current chain collateral status info.
 
-### 1. [InvalidParamsError](./errors#invalidparamserror)
+### Errors
 
-1. **InvalidEpochType**
-2. **SpecifiedEpochNotExecuted**
-3. **EmptyEpochString**
-4. **InvalidDigitEpoch**
-5. **MissingHexPrefix**
-
+1.  [InvalidParamsError](./errors#invalidparamserror)
+    *   **InvalidEpochType**
+    *   **SpecifiedEpochNotExecuted**
+    *   **EmptyEpochString**
+    *   **InvalidDigitEpoch**
+    *   **MissingHexPrefix**
 
 ## cfx_getFeeBurnt
 

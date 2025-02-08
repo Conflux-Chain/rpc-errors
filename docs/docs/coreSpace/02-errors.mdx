@@ -4,259 +4,264 @@ title: ERRORS
 
 ## InvalidParamsError
 
-InvalidParamsError occurs when incorrect parameters are provided. To correct this error, follow the instructions in the error message to adjust the parameters accordingly.
+`InvalidParamsError` occurs when incorrect parameters are provided. To correct this error, follow the instructions in the error message to adjust the parameters accordingly.
 
-1. **Invalid parameter type**
+### Error Types and Examples
 
->  "Invalid params: invalid type: integer `1`, expected an epoch number or 'latest_mined', 'latest_state', 'latest_checkpoint', 'latest_finalized', 'latest_confirmed' or 'earliest'."
+1.  **Invalid parameter type**
 
-2. **EpochNumberTooLargeError**
+    > "Invalid params: invalid type: integer `1`, expected an epoch number or 'latest_mined', 'latest_state', 'latest_checkpoint', 'latest_finalized', 'latest_confirmed' or 'earliest'."
 
-> You need to pass a `hex` string or epoch strings, not a `number`.
+2.  **EpochNumberTooLargeError**
 
-3. **EmptyEpochStringError**
+    > You need to pass a `hex` string or epoch strings, not a `number`.
 
-> "Invalid params: Invalid epoch number: cannot parse integer from empty string."
+3.  **EmptyEpochStringError**
 
-4. **InvalidDigitEpochError**
+    > "Invalid params: Invalid epoch number: cannot parse integer from empty string."
 
-> "Invalid params: Invalid epoch number: invalid digit found in string."
+4.  **InvalidDigitEpochError**
 
-5. **MissingHexPrefixError**
+    > "Invalid params: Invalid epoch number: invalid digit found in string."
 
-> "Invalid params: Invalid epoch number: missing 0x prefix."
+5.  **MissingHexPrefixError**
 
-6. **InvalidHashTypeError**
+    > "Invalid params: Invalid epoch number: missing 0x prefix."
 
-> "... expected a (both 0x-prefixed or not) hex string with length of 64."
+6.  **InvalidHashTypeError**
 
-7. **NonExistentBlockHeaderError**
+    > "... expected a (both 0x-prefixed or not) hex string with length of 64."
 
-> "Specified block header does not exist"
+7.  **NonExistentBlockHeaderError**
 
-8. **InvalidBase32AddressError**
+    > "Specified block header does not exist"
 
-> "invalid params: Invalid base32 address: input 0x error zero or multiple prefixes."
+8.  **InvalidBase32AddressError**
 
-9. **InvalidSize160AddressError**
+    > "invalid params: Invalid base32 address: input 0x error zero or multiple prefixes."
 
-> "Invalid base32 address: input ... not a SIZE_160 address.""
+9.  **InvalidSize160AddressError**
+
+    > "Invalid base32 address: input ... not a SIZE_160 address.""
 
 10. **SpecifiedEpochNotExecutedError**
 
-> "Specified epoch 9007199254740991 is not executed, the latest state epoch is 0"
+    > "Specified epoch 9007199254740991 is not executed, the latest state epoch is 0"
 
 11. **LatestMinedNotExecutedError**
 
-> "Latest mined epoch is not executed"
+    > "Latest mined epoch is not executed"
 
 12. **RlpIsTooShort**
 
->  message: 'Invalid parameters: raw', data: '"RlpIsTooShort"'
+    > message: 'Invalid parameters: raw', data: '"RlpIsTooShort"'
+
 13. **RlpInvalidLength**
->  message: 'Invalid parameters: raw', data: '"RlpInvalidLength"'
+
+    > message: 'Invalid parameters: raw', data: '"RlpInvalidLength"'
 
 14. **UnrecoverablePubkey**
 
-> message: 'Invalid parameters: tx "Can not recover pubkey for Ethereum like tx"', data: '"Can not recover pubkey for Ethereum like tx"'
+    > message: 'Invalid parameters: tx "Can not recover pubkey for Ethereum like tx"', data: '"Can not recover pubkey for Ethereum like tx"'
 
 15. **TransactionAlreadyExist**
 
-> message: 'Invalid parameters: tx "tx already exist"', data: '"tx already exist"'
+    > message: 'Invalid parameters: tx "tx already exist"', data: '"tx already exist"'
 
 16. **TransactionTooBigError**
 
-> message: 'Invalid parameters: tx "TooBig"', data: '"TooBig"'
+    > message: 'Invalid parameters: tx "TooBig"', data: '"TooBig"'
 
 17. **TransactionChainIdMismatchError**
 
-> message: "Invalid parameters: tx \"ChainIdMismatch \{ expected: 1234, got: 1, space: Native }\"", data: "\"ChainIdMismatch \{ expected: 1234, got: 1, space: Native }\"",
+    > message: "Invalid parameters: tx \"ChainIdMismatch \{ expected: 1234, got: 1, space: Native }\"", data: "\"ChainIdMismatch \{ expected: 1234, got: 1, space: Native }\"",
 
 18. **TransactionInvalidReceiverError**
 
->  message: "Invalid parameters: tx \"InvalidReceiver\"", data: "\"InvalidReceiver\"",
+    > message: "Invalid parameters: tx \"InvalidReceiver\"", data: "\"InvalidReceiver\"",
 
 19. **GasLimitExceededError**
 
-> message: "Invalid parameters: tx \"transaction gas 30000000 exceeds the maximum value 13500000\"", data: "\"transaction gas 30000000 exceeds the maximum value 13500000\"",
+    > message: "Invalid parameters: tx \"transaction gas 30000000 exceeds the maximum value 13500000\"", data: "\"transaction gas 30000000 exceeds the maximum value 13500000\"",
 
 20. **TransactionNonceTooDistantError**
 
-> message: "Invalid parameters: tx \"Transaction 0x9ff004ac0da8d9241583d94fbb8cc59465a20683169749f915a4efc26be744ea is discarded due to in too distant future\"",  data: "\"Transaction 0x9ff004ac0da8d9241583d94fbb8cc59465a20683169749f915a4efc26be744ea is discarded due to in too distant future\"",
-
+    > message: "Invalid parameters: tx \"Transaction 0x9ff004ac0da8d9241583d94fbb8cc59465a20683169749f915a4efc26be744ea is discarded due to in too distant future\"",  data: "\"Transaction 0x9ff004ac0da8d9241583d94fbb8cc59465a20683169749f915a4efc26be744ea is discarded due to in too distant future\"",
 
 21. **NonceTooStaleError**
 
-> message: 'Invalid parameters: tx "Transaction 0xf5d8204933be20bf188ceaa1c55be6d9a2cffa243e61e61a9c913f9d5e76f499 is discarded due to a too stale nonce"', data: '"Transaction 0xf5d8204933be20bf188ceaa1c55be6d9a2cffa243e61e61a9c913f9d5e76f499 is discarded due to a too stale nonce"'
+    > message: 'Invalid parameters: tx "Transaction 0xf5d8204933be20bf188ceaa1c55be6d9a2cffa243e61e61a9c913f9d5e76f499 is discarded due to a too stale nonce"', data: '"Transaction 0xf5d8204933be20bf188ceaa1c55be6d9a2cffa243e61e61a9c913f9d5e76f499 is discarded due to a too stale nonce"'
 
 22. **OutOfBalanceError**
 
-> message: "Invalid parameters: tx \"Transaction 0xe7cb20784bbaf32b54ae1a9415c9b0fd7728ba9f4f77221c2a1b69854c04e2bc is discarded due to out of balance, needs 10000000000000000000021000 but account balance is 10000000000000000000000\"", data: "\"Transaction 0xe7cb20784bbaf32b54ae1a9415c9b0fd7728ba9f4f77221c2a1b69854c04e2bc is discarded due to out of balance, needs 10000000000000000000021000 but account balance is 10000000000000000000000\"",
+    > message: "Invalid parameters: tx \"Transaction 0xe7cb20784bbaf32b54ae1a9415c9b0fd7728ba9f4f77221c2a1b69854c04e2bc is discarded due to out of balance, needs 10000000000000000000021000 but account balance is 10000000000000000000000\"", data: "\"Transaction 0xe7cb20784bbaf32b54ae1a9415c9b0fd7728ba9f4f77221c2a1b69854c04e2bc is discarded due to out of balance, needs 10000000000000000000021000 but account balance is 10000000000000000000000\"",
 
 23. **HigherGasPriceNeeded**
 
->  message: "Invalid parameters: tx \"Tx with same nonce already inserted. To replace it, you need to specify a gas price > 1020000000\"", data: "\"Tx with same nonce already inserted. To replace it, you need to specify a gas price > 1020000000\"",
+    > message: "Invalid parameters: tx \"Tx with same nonce already inserted. To replace it, you need to specify a gas price > 1020000000\"", data: "\"Tx with same nonce already inserted. To replace it, you need to specify a gas price > 1020000000\"",
 
 24. **BlockHashesLimitExceededError**
 
->  message: "Invalid parameters: tx \"filter.block_hashes can contain up to 128 hashes; 150 were provided.\"", data: "\"filter.block_hashes can contain up to 128 hashes; 150 were provided.\"",
+    > message: "Invalid parameters: tx \"filter.block_hashes can contain up to 128 hashes; 150 were provided.\"", data: "\"filter.block_hashes can contain up to 128 hashes; 150 were provided.\"",
 
 25. **ExceededTopicsLimitError**
 
->  message: "Invalid parameters: tx \"filter.topics can contain up to 4 topics; 6 were provided.\"", data: "\"filter.topics can contain up to 4 topics; 6 were provided.\"",
+    > message: "Invalid parameters: tx \"filter.topics can contain up to 4 topics; 6 were provided.\"", data: "\"filter.topics can contain up to 4 topics; 6 were provided.\"",
 
 26. **MissingFilterParametersError**
 
->  message: "Invalid parameters: tx \"Filter must provide one of the following: (1) an epoch range through `fromEpoch` and `toEpoch`, (2) a block number range through `fromBlock` and `toBlock`, (3) a set of block hashes through `blockHashes`\"", data: "\"Filter must provide one of the following: (1) an epoch range through `fromEpoch` and `toEpoch`, (2) a block number range through `fromBlock` and `toBlock`, (3) a set of block hashes through `blockHashes`\"",
+    > message: "Invalid parameters: tx \"Filter must provide one of the following: (1) an epoch range through `fromEpoch` and `toEpoch`, (2) a block number range through `fromBlock` and `toBlock`, (3) a set of block hashes through `blockHashes`\"", data: "\"Filter must provide one of the following: (1) an epoch range through `fromEpoch` and `toEpoch`, (2) a block number range through `fromBlock` and `toBlock`, (3) a set of block hashes through `blockHashes`\"",
 
 27. **ExceededLogsLimitError**
 
->  message: "Invalid parameters: tx \"This query results in too many logs, max limitation is 10000, please filter results by a smaller epoch/block range\"", data: "\"This query results in too many logs, max limitation is 10000, please filter results by a smaller epoch/block range\"",
+    > message: "Invalid parameters: tx \"This query results in too many logs, max limitation is 10000, please filter results by a smaller epoch/block range\"", data: "\"This query results in too many logs, max limitation is 10000, please filter results by a smaller epoch/block range\"",
 
 28. **RewardNotCalculatedError**
 
->    message: 'Invalid parameters: epoch',  data: '"Reward not calculated yet!"'
+    > message: 'Invalid parameters: epoch',  data: '"Reward not calculated yet!"'
 
 29. **PivotChainAssumptionFailedError**
 
-> message: "pivot chain assumption failed",
+    > message: "pivot chain assumption failed",
 
 30. **BlockNotFoundError**
 
-> message: "Block not found",
+    > message: "Block not found",
 
 ## InternalError
 
-InternalError occurs when an internal error occurs.
+`InternalError` occurs when an internal error occurs.
 
-1. **NonExistentBlockHeaderError**
+### Error Types and Examples
 
-> "Specified block header does not exist"
+1.  **NonExistentBlockHeaderError**
 
+    > "Specified block header does not exist"
 
 ## ExecutionOutcome
 
-1. **NotExecutedDropOldNonceError**
+### Error Types and Examples
 
->  message: 'Transaction can not be executed', data: 'nonce is too old expected 1 got 0'
+1.  **NotExecutedDropOldNonceError**
 
-2. **NotExecutedDropInvalidRecipientAddress**
+    > message: 'Transaction can not be executed', data: 'nonce is too old expected 1 got 0'
 
-> message: 'Transaction can not be executed', data: 'invalid recipient address cfx:type.user:aarc9abycue0hhzgyrr53m6cxedgccrmmyybjgh4xg'
+2.  **NotExecutedDropInvalidRecipientAddress**
 
-3. **NotExecutedDropNotEnoughGasLimitError**
+    > message: 'Transaction can not be executed', data: 'invalid recipient address cfx:type.user:aarc9abycue0hhzgyrr53m6cxedgccrmmyybjgh4xg'
 
-> message: 'Transaction can not be executed', data: 'not enough gas limit with respected to tx size: expected 1 got 0'
+3.  **NotExecutedDropNotEnoughGasLimitError**
 
-4. **NotExecutedToReconsiderPackingInvalidNonceError**
+    > message: 'Transaction can not be executed', data: 'not enough gas limit with respected to tx size: expected 1 got 0'
 
-> message: "Transaction can not be executed", data: "InvalidNonce \{ expected: 10, got: 20 \}"
+4.  **NotExecutedToReconsiderPackingInvalidNonceError**
 
-5. **NotExecutedToReconsiderPackingEpochHeightOutOfBoundError**
+    > message: "Transaction can not be executed", data: "InvalidNonce \{ expected: 10, got: 20 \}"
 
->  message: "Transaction can not be executed",  data: "EpochHeightOutOfBound \{ block_height: 100, set: 50, transaction_epoch_bound: 150 \}"
+5.  **NotExecutedToReconsiderPackingEpochHeightOutOfBoundError**
 
-6. **NotExecutedToReconsiderPackingNotEnoughCashFromSponsorError**
+    > message: "Transaction can not be executed",  data: "EpochHeightOutOfBound \{ block_height: 100, set: 50, transaction_epoch_bound: 150 \}"
 
-> message: "Transaction can not be executed", data: NotEnoughCashFromSponsor \{ required_gas_cost: 0, gas_sponsor_balance: 0, required_storage_cost: 0, storage_sponsor_balance: 0 \}
+6.  **NotExecutedToReconsiderPackingNotEnoughCashFromSponsorError**
 
-7. **NotExecutedToReconsiderPackingSenderDoesNotExist**
+    > message: "Transaction can not be executed", data: NotEnoughCashFromSponsor \{ required_gas_cost: 0, gas_sponsor_balance: 0, required_storage_cost: 0, storage_sponsor_balance: 0 \}
 
-> message: "Transaction can not be executed", data: SenderDoesNotExist
+7.  **NotExecutedToReconsiderPackingSenderDoesNotExist**
 
-8. **NotExecutedToReconsiderPackingNotEnoughBaseFeeError**
+    > message: "Transaction can not be executed", data: SenderDoesNotExist
 
-> message: "Transaction can not be executed", data: NotEnoughBaseFee \{ expected: 0, got: 0 \}
+8.  **NotExecutedToReconsiderPackingNotEnoughBaseFeeError**
 
-9. **ExecutionErrorBumpNonceVmRevertedError**
+    > message: "Transaction can not be executed", data: NotEnoughBaseFee \{ expected: 0, got: 0 \}
 
-> message:Transaction reverted, data: 0x0000
+9.  **ExecutionErrorBumpNonceVmRevertedError**
 
-10.  **ExecutionErrorBumpNonceNotEnoughCashError**
+    > message:Transaction reverted, data: 0x0000
 
-> message: "Transaction execution failed",  data: "NotEnoughCash \{ required: 0, got: 0, actual_gas_cost: 0, max_storage_limit_cost: 0 \}"
+10. **ExecutionErrorBumpNonceNotEnoughCashError**
+
+    > message: "Transaction execution failed",  data: "NotEnoughCash \{ required: 0, got: 0, actual_gas_cost: 0, max_storage_limit_cost: 0 \}"
 
 11. **ExecutionErrorBumpNonceVmOutOfGasError**
 
->  message: "Transaction execution failed",  data: "Out of gas",
+    > message: "Transaction execution failed",  data: "Out of gas",
 
 12. **ExecutionErrorBumpNonceVmBadJumpDestinationError**
 
->  message: "Transaction execution failed", data: ""Bad jump destination 1a"",
+    > message: "Transaction execution failed", data: ""Bad jump destination 1a"",
 
 13. **ExecutionErrorBumpNonceVmBadInstructionError**
 
->  message: "Transaction execution failed", data: "Bad instruction ff",
+    > message: "Transaction execution failed", data: "Bad instruction ff",
 
 14. **ExecutionErrorBumpNonceVmStackUnderflowError**
 
->  message: "Transaction execution failed",  data: "Stack underflow ADD 2/1"
+    > message: "Transaction execution failed",  data: "Stack underflow ADD 2/1"
 
 15. **ExecutionErrorBumpNonceVmOutOfStackError**
 
->    message: "Transaction execution failed", data: "Out of stack PUSH 1024/1023"
+    > message: "Transaction execution failed", data: "Out of stack PUSH 1024/1023"
 
-16 **ExecutionErrorBumpNonceVmSubStackUnderflowError**
+16. **ExecutionErrorBumpNonceVmSubStackUnderflowError**
 
-> message: "Transaction execution failed",  data: "Subroutine stack underflow 2/1",
+    > message: "Transaction execution failed",  data: "Subroutine stack underflow 2/1",
 
 17. **ExecutionErrorBumpNonceVmOutOfSubStackError**
 
-> message: "Transaction execution failed",  data: "Out of subroutine stack 2/1"
+    > message: "Transaction execution failed",  data: "Out of subroutine stack 2/1"
 
 18. **ExecutionErrorBumpNonceVmInvalidSubEntryError**
 
-> message: "Transaction execution failed",  data: "Invalid Subroutine Entry via BEGINSUB"
+    > message: "Transaction execution failed",  data: "Invalid Subroutine Entry via BEGINSUB"
 
 19. **ExecutionErrorBumpNonceVmNotEnoughBalanceForStorageError**
 
-> message: "Transaction execution failed",  data: "Not enough balance for storage 1000/500"
+    > message: "Transaction execution failed",  data: "Not enough balance for storage 1000/500"
 
 20. **ExecutionErrorBumpNonceVmExceedStorageLimitError**
 
-> message: "Transaction execution failed",  data: "Exceed storage limit"
+    > message: "Transaction execution failed",  data: "Exceed storage limit"
 
 21. **ExecutionErrorBumpNonceVmBuiltInError**
 
-> message: "Transaction execution failed",  data: "Built-in failed: modexp"
+    > message: "Transaction execution failed",  data: "Built-in failed: modexp"
 
 22. **ExecutionErrorBumpNonceVmInternalContractError**
 
-> message: "Transaction execution failed",  data: "InternalContract failed: some error message"
+    > message: "Transaction execution failed",  data: "InternalContract failed: some error message"
 
 23. **ExecutionErrorBumpNonceVmStateDbError**
 
-> message: "Transaction execution failed",  data: "Irrecoverable state db error: database error message"
+    > message: "Transaction execution failed",  data: "Irrecoverable state db error: database error message"
 
 24. **ExecutionErrorBumpNonceVmMutableCallInStaticContextError**
 
-> message: "Transaction execution failed",  data: "Mutable call in static context"
+    > message: "Transaction execution failed",  data: "Mutable call in static context"
 
 25. **ExecutionErrorBumpNonceVmWasmError**
 
-> message: "Transaction execution failed",  data: "Internal error: wasm error message"
+    > message: "Transaction execution failed",  data: "Internal error: wasm error message"
 
 26. **ExecutionErrorBumpNonceVmOutOfBoundsError**
 
-> message: "Transaction execution failed",  data: "Out of bounds"
+    > message: "Transaction execution failed",  data: "Out of bounds"
 
 27. **ExecutionErrorBumpNonceVmRevertedByBytecodeError**
 
-> message: "Transaction execution failed",  data: "Reverted by bytecode"
+    > message: "Transaction execution failed",  data: "Reverted by bytecode"
 
 28. **ExecutionErrorBumpNonceVmInvalidAddressError**
 
-> message: "Transaction execution failed",  data: "InvalidAddress: cfx:aaaaaa"
+    > message: "Transaction execution failed",  data: "InvalidAddress: cfx:aaaaaa"
 
 29. **ExecutionErrorBumpNonceVmConflictAddressError**
 
-> message: "Transaction execution failed",  data: "Contract creation on an existing address: xxxx"
-
-
-
+    > message: "Transaction execution failed",  data: "Contract creation on an existing address: xxxx"
 
 ## InvalidRequestError
 
-1. **FilterNotFoundError**
+### Error Types and Examples
 
-> message: "Filter not found"
+1.  **FilterNotFoundError**
+
+    > message: "Filter not found"
