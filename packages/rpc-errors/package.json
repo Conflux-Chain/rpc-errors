@@ -19,6 +19,16 @@
       "require": "./_cjs/index.js",
       "import": "./_esm/index.js",
       "types": "./_types/index.d.ts"
+    },
+    "./coreSpace": {
+      "require": "./_cjs/coreSpace/index.js",
+      "import": "./_esm/coreSpace/index.js",
+      "types": "./_types/coreSpace/index.d.ts"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "coreSpace": ["./_types/coreSpace/index.d.ts"]
     }
   },
   "scripts": {
