@@ -3,7 +3,7 @@ import CallExecutionErrors from "./callExecutionErrors";
 import CustomErrors from "./customErrors";
 import InternalErrors from "./internalErrors";
 import InvalidParamsErrors from "./invalidParamsErrors";
-import { InvalidRequestErrors } from "./JSONRPC";
+import { InvalidRequestErrors } from "./jsonrpc";
 
 // Export error types
 export type {
