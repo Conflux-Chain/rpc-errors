@@ -10,7 +10,7 @@
     "build": "pnpm -r build",
     "changeset:prepublish": "pnpm build",
     "changeset:publish": "pnpm changeset:prepublish && changeset publish",
-    "changeset:version": "changeset version && pnpm install --lockfile-only  && pnpm format"
+    "changeset:version": "changeset version && pnpm install --lockfile-only"
   },
   "keywords": [],
   "author": "",
