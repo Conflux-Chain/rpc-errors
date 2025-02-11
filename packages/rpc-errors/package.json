@@ -1,6 +1,6 @@
 {
   "name": "@cfxjs/rpc-errors",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "description": "",
   "publishConfig": {
@@ -28,7 +28,9 @@
   },
   "typesVersions": {
     "*": {
-      "coreSpace": ["./_types/coreSpace/index.d.ts"]
+      "coreSpace": [
+        "./_types/coreSpace/index.d.ts"
+      ]
     }
   },
   "scripts": {
