@@ -4,6 +4,7 @@ import { isRpcError } from "../src/utils/isRpcError";
 
 export const TEST_ADDRESS =
   "net1234:aak47w2s5depvt14xu9a6c5pzehux0gr1a603jhfxh";
+export const TEST_HEX_ADDRESS = "0x13AeCb0ed8C8C8BEFA9c3e0E0b6cA90f09d8cdB8";
 export const TEST_PK =
   "50b258d3740b8c9a28ddf62c15fb9f72782b4fab7154bb6bfb34bc59e96b7491";
 

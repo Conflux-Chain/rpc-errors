@@ -1,0 +1,19 @@
+---
+title: ERRORS
+---
+
+## InvalidParamsError
+
+`InvalidParamsError` occurs when incorrect parameters are provided. To correct this error, follow the instructions in the error message to adjust the parameters accordingly.
+
+### Error Types and Examples
+    1.   **MissingHexPrefixError**
+        > Invalid params: Invalid block number: missing 0x prefix.
+    2.   **InvalidBlockTypeError**
+        > Invalid params: invalid type: integer `1`, expected a block number or 'latest', 'earliest' or 'pending'.
+    3.   **SpecifiedBlockNotExecutedError**
+        > Specified epoch 9007199254740991 is not executed, the latest state epoch is 0
+    4.   **EmptyBlockStringError**
+        > Invalid params: Invalid block number: cannot parse integer from empty string.
+    5.   **InvalidDigitError**
+        > Invalid params: Invalid block number: invalid digit found in string.
