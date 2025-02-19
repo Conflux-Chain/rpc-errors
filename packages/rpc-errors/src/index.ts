@@ -6,4 +6,11 @@ import coreSpaceErrors, {
   type CoreSpaceErrorsType,
 } from "./coreSpace/index.js";
 
-export { coreSpaceErrors, type CoreSpaceErrorsType };
+import eSpaceErrors, { type ESpaceErrorsType } from "./eSpace/index.js";
+
+export {
+  coreSpaceErrors,
+  type CoreSpaceErrorsType,
+  eSpaceErrors,
+  type ESpaceErrorsType,
+};
