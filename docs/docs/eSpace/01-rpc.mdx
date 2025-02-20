@@ -75,3 +75,25 @@ Returns the balance of the account of a given address.
     *   **SpecifiedBlockNotExecutedError**
     *   **EmptyBlockStringError**
     *   **InvalidDigitError**
+
+## eth_getStorageAt
+
+Returns the value from a storage position at a given address, or in other words, returns the state of the contract's storage, which may not be exposed via the contract's methods.
+
+### Errors
+
+1.  [InvalidParamsError](./errors#invalidparamserror)
+    *   **InvalidParamsError**
+    *   **MissingHexPrefixError**
+    *   **InvalidBlockTypeError**
+    *   **SpecifiedBlockNotExecutedError**
+    *   **EmptyBlockStringError**
+    *   **InvalidDigitError**
+
+## eth_getCode
+
+Returns code at a given address.
+
+### Errors
+
+This method does not return any errors.
