@@ -9,7 +9,7 @@ import { coreSpaceErrors, RPCError } from "../src";
 import {
   FilterNotFoundError,
   InvalidRequestError,
-} from "../src/coreSpace/JSONRPC/invalidRequest";
+} from "../src/coreSpace/jsonrpc/invalidRequest";
 
 const rpcError = new RPCError();
 rpcError.registerError(coreSpaceErrors);
