@@ -18,7 +18,6 @@ import {
   InvalidDigitError,
   SpecifiedBlockNotExecutedError,
 } from "../src/eSpace/invalidParamsErrors";
-import { LatestMinedNotExecutedError } from "../src/coreSpace";
 
 const rpcError = new RPCError();
 rpcError.registerError(eSpaceErrors);
