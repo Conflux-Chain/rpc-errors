@@ -8,6 +8,7 @@ import {
   LatestMinedNotExecutedError,
 } from "./block";
 import { InvalidParamsError } from "./invalidParams";
+import { FailedToDecodeSignedTransactionError } from "./transaction";
 
 export { InvalidParamsError } from "./invalidParams";
 export {
@@ -18,6 +19,7 @@ export {
   EmptyBlockStringError,
   LatestMinedNotExecutedError,
 } from "./block";
+export { FailedToDecodeSignedTransactionError } from "./transaction";
 
 const InvalidParamsErrors: RegisterErrorsType = {
   [InvalidParamsError.code]: {
@@ -30,6 +32,7 @@ const InvalidParamsErrors: RegisterErrorsType = {
       SpecifiedBlockNotExecutedError,
       EmptyBlockStringError,
       LatestMinedNotExecutedError,
+      FailedToDecodeSignedTransactionError,
     ],
   },
 };
