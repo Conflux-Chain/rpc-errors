@@ -167,3 +167,202 @@ Executes a new message call immediately without creating a transaction on the bl
     *  **EthInsufficientFundsError**
     *  **ContractExecutionRevertedError**
     *  **ExecutionRevertedError**
+
+
+
+
+## eth_estimateGas
+
+Generates and returns an estimate of how much gas is necessary to allow the transaction to complete. The transaction will not be added to the blockchain.
+
+
+### Errors
+
+1.  [InvalidParamsError](./errors#invalidparamserror)
+    *   **InvalidParamsError**
+    *   **InsufficientGasError**
+    *   **ExceededMaxGasError**
+
+2. [TransactionRejectedError](./errors#transactionrejectederror)
+    *   **MaxPriorityFeeExceedsMaxFeeError**
+
+3. [InternalError](./errors#internalerror)
+    *   **InternalError**
+    *   **IncorrectTransactionSpaceError**
+    *   **ExceedsBlockGasLimitError**
+    *   **TransactionUnderpricedError**
+    *   **NonceTooHighError**
+
+4. [ExecutionError](./errors#ExecutionError)
+   *   **ExecutionError**
+   *   **BlockHashesNotFoundError**
+   *   **InvalidEpochIdError**
+
+5. [InvalidInputError](./errors#InvalidInputError)
+    *  **InvalidInputError**
+    *  **NonceOutdatedError**
+
+6. [EthExecutionError](./errors#EthExecutionError)
+    *  **EthInsufficientFundsError**
+    *  **ContractExecutionRevertedError**
+    *  **ExecutionRevertedError**
+
+
+## eth_getBlockByHash
+
+Returns information about a block by hash.
+
+### Errors
+
+This method does not return any errors.
+
+
+## eth_getBlockByNumber
+
+Returns information about a block by block number.
+
+### Errors
+1. InvalidParamsError
+
+
+## eth_getBlockTransactionCountByHash
+
+Returns the number of transactions in a block matching the given block hash.
+
+### Errors
+
+This method does not return any errors.
+
+
+
+## eth_getBlockTransactionCountByNumber
+
+Returns the number of transactions in a block matching the given block number.
+
+### Errors
+
+1. InvalidParamsError
+
+
+## eth_getTransactionByBlockHashAndIndex
+
+Returns information about a transaction by block hash and transaction index position.
+
+### Errors
+
+1. InvalidParamsError
+
+
+## eth_syncing
+
+### Errors
+
+This method does not return any errors.
+
+
+## eth_hashrate
+
+return zero
+
+### Errors
+
+This method does not return any errors.
+
+
+## eth_coinbase
+return zero
+
+### Errors
+
+This method does not return any errors.
+
+## eth_mining
+
+return false
+
+### Errors
+
+This method does not return any errors.
+
+## eth_maxPriorityFeePerGas
+
+Returns a fee per gas that is an estimate of how much you can pay as a priority fee, or 'tip', to get a transaction included in the current block.
+
+### Errors
+
+1. InvalidParamsError
+
+## eth_accounts
+
+return empty array
+
+### Errors
+
+This method does not return any errors.
+
+
+## eth_submitHashrate
+
+return false
+
+### Errors
+
+This method does not return any errors.
+
+
+## eth_getUncleByBlockHashAndIndex
+
+return null
+
+### Errors
+
+This method does not return any errors.
+
+
+
+## eth_getUncleByBlockNumberAndIndex
+
+return null
+
+### Errors
+
+This method does not return any errors.
+
+
+
+## eth_getUncleCountByBlockHash 
+
+Returns the number of uncles in a block matching the given block hash.
+
+### Errors
+
+This method does not return any errors.
+
+
+## eth_getUncleCountByBlockNumber
+
+Returns the number of uncles in a block matching the given block number.
+
+### Errors
+
+1. InvalidParamsError
+
+
+## parity_getBlockReceipts
+
+
+## eth_feeHistory
+
+Returns a collection of historical gas information.
+
+### Errors
+
+1. InvalidParamsError
+
+
+## eth_getFilterChanges
+
+Polling method for a filter, which returns an array of logs which occurred since last poll.
+### Errors
+
+1. InvalidParamsError
