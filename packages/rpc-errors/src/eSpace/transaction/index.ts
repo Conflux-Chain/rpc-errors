@@ -1,12 +1,16 @@
 import type { RegisterErrorsType } from "../../types";
-import { NonceTooHighError, TransactionError } from "./transaction";
+import {
+  MaxPriorityFeeExceedsMaxFeeError,
+  NonceTooHighError,
+  TransactionRejectedError,
+} from "./transaction";
 
-export { TransactionError, NonceTooHighError };
+export { TransactionRejectedError, NonceTooHighError };
 
 export const TransactionErrors: RegisterErrorsType = {
-  [TransactionError.code]: {
-    code: TransactionError.code,
-    baseError: TransactionError,
-    detailErrors: [NonceTooHighError],
+  [TransactionRejectedError.code]: {
+    code: TransactionRejectedError.code,
+    baseError: TransactionRejectedError,
+    detailErrors: [NonceTooHighError, MaxPriorityFeeExceedsMaxFeeError],
   },
 };

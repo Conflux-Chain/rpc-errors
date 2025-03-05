@@ -8,7 +8,13 @@ import {
   LatestMinedNotExecutedError,
 } from "./block";
 import { InvalidParamsError } from "./invalidParams";
-import { FailedToDecodeSignedTransactionError } from "./transaction";
+import {
+  ExceededMaxGasError,
+  FailedToDecodeSignedTransactionError,
+  InsufficientFundsError,
+  InsufficientGasError,
+  UnrecognizedTransactionTypeError,
+} from "./transaction";
 
 export { InvalidParamsError } from "./invalidParams";
 export {
@@ -19,7 +25,13 @@ export {
   EmptyBlockStringError,
   LatestMinedNotExecutedError,
 } from "./block";
-export { FailedToDecodeSignedTransactionError } from "./transaction";
+export {
+  FailedToDecodeSignedTransactionError,
+  InsufficientGasError,
+  InsufficientFundsError,
+  ExceededMaxGasError,
+  UnrecognizedTransactionTypeError,
+} from "./transaction";
 
 const InvalidParamsErrors: RegisterErrorsType = {
   [InvalidParamsError.code]: {
@@ -33,6 +45,10 @@ const InvalidParamsErrors: RegisterErrorsType = {
       EmptyBlockStringError,
       LatestMinedNotExecutedError,
       FailedToDecodeSignedTransactionError,
+      InsufficientGasError,
+      InsufficientFundsError,
+      ExceededMaxGasError,
+      UnrecognizedTransactionTypeError,
     ],
   },
 };

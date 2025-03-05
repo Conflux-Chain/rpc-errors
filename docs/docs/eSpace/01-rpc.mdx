@@ -132,3 +132,38 @@ Creates a new message call transaction or a contract creation for signed transac
     *   **ExceedsBlockGasLimitError**
     *   **TransactionUnderpricedError**
     *   **NonceTooHighError**
+
+## eth_call
+
+Executes a new message call immediately without creating a transaction on the block chain.
+
+### Errors
+
+1.  [InvalidParamsError](./errors#invalidparamserror)
+    *   **InvalidParamsError**
+    *   **InsufficientGasError**
+    *   **ExceededMaxGasError**
+
+2. [TransactionRejectedError](./errors#transactionrejectederror)
+    *   **MaxPriorityFeeExceedsMaxFeeError**
+
+3. [InternalError](./errors#internalerror)
+    *   **InternalError**
+    *   **IncorrectTransactionSpaceError**
+    *   **ExceedsBlockGasLimitError**
+    *   **TransactionUnderpricedError**
+    *   **NonceTooHighError**
+
+4. [ExecutionError](./errors#ExecutionError)
+   *   **ExecutionError**
+   *   **BlockHashesNotFoundError**
+   *   **InvalidEpochIdError**
+
+5. [InvalidInputError](./errors#InvalidInputError)
+    *  **InvalidInputError**
+    *  **NonceOutdatedError**
+
+6. [EthExecutionError](./errors#EthExecutionError)
+    *  **EthInsufficientFundsError**
+    *  **ContractExecutionRevertedError**
+    *  **ExecutionRevertedError**

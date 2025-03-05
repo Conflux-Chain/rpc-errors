@@ -15,8 +15,7 @@ import {
   InternalError,
   TransactionUnderpricedError,
 } from "../src/eSpace/internalErrors";
-import { UnrecoverablePubkeyError } from "../src/coreSpace/invalidParamsErrors/transaction";
-import { TransactionError } from "../src/eSpace";
+import { TransactionRejectedError } from "../src/eSpace";
 import { NonceTooHighError } from "../src/eSpace/transaction";
 
 const rpcError = new RPCError();
@@ -32,7 +31,7 @@ beforeAll(async () => {
     tcpPort: udpAndTcpPort,
     udpPort: udpAndTcpPort,
     jsonrpcHttpEthPort: jsonrpcHttpPort,
-    genesisSecrets: [TEST_PK],
+    genesisEvmSecrets: [TEST_PK],
     // log: true,
   });
 
@@ -118,7 +117,7 @@ describe("eth_sendRawTransaction errors", () => {
 
     expect(isRpcError(error)).toBe(true);
     assertRpcError(error);
-    expect(error.error.code).toBe(TransactionError.code);
+    expect(error.error.code).toBe(TransactionRejectedError.code);
     const parsedError = rpcError.parse(error.error);
 
     expect(parsedError).toBeInstanceOf(NonceTooHighError);

@@ -19,6 +19,10 @@ title: ERRORS
         > Invalid params: Invalid block number: invalid digit found in string.
     6.   **FailedToDecodeSignedTransactionError**
         > failed to decode signed transaction.
+    7.  **ExceededMaxGasError**
+        > specified gas is larger than max gas
+    8.  **UnrecognizedTransactionTypeError**
+        > unrecognized transaction type
 
 
 ## InternalError
@@ -40,3 +44,41 @@ title: ERRORS
 
 5.   **NonceTooHighError**
     > nonce too high: 
+
+
+
+## TransactionRejectedError
+
+### Error Types and Examples
+6.  **MaxPriorityFeeExceedsMaxFeeError**
+   > max priority fee per gas higher than max fee per gas
+
+
+
+## ExecutionError
+
+### Error Types and Examples
+1.   **ExecutionError**
+2.   **BlockHashesNotFoundError**
+    > Error processing request: Msg error detail: cannot get block hashes in the specified epoch, maybe it does not exist?
+3.   **InvalidEpochIdError**
+    > Error processing request: Msg error detail: invalid epoch id
+
+
+## InvalidInputError
+
+### Error Types and Examples
+1.  **NonceOutdatedError**
+    > nonce is too old expected 1111 got 1
+
+
+## EthExecutionError
+
+### Error Types and Examples
+
+1. **EthInsufficientFundsError**
+    > insufficient funds for gas * price + value
+2. **ContractExecutionRevertedError**
+    > execution reverted: revert
+3. **ExecutionRevertedError**
+    > execution reverted
