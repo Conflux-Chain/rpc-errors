@@ -8,6 +8,7 @@ import coreSpaceErrors, {
 
 import eSpaceErrors, { type ESpaceErrorsType } from "./eSpace/index.js";
 
+
 export {
   coreSpaceErrors,
   type CoreSpaceErrorsType,
