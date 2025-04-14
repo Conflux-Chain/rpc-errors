@@ -19,7 +19,7 @@ import {
 export { InvalidParamsError } from "./invalidParams";
 export {
   MissingHexPrefixError,
-  InvalidDigitBlockError as InvalidDigitError,
+  InvalidDigitBlockError,
   InvalidBlockTypeError,
   SpecifiedBlockNotExecutedError,
   EmptyBlockStringError,

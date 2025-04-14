@@ -24,12 +24,18 @@
       "require": "./_cjs/coreSpace/index.js",
       "import": "./_esm/coreSpace/index.js",
       "types": "./_types/coreSpace/index.d.ts"
+    },
+    "./eSpace": {
+      "require": "./_cjs/eSpace/index.js",
+      "import": "./_esm/eSpace/index.js",
+      "types": "./_types/eSpace/index.d.ts"
     }
   },
   "typesVersions": {
     "*": {
       "coreSpace": [
-        "./_types/coreSpace/index.d.ts"
+        "./_types/coreSpace/index.d.ts",
+        "./_types/eSpace/index.d.ts"
       ]
     }
   },
