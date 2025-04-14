@@ -1,5 +1,11 @@
 # @cfxjs/rpc-errors
 
+## 0.0.4
+
+### Patch Changes
+
+- 85f4141: Added exports to index
+
 ## 0.0.3
 
 ### Patch Changes
