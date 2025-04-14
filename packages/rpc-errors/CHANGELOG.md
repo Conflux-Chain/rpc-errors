@@ -1,5 +1,11 @@
 # @cfxjs/rpc-errors
 
+## 0.0.3
+
+### Patch Changes
+
+- 80c300e: Added exports
+
 ## 0.0.2
 
 ### Patch Changes
