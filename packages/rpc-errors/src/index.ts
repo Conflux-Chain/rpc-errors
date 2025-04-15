@@ -50,6 +50,7 @@ export {
   GasLimitExceededError,
   NonceTooStaleError,
   OutOfBalanceError,
+  TxPoolFullError,
   HigherGasPriceNeededError,
   InternalError,
   InternalNonExistentBlockHeaderError,

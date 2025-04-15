@@ -97,6 +97,7 @@ export {
   GasLimitExceededError,
   NonceTooStaleError,
   OutOfBalanceError,
+  TxPoolFullError,
   HigherGasPriceNeededError,
 } from "./invalidParamsErrors/transaction";
 
